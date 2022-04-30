@@ -1,6 +1,6 @@
 import { IpcRenderer } from 'electron';
 import { Injectable } from '@angular/core';
-import { IpcResponseModel } from '@libraries/ipc/models';
+import { IpcResponseModel } from '@libraries/lib-common';
 
 @Injectable({
   providedIn: 'root',

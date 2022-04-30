@@ -1,8 +1,8 @@
-import { FilesystemService, SettingsService } from '@libraries/core/services';
+import { FilesystemService, SettingsService } from '@libraries/lib-electron';
 
-import { IManageFilesystem, IManageSettings } from '@libraries/core/interfaces';
+import { IManageFilesystem, IManageSettings } from '@libraries/lib-electron';
 import { Container } from 'inversify';
-import { TYPES } from '@libraries/core/constants';
+import { TYPES } from '@libraries/lib-electron';
 
 export class ServicesConfiguration {
   public static generate(): Container {

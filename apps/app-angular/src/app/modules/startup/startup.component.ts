@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IpcChannels } from '@libraries/ipc/constants';
+import { IpcChannels } from '@libraries/lib-common';
 import { IpcService } from '../../global/services/ipc.service';
 
 @Component({

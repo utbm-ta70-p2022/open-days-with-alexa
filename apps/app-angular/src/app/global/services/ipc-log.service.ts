@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IpcService } from './ipc.service';
-import { IpcChannels } from '@libraries/ipc/constants';
-import { LogModel } from '@libraries/ipc/models';
+import { IpcChannels } from '@libraries/lib-common';
+import { LogModel } from '@libraries/lib-common';
 
 @Injectable({
   providedIn: 'root',

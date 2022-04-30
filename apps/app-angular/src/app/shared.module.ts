@@ -36,9 +36,8 @@ import { MessagesModule } from 'primeng/messages';
 import { PanelModule } from 'primeng/panel';
 import { RatingModule } from 'primeng/rating';
 import { ToolbarModule } from 'primeng/toolbar';
-import { AngularComponentsBlockableDivModule } from '@libraries/angular/components/blockablediv';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { AngularPipesDurationModule } from '@libraries/angular/pipes/duration';
+import { BlockableDivModule, DurationPipeModule } from '@libraries/lib-angular';
 import { InputSwitchModule } from 'primeng/inputswitch';
 
 const importedAndExportedModules = [
@@ -81,9 +80,9 @@ const importedAndExportedModules = [
   PanelModule,
   RatingModule,
   ToolbarModule,
-  AngularComponentsBlockableDivModule,
+  BlockableDivModule,
   InputNumberModule,
-  AngularPipesDurationModule,
+  DurationPipeModule,
   InputSwitchModule,
 ];
 

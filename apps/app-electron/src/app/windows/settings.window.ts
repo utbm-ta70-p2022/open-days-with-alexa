@@ -1,4 +1,4 @@
-import { AppRoute } from '@libraries/ipc/enumerations';
+import { AppRoute } from '@libraries/lib-common';
 import { BaseWindow } from './base.window';
 
 export class SettingsWindow extends BaseWindow {

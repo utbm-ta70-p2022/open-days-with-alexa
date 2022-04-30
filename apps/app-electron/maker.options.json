@@ -1,9 +1,17 @@
 {
   "$schema": "../../node_modules/nx-electron/src/validation/maker.schema.json",
-  "appId": "com.app",
-  "productName": "App",
-  "icon": "libs/assets/src/lib/images/icon.ico",
+  "appId": "fr.utbm.open-days-with-alexa",
+  "productName": "Open days with Alexa",
   "win": {
-    "icon": "libs/assets/src/lib/images/icon.ico"
+    "icon": "libs/lib-common/src/assets/images/icon.ico",
+    "publisherName": "UTBM"
+  },
+  "linux": {
+    "icon": "libs/lib-common/src/assets/images/icon.png",
+    "category": "AudioVideo"
+  },
+  "mac": {
+    "icon": "libs/lib-common/src/assets/images/icon.png",
+    "category": "public.app-category.developer-tools"
   }
 }

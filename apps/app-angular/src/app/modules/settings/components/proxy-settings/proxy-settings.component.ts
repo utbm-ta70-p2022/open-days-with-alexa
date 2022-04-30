@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProxyConfiguration } from '@libraries/ipc/enumerations';
-import { ProxySettingsModel } from '@libraries/ipc/models';
+import { ProxyConfiguration } from '@libraries/lib-common';
+import { ProxySettingsModel } from '@libraries/lib-common';
 
 @Component({
   selector: 'app-angular-proxy-settings',

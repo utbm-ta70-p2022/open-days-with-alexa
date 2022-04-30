@@ -1,4 +1,4 @@
-import { IpcChannels } from '@libraries/ipc/constants';
+import { IpcChannels } from '@libraries/lib-common';
 import * as winston from 'winston';
 import * as Transport from 'winston-transport';
 import App from '../app';

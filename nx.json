@@ -27,43 +27,19 @@
     ]
   },
   "projects": {
-    "angular-components-blockablediv": {
-      "tags": []
-    },
-    "angular-pipes-duration": {
-      "tags": []
-    },
-    "assets": {
-      "tags": []
-    },
-    "core-constants": {
-      "tags": []
-    },
-    "core-helpers": {
-      "tags": []
-    },
-    "core-interfaces": {
-      "tags": []
-    },
-    "core-models": {
-      "tags": []
-    },
-    "core-services": {
-      "tags": []
-    },
-    "ipc-constants": {
-      "tags": []
-    },
-    "ipc-enumerations": {
-      "tags": []
-    },
-    "ipc-models": {
-      "tags": []
-    },
     "app-angular": {
       "tags": []
     },
     "app-electron": {
+      "tags": []
+    },
+    "lib-angular": {
+      "tags": []
+    },
+    "lib-common": {
+      "tags": []
+    },
+    "lib-electron": {
       "tags": []
     }
   }

@@ -1,10 +1,10 @@
 import { app, dialog, ipcMain } from 'electron';
-import { IpcChannels } from '@libraries/ipc/constants';
+import { IpcChannels } from '@libraries/lib-common';
 import { environment } from '../../environments/environment';
-import { IpcResponseModel, SettingsModel } from '@libraries/ipc/models';
+import { IpcResponseModel, SettingsModel } from '@libraries/lib-common';
 import App from '../app';
-import { SettingsService } from '@libraries/core/services';
-import { TYPES } from '@libraries/core/constants';
+import { SettingsService } from '@libraries/lib-electron';
+import { TYPES } from '@libraries/lib-electron';
 import { AppBackgroundtask } from '../backgroundtasks/app.backgroundtask';
 
 export class CommonIpc {

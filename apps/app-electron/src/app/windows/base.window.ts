@@ -1,4 +1,4 @@
-import { AppRoute } from '@libraries/ipc/enumerations';
+import { AppRoute } from '@libraries/lib-common';
 import { BrowserWindow, dialog, Menu, MenuItem, nativeImage, screen, shell } from 'electron';
 import { join } from 'path';
 import App from '../app';

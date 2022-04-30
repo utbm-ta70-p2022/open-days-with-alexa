@@ -11,7 +11,7 @@
     "publish:step1": "nx run-many --target=build --configuration=production --projects=app-angular,app-electron --parallel=true",
     "publish:step2:windows": "nx run app-electron:make --arch x64 --platform windows",
     "publish:step2:macos": "nx run app-electron:make --arch x64 --platform darwin",
-    "publish:step2:linux:": "nx run app-electron:make --arch x64 --platform linux",
+    "publish:step2:linux:": "nx run app-electron:make --arch x64 --platform linux --target=snap",
     "publish:windows": "npm-run-all publish:step1 publish:step2:windows",
     "publish:macos": "npm-run-all publish:step1 publish:step2:macos",
     "publish:linux": "npm-run-all publish:step1 publish:step2:linux"

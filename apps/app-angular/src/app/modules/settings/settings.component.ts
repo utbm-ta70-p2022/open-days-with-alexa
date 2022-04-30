@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IpcChannels } from '@libraries/ipc/constants';
-import { SettingsModel } from '@libraries/ipc/models';
+import { IpcChannels } from '@libraries/lib-common';
+import { SettingsModel } from '@libraries/lib-common';
 import { IpcService } from '../../global/services/ipc.service';
 import { ToastMessageService } from '../../global/services/toast-message.service';
 
