@@ -2,7 +2,7 @@
 
 # 1. Généralités
 
-La solution « Open days with Alexa » a pour vocation d'automatiser la présentation des informations relatives à l'UTBM aux visiteurs.
+La solution « Open days with Alexa » a pour vocation d'automatiser la présentation des informations relatives à l'UTBM aux visiteurs lors de journées portes ouvertes.
 
 ## 1.1. Documentation
 
@@ -12,7 +12,11 @@ La documentation utilisateur ici : https://utbm-ta70-p2022.github.io/open-days-w
 
 Les informations sur les différentes versions sont regroupées dans le fichier `CHANGELOG.md`
 
-## 1.3. Équipe de développement
+## 1.3. Qualité
+
+
+
+## 1.4. Équipe de développement
 
 **Projet Présentation**
 
@@ -29,7 +33,7 @@ Les informations sur les différentes versions sont regroupées dans le fichier 
 * LEMESTRE Malo
 * PINON Matthis
 
-## 1.4. Stack technologique
+## 1.5. Stack technologique
 
 - Environnement de développement multi-plateformes : [Electron](https://www.electronjs.org/)
 - Langage de programmation : [TypeScript](https://www.typescriptlang.org/)
@@ -41,7 +45,7 @@ Les informations sur les différentes versions sont regroupées dans le fichier 
 - Framework  CSS : [PrimeFlex](https://www.primefaces.org/primeflex/display)
 - Pack d'icônes : [Font Awesome](https://fontawesome.com/)
 
-## 1.5. Présentation de l'architecture
+## 1.6. Présentation de l'architecture
 
 La solution est organisée par un espace de travail Nx tel que l'arborescence présentée ci-dessous :
 
@@ -53,7 +57,7 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
 |--/libs
 ```
 
-### 1.5.1. Applications
+### 1.6.1. Applications
 
 Les applications sont contenues dans le dossier `/apps`
 
@@ -65,7 +69,7 @@ Ce projet d'application Angular contient le code source des différentes interfa
 
 Ce projet d'application Electron contient le code source qui permet d'encapsuler l'application web dans une fenêtre du système d'exploitation.
 
-### 1.5.2. Bibliothèques
+### 1.6.2. Bibliothèques
 
 Les bibliothèques sont contenues dans le dossier `/libs`
 
