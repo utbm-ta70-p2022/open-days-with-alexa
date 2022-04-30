@@ -4,14 +4,17 @@
   "productName": "Open days with Alexa",
   "win": {
     "icon": "libs/lib-common/src/assets/images/icon.ico",
-    "publisherName": "UTBM"
+    "publisherName": "UTBM",
+    "target": "nsis"
   },
   "linux": {
     "icon": "libs/lib-common/src/assets/images/icon.png",
-    "category": "AudioVideo"
+    "category": "AudioVideo",
+    "target": "deb"
   },
   "mac": {
     "icon": "libs/lib-common/src/assets/images/icon.png",
-    "category": "public.app-category.developer-tools"
+    "category": "public.app-category.developer-tools",
+    "target": "dmg"
   }
 }
