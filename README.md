@@ -37,7 +37,7 @@ La solution « Open days with Alexa » a pour vocation d'automatiser la présent
 
 ## 1.3. Présentation de l'architecture
 
-La solution est organisée par un espace de travail Nx tel que présenté ci-dessous :
+La solution est organisée par un espace de travail Nx tel que l'arborescence présentée ci-dessous :
 
 ```
 /
@@ -55,11 +55,22 @@ Ce projet d'application Angular contient le code source des différentes interfa
 
 Ce projet d'application Electron contient le code source qui permet d'encapsuler l'application web dans une fenêtre du système d'exploitation.
 
-# 2. Règles et bonnes pratiques de développement
+# 2. Règles de développement
 
-## 2.1. Procédure d'implémentation d'un ticket
+## 2.1. Type des issues
 
-1. Se rendre sur la liste des tickets du projet :
+Il existe 4 types d'issues :
+
+* **User story** : Demande de fonctionnalité formulée tel que : « En tant que x, je souhaite x »
+* **Documentation** : Demande de documentation
+* **Bug** : Demande de résolution de bug
+* **Technical story** : Tâche technique autre
+
+> NB : Ticket = Issue
+
+## 2.2. Procédure d'implémentation d'une issue
+
+1. Se rendre sur la liste des issues du projet :
 
    * Projet Présentation : https://github.com/utbm-ta70-presentation-alexa/open-days-with-alexa/projects/2
    * Projet Alexa : https://github.com/utbm-ta70-presentation-alexa/open-days-with-alexa/projects/1
@@ -68,27 +79,50 @@ Ce projet d'application Electron contient le code source qui permet d'encapsuler
 
    > Exemple : « Itération 1 : 27/04 - 01/05 »
 
-3. Prendre un ticket non déjà marqué comme « ouvert »
+3. Prendre une issue non déjà marquée comme « ouvert »
 
-4. Créer une nouvelle branche de développement depuis la branche `master` selon la nomenclature suivante : `issue/<numéro du ticket>-<quelques mots décrivant le ticket>`
+4. Créer une nouvelle branche de développement depuis la branche `master` selon la nomenclature suivante : `issue/<numéro de l'issue>-<quelques mots décrivant l'issue>`
 
    > Pour se placer dans la branche `master` : `git checkout master`
    >
    > Pour créer une nouvelle branche : `git checkout -b issue/123-lorem-ipsum`
 
-5. Traiter le ticket
+5. Traiter l'issue
 
-   > Ne pas hésiter à traiter le ticket en binôme si cela semble nécessaire.
+   > Ne pas hésiter à traiter l'issue en binôme si cela semble nécessaire.
 
-6. Pousser la branche finalisée vers le dépôt de code
+6. Ajouter les fichiers au versionnement, les commiter et pousser la branche finalisée vers le dépôt de code
 
+   > Pour ajouter les fichiers au versionnement : `git add <nom du fichier>`
+   >
+   > Pour commiter les fichiers : `git commit -m "<en anglais : verbe d'action à l'infinitif + description>"`
+   >
    > Pour pousser la branche : `git push origin issue/123-lorem-ipsum `
 
 7. Créer une demande de fusion de la branche de développement depuis l'onglet « Pull Requests » du dépôt de code GitHub 
 
+   > À la création d'une demande de branche, la qualité du code est analysé.
+   >
    > Lien vers l'onglet « Pull Requests » : https://github.com/utbm-ta70-presentation-alexa/open-days-with-alexa/pulls
 
-8. Faire relire son code par un autre membre de l'équipe 
+8. Faire relire son code par un autre membre de l'équipe
+
+9. Procéder à la fusion de la branche de développement vers la branche `master` en cliquant sur le bouton « Merge pull request » de la « Pull request » précédemment créée
+
+10. Clôturer l'issue
+
+    > Pour cloturer une issue, il faut cliquer sur son titre pour l'ouvrir, puis cliquer sur le bouton « Close issue »
+
+## 2.3. Conventions de nommage
+
+### 2.3.1 TypeScript
+
+| Élément            | Casse      |
+| ------------------ | ---------- |
+| Classe d'objet     | PascalCase |
+| Classe d'interface | PascalCase |
+| Fichier            | kebab-case |
+| Variable           | camelCase  |
 
 # 3. Installation de l'environnement de développement
 
@@ -107,7 +141,7 @@ Ce projet d'application Electron contient le code source qui permet d'encapsuler
 
 ## 3.2. Installation des outils de développement
 
-### 3.2.1. Visual Studio Code
+### Visual Studio Code
 
 **Installer l'IDE**
 
@@ -121,5 +155,3 @@ Ce projet d'application Electron contient le code source qui permet d'encapsuler
 * [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)
 * [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template)
 * [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)
-
-## 3.
