@@ -81,6 +81,7 @@ Il existe 4 types d'issues :
 
 * **User story** : Demande de fonctionnalité formulée tel que : « En tant que x, je souhaite x »
 * **Documentation** : Demande de documentation
+* **Conception** : Demande de conception
 * **Bug** : Demande de résolution de bug
 * **Technical story** : Tâche technique autre
 
