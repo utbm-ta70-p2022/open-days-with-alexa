@@ -1,0 +1,18 @@
+<p-card styleClass="m-2 shadow-1">
+  <ng-container *ngIf="settings">
+    <ng-container *ngIf="settings.common">
+      <h3>Proxy settings</h3>
+      <app-angular-proxy-settings [proxySettings]="settings.common.proxy"></app-angular-proxy-settings>
+    </ng-container>
+  </ng-container>
+  <div class="flex flex-row mt-3">
+    <p-button
+      label="Reset"
+      pTooltip="Reset settings to default"
+      icon="pi pi-refresh"
+      styleClass="my-auto p-button-text"
+      (click)="reset()"
+    ></p-button>
+    <p-button label="Save" icon="pi pi-save" styleClass="my-auto ml-3" (click)="save()"></p-button>
+  </div>
+</p-card>

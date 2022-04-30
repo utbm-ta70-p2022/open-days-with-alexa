@@ -1,4 +1,4 @@
-name: Build
+name: 'Analyse quality'
 on:
   push:
     branches:

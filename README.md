@@ -1,12 +1,18 @@
 **Open days with Alexa**
 
-[[_TOC_]]
-
 # 1. Généralités
 
 La solution « Open days with Alexa » a pour vocation d'automatiser la présentation des informations relatives à l'UTBM aux visiteurs.
 
-## 1.1. Équipe de développement
+## 1.1. Documentation
+
+La documentation utilisateur ici : https://utbm-ta70-p2022.github.io/open-days-with-alexa/
+
+## 1.2. Versions
+
+Les informations sur les différentes versions sont regroupées dans le fichier `CHANGELOG.md`
+
+## 1.3. Équipe de développement
 
 **Projet Présentation**
 
@@ -23,7 +29,7 @@ La solution « Open days with Alexa » a pour vocation d'automatiser la présent
 * LEMESTRE Malo
 * PINON Matthis
 
-## 1.2. Stack technologique
+## 1.4. Stack technologique
 
 - Environnement de développement multi-plateformes : [Electron](https://www.electronjs.org/)
 - Langage de programmation : [TypeScript](https://www.typescriptlang.org/)
@@ -35,7 +41,7 @@ La solution « Open days with Alexa » a pour vocation d'automatiser la présent
 - Framework  CSS : [PrimeFlex](https://www.primefaces.org/primeflex/display)
 - Pack d'icônes : [Font Awesome](https://fontawesome.com/)
 
-## 1.3. Présentation de l'architecture
+## 1.5. Présentation de l'architecture
 
 La solution est organisée par un espace de travail Nx tel que l'arborescence présentée ci-dessous :
 
@@ -47,6 +53,10 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
 |--/libs
 ```
 
+### 1.5.1. Applications
+
+Les applications sont contenues dans le dossier `/apps`
+
 **app-angular**
 
 Ce projet d'application Angular contient le code source des différentes interfaces web.
@@ -54,6 +64,10 @@ Ce projet d'application Angular contient le code source des différentes interfa
 **app-electron**
 
 Ce projet d'application Electron contient le code source qui permet d'encapsuler l'application web dans une fenêtre du système d'exploitation.
+
+### 1.5.2. Bibliothèques
+
+Les bibliothèques sont contenues dans le dossier `/libs`
 
 # 2. Règles de développement
 
@@ -68,7 +82,11 @@ Il existe 4 types d'issues :
 
 > NB : Ticket = Issue
 
-## 2.2. Procédure d'implémentation d'une issue
+## 2.2. Principaux scripts
+
+* `npm start` : démarrer l'application en mode de développement
+
+## 2.3. Procédure d'implémentation d'une issue
 
 1. Se rendre sur la liste des issues du projet :
 
@@ -141,7 +159,7 @@ Il existe 4 types d'issues :
 
 ## 3.2. Installation des outils de développement
 
-### Visual Studio Code
+### 3.2.1. Visual Studio Code
 
 **Installer l'IDE**
 

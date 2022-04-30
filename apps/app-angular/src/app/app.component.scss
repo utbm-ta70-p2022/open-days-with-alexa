@@ -1,0 +1,18 @@
+$leftSideWidth: 60px;
+
+.main-frame {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.ui-blocker {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  background-color: gray;
+  opacity: 0.7;
+}

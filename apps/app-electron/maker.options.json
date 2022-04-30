@@ -1,0 +1,9 @@
+{
+  "$schema": "../../node_modules/nx-electron/src/validation/maker.schema.json",
+  "appId": "com.app",
+  "productName": "App",
+  "icon": "libs/assets/src/lib/images/icon.ico",
+  "win": {
+    "icon": "libs/assets/src/lib/images/icon.ico"
+  }
+}

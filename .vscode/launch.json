@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "command": "npm start",
+      "name": "Debug",
+      "request": "launch",
+      "type": "node-terminal",
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
+    }
+  ]
+}

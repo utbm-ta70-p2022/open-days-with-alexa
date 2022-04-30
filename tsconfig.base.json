@@ -1,0 +1,33 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@libraries/angular/components/blockablediv": ["libs/angular-components-blockablediv/src/index.ts"],
+      "@libraries/angular/pipes/duration": ["libs/angular-pipes-duration/src/index.ts"],
+      "@libraries/assets": ["libs/assets/src/index.ts"],
+      "@libraries/core/constants": ["libs/core-constants/src/index.ts"],
+      "@libraries/core/helpers": ["libs/core-helpers/src/index.ts"],
+      "@libraries/core/interfaces": ["libs/core-interfaces/src/index.ts"],
+      "@libraries/core/models": ["libs/core-models/src/index.ts"],
+      "@libraries/core/services": ["libs/core-services/src/index.ts"],
+      "@libraries/ipc/constants": ["libs/ipc-constants/src/index.ts"],
+      "@libraries/ipc/enumerations": ["libs/ipc-enumerations/src/index.ts"],
+      "@libraries/ipc/models": ["libs/ipc-models/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

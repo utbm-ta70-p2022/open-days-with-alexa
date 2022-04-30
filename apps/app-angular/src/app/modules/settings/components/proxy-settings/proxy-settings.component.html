@@ -1,0 +1,66 @@
+<div class="flex flex-column">
+  <span class="p-float-label w-full">
+    <p-dropdown
+      inputId="settings-common-proxy-configuration"
+      styleClass="w-full"
+      [autoDisplayFirst]="false"
+      [options]="configurationOptions"
+      [(ngModel)]="selectedConfiguration"
+      (ngModelChange)="handleConfigurationChange()"
+    ></p-dropdown>
+    <label for="settings-common-proxy-configuration">Configuration</label>
+  </span>
+
+  <ng-container *ngIf="isProxyConfigurationCustom">
+    <span class="p-float-label w-full mt-3">
+      <input [(ngModel)]="proxySettings.host" id="settings-common-proxy-host" type="text" pInputText class="w-full" />
+      <label for="settings-common-proxy-host">Host</label>
+    </span>
+
+    <span class="p-float-label w-full mt-3">
+      <p-inputNumber
+        [(ngModel)]="proxySettings.port"
+        [showButtons]="true"
+        inputId="settings-common-proxy-port"
+        [min]="0"
+        [max]="65535"
+        [useGrouping]="false"
+        styleClass="w-full"
+        class="w-full"
+      ></p-inputNumber>
+      <label for="settings-common-proxy-port">Port</label>
+    </span>
+
+    <p-checkbox
+      name="settings-common-proxy-credentials"
+      [(ngModel)]="proxySettings.credentials"
+      [binary]="true"
+      label="Credentials"
+      class="mt-3 mb-2"
+    ></p-checkbox>
+
+    <ng-container *ngIf="proxySettings.credentials">
+      <span class="p-float-label w-full mt-3">
+        <input
+          [(ngModel)]="proxySettings.username"
+          id="settings-common-proxy-username"
+          type="text"
+          pInputText
+          class="w-full"
+        />
+        <label for="settings-common-proxy-username">Username</label>
+      </span>
+
+      <span class="p-float-label w-full mt-3">
+        <p-password
+          [(ngModel)]="proxySettings.password"
+          inputId="settings-common-proxy-password"
+          styleClass="w-full"
+          [feedback]="false"
+          [toggleMask]="true"
+        ></p-password>
+        <label for="settings-common-proxy-password">Password</label>
+      </span>
+    </ng-container>
+  </ng-container>
+</div>

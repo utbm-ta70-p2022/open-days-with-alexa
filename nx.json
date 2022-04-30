@@ -1,0 +1,70 @@
+{
+  "npmScope": "workspace",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "angular-components-blockablediv": {
+      "tags": []
+    },
+    "angular-pipes-duration": {
+      "tags": []
+    },
+    "assets": {
+      "tags": []
+    },
+    "core-constants": {
+      "tags": []
+    },
+    "core-helpers": {
+      "tags": []
+    },
+    "core-interfaces": {
+      "tags": []
+    },
+    "core-models": {
+      "tags": []
+    },
+    "core-services": {
+      "tags": []
+    },
+    "ipc-constants": {
+      "tags": []
+    },
+    "ipc-enumerations": {
+      "tags": []
+    },
+    "ipc-models": {
+      "tags": []
+    },
+    "app-angular": {
+      "tags": []
+    },
+    "app-electron": {
+      "tags": []
+    }
+  }
+}
