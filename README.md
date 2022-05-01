@@ -14,6 +14,8 @@ Les informations sur les différentes versions sont regroupées dans le fichier 
 
 ## 1.3. Qualité
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=utbm-ta70-p2022_open-days-with-alexa)](https://sonarcloud.io/summary/new_code?id=utbm-ta70-p2022_open-days-with-alexa)
+
 Le rapport de qualité du code de la solution est disponible ici : https://sonarcloud.io/project/overview?id=utbm-ta70-p2022_open-days-with-alexa
 
 ## 1.4. Équipe de développement
