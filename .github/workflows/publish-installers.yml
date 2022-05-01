@@ -25,7 +25,7 @@ jobs:
       - name: Scp
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
-          local: dist/executables/open-days-with-alexa.exe
+          local: dist/executables/open-days-with-alexa-latest.exe
           remote: ~/
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
@@ -53,7 +53,7 @@ jobs:
       - name: Scp
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
-          local: dist/executables/open-days-with-alexa.dmg
+          local: dist/executables/open-days-with-alexa-latest.dmg
           remote: ~/
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
@@ -81,7 +81,7 @@ jobs:
       - name: Scp
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
-          local: dist/executables/open-days-with-alexa.AppImage
+          local: dist/executables/open-days-with-alexa-latest.AppImage
           remote: ~/
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
