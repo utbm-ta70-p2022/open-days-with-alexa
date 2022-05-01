@@ -79,7 +79,7 @@ Les bibliothèques sont contenues dans le dossier `/libs`
 
 ## 2.1. Type des issues
 
-Il existe 4 types d'issues :
+Il existe 5 types d'issues :
 
 * **User story** : Demande de fonctionnalité formulée tel que : « En tant que x, je souhaite x »
 * **Documentation** : Demande de documentation
