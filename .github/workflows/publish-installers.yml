@@ -1,8 +1,8 @@
 name: Publish installers
 on:
   push:
-    tags:
-      - 'latest'
+    branches:
+      - master
 jobs:
   publish_window_installer:
     name: Publish Windows installer
