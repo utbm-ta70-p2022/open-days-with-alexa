@@ -22,60 +22,68 @@ jobs:
           npm run postinstall
           npm run publish:windows
     
-      - name: Copy
+      - name: Scp
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
-          local: dist/executables/*.exe*
+          local: dist/executables/open-days-with-alexa.exe
           remote: ~/
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
 
-  # publish_macos_installer:
-  #   name: Publish macOS installer
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+  publish_macos_installer:
+    name: Publish macOS installer
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.15.0'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
 
-  #     - name: Build
-  #       run: |
-  #         npm install
-  #         npm run postinstall
-  #         npm run publish:macos
-    
-  #     - name: Upload
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: open-days-with-alexa-macos-latest
-  #         path: dist/executables/*
+      - name: Build
+        run: |
+          npm install
+          npm run postinstall
+          npm run publish:macos
 
-  # publish_linux_installer:
-  #   name: Publish Linux installer
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+      - name: Scp
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: dist/executables/open-days-with-alexa.dmg
+          remote: ~/
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+
+  publish_linux_installer:
+    name: Publish Linux installer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.15.0'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
 
-  #     - name: Build
-  #       run: |
-  #         npm install
-  #         npm run postinstall
-  #         npm run publish:linux
-    
-  #     - name: Upload
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: open-days-with-alexa-linux-latest
-  #         path: dist/executables/*
+      - name: Build
+        run: |
+          npm install
+          npm run postinstall
+          npm run publish:linux
+
+      - name: Scp
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: dist/executables/open-days-with-alexa.AppImage
+          remote: ~/
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
