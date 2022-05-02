@@ -29,13 +29,13 @@ jobs:
           echo $GITHUB_ENV
           echo ${{env.APP_NAME}}
 
-      # - name: Upload artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: information
-      #     path: |
-      #       name.txt
-      #       version.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: information
+          path: |
+            name.txt
+            version.txt
 
   # build_linux_installer:
   #   name: Build Linux installer
@@ -61,92 +61,92 @@ jobs:
   #         name: linux
   #         path: dist/executables/app.AppImage
 
-  # # publish_window_installer:
-  # #   name: Publish Windows installer
-  # #   runs-on: windows-latest
-  # #   steps:
-  # #     - name: Checkout
-  # #       uses: actions/checkout@v2
-
-  # #     - name: Setup Node.js
-  # #       uses: actions/setup-node@v3
-  # #       with:
-  # #         node-version: '16.15.0'
-
-  # #     - name: Build
-  # #       run: |
-  # #         npm install
-  # #         npm run postinstall
-  # #         npm run publish:windows
-
-  # #     - name: Save
-  # #       uses: actions/upload-artifact@v3
-  # #       with:
-  # #         name: windows
-  # #         path: dist/executables/app.exe
-
-  # # publish_macos_installer:
-  # # name: Publish macOS installer
-  # # runs-on: macos-latest
-  # # steps:
-  # #   - name: Checkout
-  # #     uses: actions/checkout@v2
-
-  # #   - name: Setup Node.js
-  # #     uses: actions/setup-node@v3
-  # #     with:
-  # #       node-version: '16.15.0'
-
-  # #   - name: Build
-  # #     run: |
-  # #       npm install
-  # #       npm run postinstall
-  # #       npm run publish:macos
-
-  # #   - name: Save
-  # #     uses: actions/upload-artifact@v3
-  # #     with:
-  # #       name: macos
-  # #       path: dist/executables/app.dmg
-
-  # release:
-  #   name: Release
-  #   needs: [retrieve_information, build_linux_installer]
-  #   runs-on: ubuntu-latest
+  # publish_window_installer:
+  #   name: Publish Windows installer
+  #   runs-on: windows-latest
   #   steps:
-  #     - name: Download artifacts
-  #       uses: actions/download-artifact@v3
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-  #     - name: Rename files
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16.15.0'
+
+  #     - name: Build
   #       run: |
-  #         ls information
-  #         cat information/name.txt
-  #         cat information/version.txt
-  #         echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
-  #         echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
-  #         cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
-  #         #cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
-  #         #cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
-  #         mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-  #         #mv windows/app.exe windows/${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
-  #         #mv macos/app.dmg macos/${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
+  #         npm install
+  #         npm run postinstall
+  #         npm run publish:windows
 
-  #     - name: Update latest version release
-  #       uses: meeDamian/github-release@v2.0.3
+  #     - name: Save
+  #       uses: actions/upload-artifact@v3
   #       with:
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-  #         tag: ${{env.APP_VERSION}}
-  #         name: Open days with Alexa [${{env.APP_VERSION}}]
-  #         files: |
-  #           linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-  #         allow_override: true
+  #         name: windows
+  #         path: dist/executables/app.exe
+
+  # publish_macos_installer:
+  # name: Publish macOS installer
+  # runs-on: macos-latest
+  # steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v2
+
+  #   - name: Setup Node.js
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: '16.15.0'
+
+  #   - name: Build
+  #     run: |
+  #       npm install
+  #       npm run postinstall
+  #       npm run publish:macos
+
+  #   - name: Save
+  #     uses: actions/upload-artifact@v3
+  #     with:
+  #       name: macos
+  #       path: dist/executables/app.dmg
+
+  release:
+    name: Release
+    needs: [retrieve_information]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Rename files
+        run: |
+          ls information
+          # cat information/name.txt
+          # cat information/version.txt
+          # echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
+          # echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
+          # cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
+          # #cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
+          # #cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
+          # mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          # #mv windows/app.exe windows/${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
+          # #mv macos/app.dmg macos/${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
+
+      # - name: Update latest version release
+      #   uses: meeDamian/github-release@v2.0.3
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     tag: ${{env.APP_VERSION}}
+      #     name: Open days with Alexa [${{env.APP_VERSION}}]
+      #     files: |
+      #       linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+      #     allow_override: true
       
-  #     - name: Update latest version release
-  #       uses: meeDamian/github-release@v2.0.3
-  #       with:
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-  #         tag: latest
-  #         name: Open days with Alexa [latest]
-  #         files: |
-  #           linux/${{env.APP_NAME}}-latest.AppImage
-  #         allow_override: true
+      # - name: Update latest version release
+      #   uses: meeDamian/github-release@v2.0.3
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     tag: latest
+      #     name: Open days with Alexa [latest]
+      #     files: |
+      #       linux/${{env.APP_NAME}}-latest.AppImage
+      #     allow_override: true
