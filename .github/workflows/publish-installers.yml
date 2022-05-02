@@ -21,17 +21,13 @@ jobs:
           echo $(node -e "console.log(require('./package.json').name)") > name.txt
           echo $(node -e "console.log(require('./package.json').version)") > version.txt
 
-      - name: Upload name artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: name.txt
-          path: name.txt
-
-      - name: Upload version artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: version.txt
-          path: version.txt
+          name: information
+          path: |
+            name.txt
+            version.txt
 
   build_linux_installer:
     name: Build Linux installer
@@ -54,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: app.AppImage
+          name: linux
           path: dist/executables/app.AppImage
 
   # publish_window_installer:
@@ -78,7 +74,7 @@ jobs:
   #     - name: Save
   #       uses: actions/upload-artifact@v3
   #       with:
-  #         name: app.exe
+  #         name: windows
   #         path: dist/executables/app.exe
 
   # publish_macos_installer:
@@ -102,7 +98,7 @@ jobs:
   #   - name: Save
   #     uses: actions/upload-artifact@v3
   #     with:
-  #       name: app.dmg
+  #       name: macos
   #       path: dist/executables/app.dmg
 
   release:
@@ -115,14 +111,14 @@ jobs:
 
       - name: Rename files
         run: |
-          echo "APP_NAME=$(cat name.txt)" >> $GITHUB_ENV
-          echo "APP_VERSION=$(cat version.txt)" >> $GITHUB_ENV
-          cp app.AppImage ${{env.APP_NAME}}-latest.AppImage
-          #cp app.exe ${{env.APP_NAME}}-latest.exe
-          #cp app.dmg ${{env.APP_NAME}}-latest.dmg
-          mv app.AppImage ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-          #mv app.exe ${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
-          #mv app.dmg ${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
+          echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
+          echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
+          cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
+          #cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
+          #cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
+          mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          #mv windows/app.exe windows/${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
+          #mv macos/app.dmg macos/${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
 
       - name: Update latest version release
         uses: meeDamian/github-release@v2.0.3
@@ -130,8 +126,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{env.APP_VERSION}}
           name: Open days with Alexa [${{env.APP_VERSION}}]
-          files: >
-            ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          files: |
+            linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
           allow_override: true
       
       - name: Update latest version release
@@ -140,6 +136,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
           name: Open days with Alexa [latest]
-          files: >
-            ${{env.APP_NAME}}-latest.AppImage
+          files: |
+            linux/${{env.APP_NAME}}-latest.AppImage
           allow_override: true
