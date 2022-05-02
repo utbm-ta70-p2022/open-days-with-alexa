@@ -139,6 +139,7 @@ jobs:
           echo ${{env.APP_VERSION}}
           cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage         
           mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          ls linux
 
       - name: Update latest version release
         uses: meeDamian/github-release@v2.0.3
