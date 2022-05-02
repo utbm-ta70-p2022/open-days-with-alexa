@@ -4,61 +4,61 @@ on:
     branches:
       - master
 jobs:
-  publish_window_installer:
-    name: Publish Windows installer
-    runs-on: windows-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # publish_window_installer:
+  #   name: Publish Windows installer
+  #   runs-on: windows-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.15.0'
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16.15.0'
 
-      - name: Build
-        run: |
-          npm install
-          npm run postinstall
-          npm run publish:windows
+  #     - name: Build
+  #       run: |
+  #         npm install
+  #         npm run postinstall
+  #         npm run publish:windows
     
-      - name: Scp
-        uses: garygrossgarten/github-action-scp@v0.7.3
-        with:
-          local: dist/executables/open-days-with-alexa-latest.exe
-          remote: .
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+  #     - name: Scp
+  #       uses: garygrossgarten/github-action-scp@v0.7.3
+  #       with:
+  #         local: dist/executables/open-days-with-alexa-latest.exe
+  #         remote: .
+  #         host: ${{ secrets.SSH_HOST }}
+  #         port: ${{ secrets.SSH_PORT }}
+  #         username: ${{ secrets.SSH_USERNAME }}
+  #         password: ${{ secrets.SSH_PASSWORD }}
 
-  publish_macos_installer:
-    name: Publish macOS installer
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # publish_macos_installer:
+  #   name: Publish macOS installer
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.15.0'
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: '16.15.0'
 
-      - name: Build
-        run: |
-          npm install
-          npm run postinstall
-          npm run publish:macos
+  #     - name: Build
+  #       run: |
+  #         npm install
+  #         npm run postinstall
+  #         npm run publish:macos
 
-      - name: Scp
-        uses: garygrossgarten/github-action-scp@v0.7.3
-        with:
-          local: dist/executables/open-days-with-alexa-latest.dmg
-          remote: .
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+  #     - name: Scp
+  #       uses: garygrossgarten/github-action-scp@v0.7.3
+  #       with:
+  #         local: dist/executables/open-days-with-alexa-latest.dmg
+  #         remote: .
+  #         host: ${{ secrets.SSH_HOST }}
+  #         port: ${{ secrets.SSH_PORT }}
+  #         username: ${{ secrets.SSH_USERNAME }}
+  #         password: ${{ secrets.SSH_PASSWORD }}
 
   publish_linux_installer:
     name: Publish Linux installer
@@ -82,7 +82,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
           local: dist/executables/open-days-with-alexa-latest.AppImage
-          remote: .
+          remote: /home/loicbtd/www/real-it.fr/static/open-days-with-alexa
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
