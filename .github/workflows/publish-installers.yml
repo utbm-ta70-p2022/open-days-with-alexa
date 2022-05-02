@@ -136,12 +136,9 @@ jobs:
         run: |
           cat $GITHUB_ENV
           echo ${{env.APP_NAME}}
-          cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
-          # cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
-          # cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
+          echo ${{env.APP_VERSION}}
+          cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage         
           mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-          # #mv windows/app.exe windows/${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
-          # #mv macos/app.dmg macos/${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
 
       - name: Update latest version release
         uses: meeDamian/github-release@v2.0.3
@@ -149,7 +146,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{env.APP_VERSION}}
           name: Open days with Alexa [${{env.APP_VERSION}}]
-          files: |
+          files: >
             linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
           allow_override: true
       
@@ -159,6 +156,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
           name: Open days with Alexa [latest]
-          files: |
+          files: >
             linux/${{env.APP_NAME}}-latest.AppImage
           allow_override: true
