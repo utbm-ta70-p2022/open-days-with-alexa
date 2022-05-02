@@ -1,0 +1,42 @@
+name: Publish installers
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy_webapp:
+    name: Deploy webapp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
+
+      - name: Build
+        run: |
+          npm install
+          npm run postinstall
+          npm run publish:linux
+
+      - name: Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: latest
+          release_name: latest
+
+      - name: Upload
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/executables/open-days-with-alexa-latest.AppImage
+          asset_name: open-days-with-alexa-latest.AppImage
+          asset_content_type: application/appimage
