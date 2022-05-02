@@ -95,11 +95,12 @@ jobs:
           path: ~/open-days-with-alexa-latest.AppImage
 
       - name: Update latest version release
-        uses: marvinpinto/action-automatic-releases@v1
+        uses: meeDamian/github-release@v2.0.3
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: latest
-          title: Open days with Alexa [latest]
-          files: |
+          tag: latest
+          name: Open days with Alexa [latest]
+          files: >
             open-days-with-alexa-latest.AppImage
+          allow_override: true
     
