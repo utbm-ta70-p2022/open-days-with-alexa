@@ -148,6 +148,7 @@ jobs:
           tag: ${{env.APP_VERSION}}
           name: Open days with Alexa [${{env.APP_VERSION}}]
           files: ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          gzip: false
           allow_override: true
       
       - name: Update latest version release
@@ -157,4 +158,5 @@ jobs:
           tag: latest
           name: Open days with Alexa [latest]
           files: ${{env.APP_NAME}}-latest.AppImage
+          gzip: false
           allow_override: true
