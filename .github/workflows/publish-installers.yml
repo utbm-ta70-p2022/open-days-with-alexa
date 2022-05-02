@@ -20,6 +20,7 @@ jobs:
         run: |
           echo $(node -e "console.log(require('./package.json').name)") > name.txt
           echo $(node -e "console.log(require('./package.json').version)") > version.txt
+          touch app.AppImage
           echo "APP_NAME=$(cat name.txt)" >> $GITHUB_ENV
           echo "APP_VERSION=$(cat version.txt)" >> $GITHUB_ENV
           echo $GITHUB_ENV
@@ -36,6 +37,12 @@ jobs:
           path: |
             name.txt
             version.txt
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux
+          path: app.AppImage
 
   # build_linux_installer:
   #   name: Build Linux installer
@@ -125,29 +132,30 @@ jobs:
           echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
           echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
           echo ${{env.APP_NAME}}
-          # cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
+          
+          cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
           # cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
           # cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
-          # mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
           # #mv windows/app.exe windows/${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
           # #mv macos/app.dmg macos/${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
 
-      # - name: Update latest version release
-      #   uses: meeDamian/github-release@v2.0.3
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     tag: ${{env.APP_VERSION}}
-      #     name: Open days with Alexa [${{env.APP_VERSION}}]
-      #     files: |
-      #       linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-      #     allow_override: true
+      - name: Update latest version release
+        uses: meeDamian/github-release@v2.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{env.APP_VERSION}}
+          name: Open days with Alexa [${{env.APP_VERSION}}]
+          files: |
+            linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          allow_override: true
       
-      # - name: Update latest version release
-      #   uses: meeDamian/github-release@v2.0.3
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     tag: latest
-      #     name: Open days with Alexa [latest]
-      #     files: |
-      #       linux/${{env.APP_NAME}}-latest.AppImage
-      #     allow_override: true
+      - name: Update latest version release
+        uses: meeDamian/github-release@v2.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: latest
+          name: Open days with Alexa [latest]
+          files: |
+            linux/${{env.APP_NAME}}-latest.AppImage
+          allow_override: true
