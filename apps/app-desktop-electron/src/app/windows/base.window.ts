@@ -1,4 +1,3 @@
-import { AppRoute } from '@libraries/lib-common';
 import { BrowserWindow, dialog, Menu, MenuItem, nativeImage, screen, shell } from 'electron';
 import { join } from 'path';
 import App from '../app';
@@ -9,7 +8,7 @@ export class BaseWindow extends BrowserWindow {
   route: string;
 
   constructor(
-    route: AppRoute,
+    route: string,
     options: {
       title?: string;
       width?: number;

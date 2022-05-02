@@ -20,20 +20,12 @@ jobs:
         run: |
           echo $(node -e "console.log(require('./package.json').name)") > name.txt
           echo $(node -e "console.log(require('./package.json').version)") > version.txt
-          cat name.txt
-          cat version.txt
-          echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
-          echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
+          echo "APP_NAME=$(cat name.txt)" >> $GITHUB_ENV
+          echo "APP_VERSION=$(cat version.txt)" >> $GITHUB_ENV
           echo $GITHUB_ENV
 
       - name: Echo
         run: |
-          echo $(node -e "console.log(require('./package.json').name)") > name.txt
-          echo $(node -e "console.log(require('./package.json').version)") > version.txt
-          cat name.txt
-          cat version.txt
-          echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
-          echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
           echo $GITHUB_ENV
 
       # - name: Upload artifact
