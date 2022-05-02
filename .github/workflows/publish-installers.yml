@@ -86,6 +86,7 @@ jobs:
   
   release:
     name: Release
+    needs: [build_linux_installer]
     runs-on: ubuntu-latest
     steps:
       - name: Retrieve Linux installer
