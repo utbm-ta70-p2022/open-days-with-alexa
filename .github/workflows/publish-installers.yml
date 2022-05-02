@@ -133,10 +133,10 @@ jobs:
           echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
           echo ${{env.APP_NAME}}
           
-          cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
+          cp linux/app.AppImage linux/"${{env.APP_NAME}}"-latest.AppImage
           # cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
           # cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
-          mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          mv linux/app.AppImage linux/"${{env.APP_NAME}}"-"${{env.APP_VERSION}}".AppImage
           # #mv windows/app.exe windows/${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
           # #mv macos/app.dmg macos/${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
 
