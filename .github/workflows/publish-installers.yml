@@ -82,7 +82,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
           local: dist/executables/open-days-with-alexa-latest.AppImage
-          remote: ./
+          remote: scp/
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
