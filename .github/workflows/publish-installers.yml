@@ -124,16 +124,18 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v3
 
-      - name: Rename files
+      - name: Set GITHUB_ENV
         run: |
           ls information
           cat information/name.txt
           cat information/version.txt
           echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
           echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
+          
+      - name: Prepare files
+        run: |
           cat $GITHUB_ENV
           echo $env.GITHUB_ENV
-          
           cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
           # cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
           # cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
