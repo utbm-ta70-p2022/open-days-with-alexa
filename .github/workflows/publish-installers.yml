@@ -27,6 +27,7 @@ jobs:
       - name: Echo
         run: |
           echo $GITHUB_ENV
+          echo ${{env.APP_NAME}}
 
       # - name: Upload artifact
       #   uses: actions/upload-artifact@v3
