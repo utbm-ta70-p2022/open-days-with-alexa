@@ -33,6 +33,9 @@
     "app-desktop-electron": {
       "tags": []
     },
+    "app-webservice": {
+      "tags": []
+    },
     "lib-angular": {
       "tags": []
     },
@@ -40,6 +43,9 @@
       "tags": []
     },
     "lib-electron": {
+      "tags": []
+    },
+    "lib-nestjs": {
       "tags": []
     }
   }

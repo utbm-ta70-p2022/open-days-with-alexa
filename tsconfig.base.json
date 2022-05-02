@@ -18,7 +18,8 @@
     "paths": {
       "@libraries/lib-angular": ["libs/lib-angular/src/index.ts"],
       "@libraries/lib-common": ["libs/lib-common/src/index.ts"],
-      "@libraries/lib-electron": ["libs/lib-electron/src/index.ts"]
+      "@libraries/lib-electron": ["libs/lib-electron/src/index.ts"],
+      "@libraries/lib-nestjs": ["libs/lib-nestjs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

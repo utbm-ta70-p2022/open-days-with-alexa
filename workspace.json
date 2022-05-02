@@ -30,6 +30,14 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "production": {
               "budgets": [
                 {
@@ -50,34 +58,15 @@
                 }
               ],
               "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
           "executor": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "app-desktop-angular:build:production"
-            },
             "development": {
               "browserTarget": "app-desktop-angular:build:development"
             }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "executor": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "app-desktop-angular:build"
           }
         },
         "lint": {
@@ -110,6 +99,7 @@
             ]
           },
           "configurations": {
+            "development": {},
             "production": {
               "optimization": true,
               "extractLicenses": true,
@@ -127,25 +117,36 @@
           "executor": "nx-electron:execute",
           "options": {
             "buildTarget": "app-desktop-electron:build"
+          },
+          "configurations": {
+            "development": {
+              "buildTarget": "app-desktop-electron:build:development"
+            }
           }
         },
         "package": {
           "executor": "nx-electron:package",
-          "options": {
-            "name": "app-desktop-electron",
-            "frontendProject": "app-desktop-angular",
-            "outputPath": "dist/packages",
-            "prepackageOnly": true,
-            "makerOptionsPath": "apps/app-desktop-electron/maker.options.json"
+          "options": {},
+          "configurations": {
+            "production": {
+              "name": "app-desktop-electron",
+              "frontendProject": "app-desktop-angular",
+              "outputPath": "dist/packages",
+              "prepackageOnly": true,
+              "makerOptionsPath": "apps/app-desktop-electron/maker.options.json"
+            }
           }
         },
         "make": {
           "executor": "nx-electron:make",
-          "options": {
-            "name": "app-desktop-electron",
-            "frontendProject": "app-desktop-angular",
-            "outputPath": "dist/executables",
-            "makerOptionsPath": "apps/app-desktop-electron/maker.options.json"
+          "options": {},
+          "configurations": {
+            "production": {
+              "name": "app-desktop-electron",
+              "frontendProject": "app-desktop-angular",
+              "outputPath": "dist/executables",
+              "makerOptionsPath": "apps/app-desktop-electron/maker.options.json"
+            }
           }
         },
         "lint": {
@@ -153,13 +154,54 @@
           "options": {
             "lintFilePatterns": ["apps/app-desktop-electron/**/*.ts"]
           }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/app-desktop-electron"],
+        }
+      }
+    },
+    "app-webservice": {
+      "root": "apps/app-webservice",
+      "sourceRoot": "apps/app-webservice/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "jestConfig": "apps/app-desktop-electron/jest.config.js",
-            "passWithNoTests": true
+            "outputPath": "dist/apps/app-webservice",
+            "main": "apps/app-webservice/src/main.ts",
+            "tsConfig": "apps/app-webservice/tsconfig.app.json",
+            "assets": ["apps/app-webservice/src/assets"]
+          },
+          "configurations": {
+            "development": {},
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/app-webservice/src/environments/environment.ts",
+                  "with": "apps/app-webservice/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "app-webservice:build"
+          },
+          "configurations": {
+            "development": {
+              "buildTarget": "app-webservice:build:development"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/app-webservice/**/*.ts"]
           }
         }
       }
@@ -242,6 +284,31 @@
           }
         }
       }
+    },
+    "lib-nestjs": {
+      "root": "libs/lib-nestjs",
+      "sourceRoot": "libs/lib-nestjs/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/lib-nestjs",
+            "tsConfig": "libs/lib-nestjs/tsconfig.lib.json",
+            "packageJson": "libs/lib-nestjs/package.json",
+            "main": "libs/lib-nestjs/src/index.ts",
+            "assets": ["libs/lib-nestjs/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/lib-nestjs/**/*.ts"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -262,5 +329,6 @@
     "@nrwl/angular:component": {
       "style": "scss"
     }
-  }
+  },
+  "defaultProject": "app-webservice"
 }

@@ -78,12 +78,21 @@ jobs:
           npm run postinstall
           npm run publish:linux
 
-      - name: Scp
-        uses: garygrossgarten/github-action-scp@v0.7.3
+      - name: Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          local: dist/executables/open-days-with-alexa-latest.AppImage
-          remote: scp/
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          tag_name: ${{ github.ref }}
+          release_name: latest
+
+      - name: Upload
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/executables/open-days-with-alexa-latest.AppImage
+          asset_name: open-days-with-alexa-latest.AppImage
+          asset_content_type: application/appimage

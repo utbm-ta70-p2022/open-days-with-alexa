@@ -60,6 +60,7 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
    |--/lib-angular
    |--/lib-common
    |--/lib-electron
+   |--/lib-nestjs
 ```
 
 ### 1.6.1. Applications
@@ -93,6 +94,10 @@ Ce projet de bibliothèque TypeScript contient le code source qui peut être ex�
 **lib-electron**
 
 Ce projet de bibliothèque Electron contient le code source qui peut s'exécuter dans une application Electron.
+
+**lib-nestjs**
+
+Ce projet de bibliothèque NestJS contient le code source qui peut s'exécuter dans une application NestJS.
 
 # 2. Règles de développement
 
