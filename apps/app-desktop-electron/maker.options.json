@@ -1,8 +1,8 @@
 {
   "$schema": "../../node_modules/nx-electron/src/validation/maker.schema.json",
-  "appId": "fr.utbm.open-days-with-alexa",
-  "artifactName": "open-days-with-alexa-latest.${ext}",
   "productName": "Open days with Alexa",
+  "appId": "fr.utbm.open-days-with-alexa",
+  "artifactName": "app.${ext}",
   "win": {
     "icon": "libs/lib-common/src/assets/images/icon.ico",
     "publisherName": "UTBM",

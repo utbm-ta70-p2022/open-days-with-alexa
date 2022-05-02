@@ -4,6 +4,59 @@ on:
     branches:
       - master
 jobs:
+  retrieve_information:
+    name: Retrieve information
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
+
+      - name: Write file
+        run: |
+          echo $(node -e "console.log(require('./package.json').name)") > name.txt
+          echo $(node -e "console.log(require('./package.json').version)") > version.txt
+
+      - name: Upload name artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: name.txt
+          path: name.txt
+
+      - name: Upload version artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: version.txt
+          path: version.txt
+
+  build_linux_installer:
+    name: Build Linux installer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
+
+      - name: Build
+        run: |
+          npm install
+          npm run postinstall
+          npm run publish:linux
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: app.AppImage
+          path: dist/executables/app.AppImage
+
   # publish_window_installer:
   #   name: Publish Windows installer
   #   runs-on: windows-latest
@@ -21,72 +74,66 @@ jobs:
   #         npm install
   #         npm run postinstall
   #         npm run publish:windows
-    
+
   #     - name: Save
   #       uses: actions/upload-artifact@v3
   #       with:
-  #         name: open-days-with-alexa-latest.exe
-  #         path: dist/executables/open-days-with-alexa-latest.exe
+  #         name: app.exe
+  #         path: dist/executables/app.exe
 
   # publish_macos_installer:
-    # name: Publish macOS installer
-    # runs-on: macos-latest
-    # steps:
-    #   - name: Checkout
-    #     uses: actions/checkout@v2
+  # name: Publish macOS installer
+  # runs-on: macos-latest
+  # steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v2
 
-    #   - name: Setup Node.js
-    #     uses: actions/setup-node@v3
-    #     with:
-    #       node-version: '16.15.0'
+  #   - name: Setup Node.js
+  #     uses: actions/setup-node@v3
+  #     with:
+  #       node-version: '16.15.0'
 
-    #   - name: Build
-    #     run: |
-    #       npm install
-    #       npm run postinstall
-    #       npm run publish:macos
-      
-    #   - name: Save
-    #     uses: actions/upload-artifact@v3
-    #     with:
-    #       name: open-days-with-alexa-latest.dmg
-    #       path: dist/executables/open-days-with-alexa-latest.dmg
+  #   - name: Build
+  #     run: |
+  #       npm install
+  #       npm run postinstall
+  #       npm run publish:macos
 
-  build_linux_installer:
-    name: Build Linux installer
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.15.0'
+  #   - name: Save
+  #     uses: actions/upload-artifact@v3
+  #     with:
+  #       name: app.dmg
+  #       path: dist/executables/app.dmg
 
-      - name: Build
-        run: |
-          npm install
-          npm run postinstall
-          npm run publish:linux
-      
-      - name: Save
-        uses: actions/upload-artifact@v3
-        with:
-          name: open-days-with-alexa-latest.AppImage
-          path: dist/executables/open-days-with-alexa-latest.AppImage
-  
   release:
     name: Release
-    needs: [build_linux_installer]
+    needs: [retrieve_information, build_linux_installer]
     runs-on: ubuntu-latest
     steps:
-      - name: Retrieve Linux installer
+      - name: Download artifacts
         uses: actions/download-artifact@v3
-        with:
-          name: open-days-with-alexa-latest.AppImage
-          path: ~/open-days-with-alexa-latest.AppImage
 
+      - name: Rename files
+        run: |
+          echo "APP_NAME=$(cat name.txt)" >> $GITHUB_ENV
+          echo "APP_VERSION=$(cat version.txt)" >> $GITHUB_ENV
+          cp app.AppImage ${{env.APP_NAME}}-latest.AppImage
+          #cp app.exe ${{env.APP_NAME}}-latest.exe
+          #cp app.dmg ${{env.APP_NAME}}-latest.dmg
+          mv app.AppImage ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          #mv app.exe ${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
+          #mv app.dmg ${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
+
+      - name: Update latest version release
+        uses: meeDamian/github-release@v2.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{env.APP_VERSION}}
+          name: Open days with Alexa [${{env.APP_VERSION}}]
+          files: >
+            ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          allow_override: true
+      
       - name: Update latest version release
         uses: meeDamian/github-release@v2.0.3
         with:
@@ -94,6 +141,5 @@ jobs:
           tag: latest
           name: Open days with Alexa [latest]
           files: >
-            open-days-with-alexa-latest.AppImage
+            ${{env.APP_NAME}}-latest.AppImage
           allow_override: true
-    
