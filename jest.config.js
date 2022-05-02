@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/app-electron'],
+  projects: ['<rootDir>/apps/app-desktop-electron'],
 };

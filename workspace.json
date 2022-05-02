@@ -1,32 +1,32 @@
 {
   "version": 2,
   "projects": {
-    "app-angular": {
+    "app-desktop-angular": {
       "projectType": "application",
-      "root": "apps/app-angular",
-      "sourceRoot": "apps/app-angular/src",
-      "prefix": "app-angular",
+      "root": "apps/app-desktop-angular",
+      "sourceRoot": "apps/app-desktop-angular/src",
+      "prefix": "app",
       "targets": {
         "build": {
           "executor": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/app-angular",
-            "index": "apps/app-angular/src/index.html",
-            "main": "apps/app-angular/src/main.ts",
-            "polyfills": "apps/app-angular/src/polyfills.ts",
-            "tsConfig": "apps/app-angular/tsconfig.app.json",
+            "outputPath": "dist/apps/app-desktop-angular",
+            "index": "apps/app-desktop-angular/src/index.html",
+            "main": "apps/app-desktop-angular/src/main.ts",
+            "polyfills": "apps/app-desktop-angular/src/polyfills.ts",
+            "tsConfig": "apps/app-desktop-angular/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "apps/app-angular/src/favicon.ico",
-              "apps/app-angular/src/assets",
+              "apps/app-desktop-angular/src/favicon.ico",
+              "apps/app-desktop-angular/src/assets",
               {
                 "glob": "**",
                 "input": "libs/lib-common/src/assets/",
                 "output": "assets/"
               }
             ],
-            "styles": ["apps/app-angular/src/styles.scss"],
+            "styles": ["apps/app-desktop-angular/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -45,8 +45,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/app-angular/src/environments/environment.ts",
-                  "with": "apps/app-angular/src/environments/environment.prod.ts"
+                  "replace": "apps/app-desktop-angular/src/environments/environment.ts",
+                  "with": "apps/app-desktop-angular/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -66,10 +66,10 @@
           "executor": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "app-angular:build:production"
+              "browserTarget": "app-desktop-angular:build:production"
             },
             "development": {
-              "browserTarget": "app-angular:build:development"
+              "browserTarget": "app-desktop-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,31 +77,31 @@
         "extract-i18n": {
           "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app-angular:build"
+            "browserTarget": "app-desktop-angular:build"
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/app-angular/src/**/*.ts", "apps/app-angular/src/**/*.html"]
+            "lintFilePatterns": ["apps/app-desktop-angular/src/**/*.ts", "apps/app-desktop-angular/src/**/*.html"]
           }
         }
       }
     },
-    "app-electron": {
-      "root": "apps/app-electron",
-      "sourceRoot": "apps/app-electron/src",
+    "app-desktop-electron": {
+      "root": "apps/app-desktop-electron",
+      "sourceRoot": "apps/app-desktop-electron/src",
       "projectType": "application",
-      "prefix": "app-electron",
+      "prefix": "app",
       "targets": {
         "build": {
           "executor": "nx-electron:build",
           "options": {
-            "outputPath": "dist/apps/app-electron",
-            "main": "apps/app-electron/src/main.ts",
-            "tsConfig": "apps/app-electron/tsconfig.app.json",
+            "outputPath": "dist/apps/app-desktop-electron",
+            "main": "apps/app-desktop-electron/src/main.ts",
+            "tsConfig": "apps/app-desktop-electron/tsconfig.app.json",
             "assets": [
-              "apps/app-electron/src/assets",
+              "apps/app-desktop-electron/src/assets",
               {
                 "glob": "**",
                 "input": "libs/lib-common/src/assets/",
@@ -116,8 +116,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/app-electron/src/environments/environment.ts",
-                  "with": "apps/app-electron/src/environments/environment.prod.ts"
+                  "replace": "apps/app-desktop-electron/src/environments/environment.ts",
+                  "with": "apps/app-desktop-electron/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -126,39 +126,39 @@
         "serve": {
           "executor": "nx-electron:execute",
           "options": {
-            "buildTarget": "app-electron:build"
+            "buildTarget": "app-desktop-electron:build"
           }
         },
         "package": {
           "executor": "nx-electron:package",
           "options": {
-            "name": "app-electron",
-            "frontendProject": "app-angular",
+            "name": "app-desktop-electron",
+            "frontendProject": "app-desktop-angular",
             "outputPath": "dist/packages",
             "prepackageOnly": true,
-            "makerOptionsPath": "apps/app-electron/maker.options.json"
+            "makerOptionsPath": "apps/app-desktop-electron/maker.options.json"
           }
         },
         "make": {
           "executor": "nx-electron:make",
           "options": {
-            "name": "app-electron",
-            "frontendProject": "app-angular",
+            "name": "app-desktop-electron",
+            "frontendProject": "app-desktop-angular",
             "outputPath": "dist/executables",
-            "makerOptionsPath": "apps/app-electron/maker.options.json"
+            "makerOptionsPath": "apps/app-desktop-electron/maker.options.json"
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/app-electron/**/*.ts"]
+            "lintFilePatterns": ["apps/app-desktop-electron/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/app-electron"],
+          "outputs": ["coverage/apps/app-desktop-electron"],
           "options": {
-            "jestConfig": "apps/app-electron/jest.config.js",
+            "jestConfig": "apps/app-desktop-electron/jest.config.js",
             "passWithNoTests": true
           }
         }

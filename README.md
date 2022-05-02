@@ -54,26 +54,45 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
 ```
 /
 |--/apps
-   |--/app-angular
-   |--/app-electron
+   |--/app-desktop-angular
+   |--/app-desktop-electron
 |--/libs
+   |--/lib-angular
+   |--/lib-common
+   |--/lib-electron
 ```
 
 ### 1.6.1. Applications
 
 Les applications sont contenues dans le dossier `/apps`
 
-**app-angular**
+**app-desktop-angular**
 
-Ce projet d'application Angular contient le code source des différentes interfaces web.
+Ce projet d'application Angular contient le code source de l'application de bureau des différentes interfaces web encapsulées dans l'application bureau.
 
-**app-electron**
+**app-desktop-electron**
 
-Ce projet d'application Electron contient le code source qui permet d'encapsuler l'application web dans une fenêtre du système d'exploitation.
+Ce projet d'application Electron contient le code source de l'application de bureau qui permet d'encapsuler l'application web dans une fenêtre du système d'exploitation.
+
+**app-webservice**
+
+Ce projet d'application NestJs contient le code source du service web.
 
 ### 1.6.2. Bibliothèques
 
 Les bibliothèques sont contenues dans le dossier `/libs`
+
+**lib-angular**
+
+Ce projet de bibliothèque Angular contient le code source qui peut s'exécuter dans une application Angular.
+
+**lib-common**
+
+Ce projet de bibliothèque TypeScript contient le code source qui peut être exécuté dans une application écrite en TypeScript.
+
+**lib-electron**
+
+Ce projet de bibliothèque Electron contient le code source qui peut s'exécuter dans une application Electron.
 
 # 2. Règles de développement
 
