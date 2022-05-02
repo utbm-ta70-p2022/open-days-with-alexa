@@ -119,6 +119,24 @@ Il existe 5 types d'issues :
 
 ## 2.3. Procédure d'implémentation d'une issue
 
+0. Créer un fichier .env en racine de l'espace de travail :
+
+   ```env
+   WEBSERVICE_JWT_SECRET="secret"
+   WEBSERVICE_JWT_EXPIRATION_TIME="48h"
+   WEBSERVICE_SCHEMA="http"
+   WEBSERVICE_HOST="localhost"
+   WEBSERVICE_PORT=3333
+   WEBSERVICE_NAME="Open days with Alexa Api"
+   WEBSERVICE_ALLOWED_ORIGINS=""
+   WEBSERVICE_DATABASE_TYPE="postgres"
+   WEBSERVICE_DATABASE_HOST=""
+   WEBSERVICE_DATABASE_PORT=""
+   WEBSERVICE_DATABASE_LOGIN=""
+   WEBSERVICE_DATABASE_PASSWORD=""
+   WEBSERVICE_DATABASE_NAME=""
+   ```
+
 1. Se rendre sur la liste des issues du projet :
 
    * Projet Présentation : https://github.com/utbm-ta70-presentation-alexa/open-days-with-alexa/projects/2
@@ -156,7 +174,7 @@ Il existe 5 types d'issues :
 
 8. Faire relire son code par un autre membre de l'équipe
 
-9. Procéder à la fusion de la branche de développement vers la branche `master` en cliquant sur le bouton « Merge pull request » de la « Pull request » précédemment créée
+9.  Procéder à la fusion de la branche de développement vers la branche `master` en cliquant sur le bouton « Merge pull request » de la « Pull request » précédemment créée
 
 10. Clôturer l'issue
 

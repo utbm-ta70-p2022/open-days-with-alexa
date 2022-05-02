@@ -2,6 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { AcceptLanguageResolver, I18nJsonLoader, I18nModule } from 'nestjs-i18n';
 import { environment } from '../../environments/environment';
 import { join } from 'path';
+import { ExamplesController } from './controllers/examples.controller';
 
 @Global()
 @Module({
@@ -21,6 +22,6 @@ import { join } from 'path';
       resolvers: [new AcceptLanguageResolver()],
     }),
   ],
-  controllers: [],
+  controllers: [ExamplesController],
 })
 export class ApiModule {}

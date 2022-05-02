@@ -1,4 +1,5 @@
 {
+  "ApiDtoValidationError": "Incorrect query format",
   "Unkown": "Unknown error",
   "Unauthorized": "Unauthorized action"
 }

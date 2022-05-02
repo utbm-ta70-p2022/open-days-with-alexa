@@ -1,4 +1,5 @@
 {
+  "ApiDtoValidationError": "Format de la requête incorrect",
   "Unkown": "Erreur inconnue",
   "Unauthorized": "Cette action n'est pas permise"
 }
