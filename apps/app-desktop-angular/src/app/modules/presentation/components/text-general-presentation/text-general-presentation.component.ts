@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: `text-general-presentation`,
+  template: `<div>text-general-presentation</div>`,
 })
 export class TextGeneralPresentationComponent {}

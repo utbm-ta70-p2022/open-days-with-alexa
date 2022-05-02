@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared.module';
-import { AppRoute } from '@libraries/lib-common';
+import { appRoutes } from '@libraries/lib-common';
 import { Component, OnInit } from '@angular/core';
 import { BlockUiService } from './global/services/block-ui.service';
 import { IpcLogService } from './global/services/ipc-log.service';
@@ -48,15 +48,15 @@ export class AppComponent implements OnInit {
     RouterModule.forRoot(
       [
         {
-          path: AppRoute.Startup,
+          path: appRoutes.startup.root,
           loadChildren: () => import('./modules/startup/startup.module').then((m) => m.StartupModule),
         },
         {
-          path: AppRoute.Presentation,
+          path: appRoutes.presentation.root,
           loadChildren: () => import('./modules/presentation/presentation.module').then((m) => m.PresentationModule),
         },
         {
-          path: AppRoute.Settings,
+          path: appRoutes.settings.root,
           loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule),
         },
       ],

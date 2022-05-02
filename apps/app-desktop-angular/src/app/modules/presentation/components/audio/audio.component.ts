@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: `audio`,
+  template: `<div>audio</div>`,
 })
 export class AudioComponent {}

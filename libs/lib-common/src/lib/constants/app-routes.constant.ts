@@ -7,5 +7,8 @@ export const appRoutes = {
   },
   presentation: {
     root: 'presentation',
+    audio: 'audio',
+    textGeneralPresentation: 'text-general-presentation',
+    video: 'video',
   },
 };

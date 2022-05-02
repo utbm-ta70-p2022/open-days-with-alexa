@@ -4,21 +4,21 @@ import { SharedModule } from '../../shared.module';
 import { AudioComponent } from './components/audio/audio.component';
 import { TextGeneralPresentationComponent } from './components/text-general-presentation/text-general-presentation.component';
 import { VideoComponent } from './components/video/video.component';
-import { PresentationRoute } from './enumerations/presentation-route.enumeration';
 import { Component } from '@angular/core';
+import { appRoutes } from '@libraries/lib-common';
 
 @Component({
   template: `
     <a [routerLink]="[audioRoute]">Go to Audio</a>
-    <a [routerLink]="[videoVideo]">Go to Video</a>
+    <a [routerLink]="[videoRoute]">Go to Video</a>
     <a [routerLink]="[textGeneralPresentationRoute]">Go to Text general presentation</a>
     <router-outlet></router-outlet>
   `,
 })
 export class PresentationComponent {
-  audioRoute = PresentationRoute.Audio;
-  videoVideo = PresentationRoute.Video;
-  textGeneralPresentationRoute = PresentationRoute.TextGeneralPresentation;
+  audioRoute = appRoutes.presentation.audio;
+  videoRoute = appRoutes.presentation.video;
+  textGeneralPresentationRoute = appRoutes.presentation.textGeneralPresentation;
 }
 
 @NgModule({
@@ -32,20 +32,20 @@ export class PresentationComponent {
         component: PresentationComponent,
         children: [
           {
-            path: PresentationRoute.Video,
+            path: appRoutes.presentation.video,
             component: VideoComponent,
           },
           {
-            path: PresentationRoute.Audio,
+            path: appRoutes.presentation.audio,
             component: AudioComponent,
           },
           {
-            path: PresentationRoute.TextGeneralPresentation,
+            path: appRoutes.presentation.textGeneralPresentation,
             component: TextGeneralPresentationComponent,
           },
           {
             path: '**',
-            redirectTo: PresentationRoute.TextGeneralPresentation,
+            redirectTo: appRoutes.presentation.textGeneralPresentation,
           },
         ],
       },
