@@ -1,4 +1,4 @@
-name: Deploy webapp
+name: Deploy skills
 on:
   push:
     branches:
@@ -10,4 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+      
+      # - name: Alexa ASK AWS CLI Action
+      #   uses: xavidop/alexa-ask-aws-cli-docker@v1.0.6

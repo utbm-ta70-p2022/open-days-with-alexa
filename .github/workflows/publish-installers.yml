@@ -60,8 +60,8 @@ jobs:
   #         username: ${{ secrets.SSH_USERNAME }}
   #         password: ${{ secrets.SSH_PASSWORD }}
 
-  publish_linux_installer:
-    name: Publish Linux installer
+  build_linux_installer:
+    name: Build Linux installer
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -77,22 +77,29 @@ jobs:
           npm install
           npm run postinstall
           npm run publish:linux
-
-      - name: Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Save
+        uses: actions/upload-artifact@v3
         with:
-          tag_name: ${{ github.ref }}
-          release_name: latest
-
-      - name: Upload
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: open-days-with-alexa-latest.AppImage
+          path: dist/executables/open-days-with-alexa-latest.AppImage
+  
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve Linux installer
+        uses: actions/download-artifact@v3
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/executables/open-days-with-alexa-latest.AppImage
-          asset_name: open-days-with-alexa-latest.AppImage
-          asset_content_type: application/appimage
+          name: open-days-with-alexa-latest.AppImage
+          path: ~/open-days-with-alexa-latest.AppImage
+
+      - name: Update latest version release
+        uses: marvinpinto/action-automatic-releases@v1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest
+          title: Open days with Alexa [latest]
+          files: |
+            open-days-with-alexa-latest.AppImage
+    
