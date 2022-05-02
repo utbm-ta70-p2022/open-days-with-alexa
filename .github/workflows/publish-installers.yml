@@ -120,13 +120,13 @@ jobs:
       - name: Rename files
         run: |
           ls information
-          # cat information/name.txt
-          # cat information/version.txt
-          # echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
-          # echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
+          cat information/name.txt
+          cat information/version.txt
+          #echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
+          #echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
           # cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage
-          # #cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
-          # #cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
+          # cp windows/app.exe windows/${{env.APP_NAME}}-latest.exe
+          # cp macos/app.dmg macos/${{env.APP_NAME}}-latest.dmg
           # mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
           # #mv windows/app.exe windows/${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
           # #mv macos/app.dmg macos/${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
