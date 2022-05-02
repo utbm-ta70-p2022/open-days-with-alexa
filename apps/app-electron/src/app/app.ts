@@ -9,6 +9,7 @@ import { Connection } from 'typeorm';
 import { AppDatabaseConnectionConfiguration } from './configurations/app-database-connection.configuration';
 import { AppBackgroundtask } from './backgroundtasks/app.backgroundtask';
 import { SettingsWindow } from './windows/settings.window';
+import { PresentationWindow } from './windows/presentation.window';
 
 export default class App {
   static windowContainers: WindowContainerModel[] = [];
@@ -43,7 +44,7 @@ export default class App {
     App.loadWindow(StartupWindow);
     await TimeoutHelper.wait(3000);
     App.unloadAllWindows(StartupWindow);
-    App.loadWindow(SettingsWindow);
+    App.loadWindow(PresentationWindow);
   }
 
   public static loadWindow(windowType: new () => BaseWindow, loadNewWindow = false) {

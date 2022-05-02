@@ -18,8 +18,8 @@ import { AppRoute } from '@libraries/lib-common';
           loadChildren: () => import('./modules/startup/startup.module').then((m) => m.StartupModule),
         },
         {
-          path: AppRoute.Launcher,
-          loadChildren: () => import('./modules/launcher/launcher.module').then((m) => m.LauncherModule),
+          path: AppRoute.Presentation,
+          loadChildren: () => import('./modules/presentation/presentation.module').then((m) => m.PresentationModule),
         },
         {
           path: AppRoute.Settings,
