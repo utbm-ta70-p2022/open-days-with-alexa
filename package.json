@@ -10,9 +10,9 @@
     "start:step2": "nx serve app-desktop-angular --configuration=development",
     "start:step3": "wait-on tcp:4200 && nx serve app-desktop-electron --configuration=development",
     "publish:step1": "nx run-many --target=build --configuration=production --projects=app-desktop-angular,app-desktop-electron --parallel=true",
-    "publish:step2:windows": "nx run app-desktop-electron:make --arch x64 --platform windows",
-    "publish:step2:macos": "nx run app-desktop-electron:make --arch x64 --platform mac",
-    "publish:step2:linux:": "nx run app-desktop-electron:make --arch x64 --platform linux",
+    "publish:step2:windows": "nx run app-desktop-electron:make --configuration=production --arch x64 --platform windows",
+    "publish:step2:macos": "nx run app-desktop-electron:make --configuration=production --arch x64 --platform mac",
+    "publish:step2:linux:": "nx run app-desktop-electron:make --configuration=production --arch x64 --platform linux",
     "publish:windows": "npm-run-all publish:step1 publish:step2:windows",
     "publish:macos": "npm-run-all publish:step1 publish:step2:macos",
     "publish:linux": "npm-run-all publish:step1 publish:step2:linux"
