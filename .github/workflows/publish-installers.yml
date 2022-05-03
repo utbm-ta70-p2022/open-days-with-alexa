@@ -37,7 +37,7 @@ jobs:
           path: |
             name.txt
             version.txt
-      
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -142,21 +142,15 @@ jobs:
           ls linux
 
       - name: Update current version release
-        uses: meeDamian/github-release@v2.0.3
+        uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{env.APP_VERSION}}
-          name: Open days with Alexa [${{env.APP_VERSION}}]
-          files: ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-          gzip: false
-          allow_override: true
-      
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: 'latest'
+          title: Open days with Alexa [${{env.APP_VERSION}}]
+
       - name: Update latest version release
-        uses: meeDamian/github-release@v2.0.3
+        uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: latest
-          name: Open days with Alexa [latest]
-          files: ${{env.APP_NAME}}-latest.AppImage
-          gzip: false
-          allow_override: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest
+          title: Open days with Alexa [latest]
