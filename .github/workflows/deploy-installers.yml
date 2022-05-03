@@ -1,4 +1,4 @@
-name: Publish installers
+name: Deploy desktop app installers
 on:
   push:
     branches:
