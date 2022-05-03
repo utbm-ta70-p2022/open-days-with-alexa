@@ -4,11 +4,12 @@
 
 ## 1.1. Téléchargement
 
-[Window](https://static.real-it.fr/open-days-with-alexa/open-days-with-alexa-latest.exe)
+[Linux](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.AppImage)
 
-[macOS](https://static.real-it.fr/open-days-with-alexa/open-days-with-alexa-latest.dmg)
+[Window](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.exe)
 
-[Linux](https://static.real-it.fr/open-days-with-alexa/open-days-with-alexa-latest.AppImage)
+[macOS](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.dmg)
+
 
 
 ## 2. Documentation administrateur
