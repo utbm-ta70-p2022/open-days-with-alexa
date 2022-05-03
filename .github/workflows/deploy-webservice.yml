@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -25,41 +25,13 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.2.11
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltzv --delete"
-          SOURCE: "."
+          ARGS: '-rltzv --delete'
+          SOURCE: '.'
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USERNAME }}
           TARGET: ${{ secrets.SSH_REMOTE_TARGET_PATH }}
-        
+
       - name: Restart Alwaysdata service
         run: |
           encoded_token=$(echo "${{ secrets.ALWAYSDATA_TOKEN }} account=${{ secrets.ALWAYSDATA_ACCOUNT }}:${{ secrets.ALWAYSDATA_PASSWORD }}" | base64 -w 0)
-          echo $(curl --location --request POST "https://api.alwaysdata.com/v1/site/${{ secrets.ALWAYSDATA_SITE_ID }}/restart/" --header "Authorization: Basic $encoded_token" --write-out '%{http_code}' --silent)  
-      
-      # - name: Compress 
-      #   run: tar -zcvf build.tar.gz ./
-
-      # - name: Send
-      #   uses: appleboy/scp-action@v0.1.2
-      #   with:
-      #     host: ${{ secrets.SSH_HOST }}
-      #     port: ${{ secrets.SSH_PORT }}
-      #     user: ${{ secrets.SSH_USERNAME }}
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     source: build.tar.gz
-      #     target: ${{ secrets.SSH_REMOTE_ARCHIVE_PATH }}
-
-      # - name: Extract
-      #   uses: appleboy/ssh-action@v0.1.4
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     port: ${{ secrets.PORT }}
-      #     user: ${{ secrets.SSH_USERNAME }}
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     script: |
-      #       rm -rf ${{ secrets.SSH_REMOTE_ARCHIVE_PATH }}
-      #       rm -rf ${{ secrets.SSH_REMOTE_ARCHIVE_PATH }}/{*,.*}
-      #       tar -zxf ${{ secrets.SSH_REMOTE_ARCHIVE_PATH }}/build.tar.gz --directory ${{ secrets.SSH_SERVICE_PATH }}
-            
-
-
+          echo $(curl --location --request POST "https://api.alwaysdata.com/v1/site/${{ secrets.ALWAYSDATA_SITE_ID }}/restart/" --header "Authorization: Basic $encoded_token" --write-out '%{http_code}' --silent)
