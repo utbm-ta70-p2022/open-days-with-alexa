@@ -20,6 +20,7 @@ jobs:
         run: |
           npm install
           npm run postinstall
+          npm run nx build -- app-webservice --configuration=production
 
       - name: Rsync
         uses: easingthemes/ssh-deploy@v2.2.11
