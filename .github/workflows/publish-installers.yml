@@ -137,19 +137,19 @@ jobs:
           cat $GITHUB_ENV
           echo ${{env.APP_NAME}}
           echo ${{env.APP_VERSION}}
-          cp linux/app.AppImage ${{env.APP_NAME}}-latest.AppImage         
-          mv linux/app.AppImage ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          cp linux/app.AppImage linux/${{env.APP_NAME}}-latest.AppImage         
+          mv linux/app.AppImage linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
           ls linux
 
-      # - name: Update current version release
-      #   uses: meeDamian/github-release@v2.0.3
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     tag: ${{env.APP_VERSION}}
-      #     name: Open days with Alexa [${{env.APP_VERSION}}]
-      #     files: ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-      #     gzip: false
-      #     allow_override: true
+      - name: Update current version release
+        uses: meeDamian/github-release@v2.0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{env.APP_VERSION}}
+          name: Open days with Alexa [${{env.APP_VERSION}}]
+          files: linux/${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+          gzip: false
+          allow_override: true
       
       - name: Update latest version release
         uses: meeDamian/github-release@v2.0.3
@@ -157,6 +157,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
           name: Open days with Alexa [latest]
-          files: ${{env.APP_NAME}}-latest.AppImage
+          files: linux/${{env.APP_NAME}}-latest.AppImage
           gzip: false
           allow_override: true
