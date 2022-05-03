@@ -129,6 +129,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
           automatic_release_tag: ${{env.APP_VERSION}}
           title: Open days with Alexa ${{env.APP_VERSION}}
           files: |
@@ -140,6 +141,7 @@ jobs:
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+          prerelease: false
           automatic_release_tag: latest
           title: Open days with Alexa latest
           files: |
