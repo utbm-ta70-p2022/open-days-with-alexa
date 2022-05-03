@@ -44,81 +44,81 @@ jobs:
           name: linux
           path: app.AppImage
 
-  # build_linux_installer:
-  #   name: Build Linux installer
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+  build_linux_installer:
+    name: Build Linux installer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.15.0'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
 
-  #     - name: Build
-  #       run: |
-  #         npm install
-  #         npm run postinstall
-  #         npm run publish:linux
+      - name: Build
+        run: |
+          npm install
+          npm run postinstall
+          npm run publish:linux
 
-  #     - name: Upload artifact
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: linux
-  #         path: dist/executables/app.AppImage
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux
+          path: dist/executables/app.AppImage
 
-  # publish_window_installer:
-  #   name: Publish Windows installer
-  #   runs-on: windows-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+  build_window_installer:
+    name: Publish Windows installer
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     - name: Setup Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '16.15.0'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
 
-  #     - name: Build
-  #       run: |
-  #         npm install
-  #         npm run postinstall
-  #         npm run publish:windows
+      - name: Build
+        run: |
+          npm install
+          npm run postinstall
+          npm run publish:windows
 
-  #     - name: Save
-  #       uses: actions/upload-artifact@v3
-  #       with:
-  #         name: windows
-  #         path: dist/executables/app.exe
+      - name: Save
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows
+          path: dist/executables/app.exe
 
-  # publish_macos_installer:
-  # name: Publish macOS installer
-  # runs-on: macos-latest
-  # steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v2
+  build_macos_installer:
+    name: Publish macOS installer
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #   - name: Setup Node.js
-  #     uses: actions/setup-node@v3
-  #     with:
-  #       node-version: '16.15.0'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
 
-  #   - name: Build
-  #     run: |
-  #       npm install
-  #       npm run postinstall
-  #       npm run publish:macos
+      - name: Build
+        run: |
+          npm install
+          npm run postinstall
+          npm run publish:macos
 
-  #   - name: Save
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: macos
-  #       path: dist/executables/app.dmg
+      - name: Save
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos
+          path: dist/executables/app.dmg
 
   release:
     name: Release
-    needs: [retrieve_information]
+    needs: [retrieve_information, build_linux_installer, build_window_installer, build_macos_installer]
     runs-on: ubuntu-latest
     steps:
       - name: Download artifacts
@@ -126,20 +126,17 @@ jobs:
 
       - name: Set GITHUB_ENV
         run: |
-          ls information
-          cat information/name.txt
-          cat information/version.txt
           echo "APP_NAME=$(cat information/name.txt)" >> $GITHUB_ENV
           echo "APP_VERSION=$(cat information/version.txt)" >> $GITHUB_ENV
 
       - name: Prepare files
         run: |
-          cat $GITHUB_ENV
-          echo ${{env.APP_NAME}}
-          echo ${{env.APP_VERSION}}
           cp linux/app.AppImage ${{env.APP_NAME}}-latest.AppImage         
           mv linux/app.AppImage ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
-          ls linux
+          cp windows/app.exe ${{env.APP_NAME}}-latest.exe         
+          mv windows/app.exe ${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
+          cp macos/app.dmg ${{env.APP_NAME}}-latest.dmg         
+          mv macos/app.dmg ${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
 
       - name: Update current version release
         uses: marvinpinto/action-automatic-releases@v1.2.1
@@ -149,6 +146,8 @@ jobs:
           title: Open days with Alexa ${{env.APP_VERSION}}
           files: |
             ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
+            ${{env.APP_NAME}}-${{env.APP_VERSION}}.exe
+            ${{env.APP_NAME}}-${{env.APP_VERSION}}.dmg
 
       - name: Update latest version release
         uses: marvinpinto/action-automatic-releases@v1.2.1
@@ -158,3 +157,5 @@ jobs:
           title: Open days with Alexa latest
           files: |
             ${{env.APP_NAME}}-latest.AppImage
+            ${{env.APP_NAME}}-latest.exe
+            ${{env.APP_NAME}}-latest.dmg
