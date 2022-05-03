@@ -145,12 +145,16 @@ jobs:
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: 'latest'
-          title: Open days with Alexa [${{env.APP_VERSION}}]
+          automatic_release_tag: ${{env.APP_VERSION}}
+          title: Open days with Alexa ${{env.APP_VERSION}}
+          files: |
+            ${{env.APP_NAME}}-${{env.APP_VERSION}}.AppImage
 
       - name: Update latest version release
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           automatic_release_tag: latest
-          title: Open days with Alexa [latest]
+          title: Open days with Alexa latest
+          files: |
+            ${{env.APP_NAME}}-latest.AppImage
