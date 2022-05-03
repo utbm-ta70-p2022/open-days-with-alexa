@@ -56,6 +56,7 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
 |--/apps
    |--/app-desktop-angular
    |--/app-desktop-electron
+   |--/app-webservice
 |--/libs
    |--/lib-angular
    |--/lib-common
@@ -119,7 +120,7 @@ Il existe 5 types d'issues :
 
 ## 2.3. Procédure d'implémentation d'une issue
 
-0. Créer un fichier .env en racine de l'espace de travail :
+0. Créer un fichier .env en racine de l'espace de travail et le compléter avec les valeurs de développement local :
 
    ```env
    WEBSERVICE_JWT_SECRET="secret"
@@ -129,7 +130,7 @@ Il existe 5 types d'issues :
    WEBSERVICE_PORT=3333
    WEBSERVICE_NAME="Open days with Alexa Api"
    WEBSERVICE_ALLOWED_ORIGINS=""
-   WEBSERVICE_DATABASE_TYPE="postgres"
+   WEBSERVICE_DATABASE_TYPE="mariadb"
    WEBSERVICE_DATABASE_HOST=""
    WEBSERVICE_DATABASE_PORT=""
    WEBSERVICE_DATABASE_LOGIN=""
