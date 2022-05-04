@@ -2,9 +2,8 @@ import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify
 import { Logger, ValidationError, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
 import { WinstonModule } from 'nest-winston';
-import { ApiDtoValidationError, ApiError, ConsoleTransport } from '@libraries/lib-nestjs';
+import { ApiDtoValidationError, ConsoleTransport } from '@libraries/lib-nestjs';
 import { fastifyHelmet } from '@fastify/helmet';
 import fastifyCors from '@fastify/cors';
 import fastifyRawBody from 'fastify-raw-body';
