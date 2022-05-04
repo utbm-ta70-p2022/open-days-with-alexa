@@ -1,6 +1,6 @@
 import { ExampleModel } from '@libraries/lib-common';
 import { EntityNotFoundError } from '@libraries/lib-nestjs';
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ExamplesService {
