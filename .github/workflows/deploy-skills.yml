@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - issue/12-configurer-déploiement-skill
     paths:
       - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
 
@@ -26,6 +27,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SKILL_ID: ${{ secrets.SKILL_ID }}
-      
+
       - name: Get the output
         run: echo "The result was ${{ steps.update_skills_step.outputs.result }}"
