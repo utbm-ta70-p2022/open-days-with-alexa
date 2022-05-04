@@ -20,7 +20,7 @@ jobs:
         uses: xavidop/alexa-ask-aws-cli-docker@v1.0.6
         id: update_skills_step
         with:
-          command: 'ask smapi get-interaction-model -s $SKILL_ID -l $LOCALE_VALUE'
+          command: 'ask smapi get-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR'
         env:
           ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
           ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
@@ -28,7 +28,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SKILL_ID: ${{ secrets.SKILL_ID }}
-          LOCALE_VALUE: en-US
 
       - name: Get the output
         run: echo "The result was ${{ steps.update_skills_step.outputs.result }}"
