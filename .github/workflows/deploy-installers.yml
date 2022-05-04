@@ -4,6 +4,7 @@ on:
     branches:
       - master
     paths:
+      - .github/workflows/deploy-installers.yml
       - apps/app-desktop-angular/**
       - apps/app-desktop-electron/**
       - libs/**
