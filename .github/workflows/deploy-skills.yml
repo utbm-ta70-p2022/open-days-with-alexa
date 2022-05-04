@@ -4,7 +4,7 @@ on:
     branches:
       - master
     paths:
-      - .github/workflow/**
+      - .github/workflows/deploy-skills.yml
       - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
 
 jobs:
