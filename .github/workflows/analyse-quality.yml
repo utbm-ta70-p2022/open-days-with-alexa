@@ -9,6 +9,10 @@ on:
       - libs/**
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - sonar-project.properties
+      - apps/**
+      - libs/**
 
 jobs:
   analyse:
