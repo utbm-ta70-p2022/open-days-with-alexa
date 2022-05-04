@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - master
+    paths:
+      - apps/app-desktop-angular/**
+      - apps/app-desktop-electron/**
+      - libs/**
+
 jobs:
   retrieve_information:
     name: Retrieve information

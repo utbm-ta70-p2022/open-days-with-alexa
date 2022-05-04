@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
+
 jobs:
   deploy:
     name: Deploy
