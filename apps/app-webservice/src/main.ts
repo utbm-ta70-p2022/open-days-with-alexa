@@ -49,7 +49,5 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
   await app.listen(Number(process.env.WEBSERVICE_PORT), process.env.WEBSERVICE_HOST);
 
-  app
-    .get(Logger)
-    .log(`Listening ${process.env.WEBSERVICE_SCHEMA}://${process.env.WEBSERVICE_HOST}:${process.env.WEBSERVICE_PORT}`);
+  app.get(Logger).log(`Listening ${await app.getUrl()}`);
 })();
