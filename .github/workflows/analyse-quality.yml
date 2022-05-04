@@ -4,12 +4,14 @@ on:
     branches:
       - master
     paths:
+      - .github/workflow/**
       - sonar-project.properties
       - apps/**
       - libs/**
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
+      - .github/workflow/**
       - sonar-project.properties
       - apps/**
       - libs/**

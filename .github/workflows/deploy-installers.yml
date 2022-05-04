@@ -4,6 +4,7 @@ on:
     branches:
       - master
     paths:
+      - .github/workflow/**
       - apps/app-desktop-angular/**
       - apps/app-desktop-electron/**
       - libs/**
