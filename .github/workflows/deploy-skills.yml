@@ -20,7 +20,9 @@ jobs:
         uses: xavidop/alexa-ask-aws-cli-docker@v1.0.6
         id: update_skills_step
         with:
-          command: "ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR file:libs\lib-common\src\assets\amazon-alexa-skills\skills.json"
+          command: |
+          ask smapi get-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR
+          ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR file:libs/lib-common/src/assets/amazon-alexa-skills/skills.json
         env:
           ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
           ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
