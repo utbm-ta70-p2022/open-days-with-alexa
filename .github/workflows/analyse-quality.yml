@@ -3,8 +3,19 @@ on:
   push:
     branches:
       - master
+    paths:
+      - .github/workflows/analyse-quality.yml
+      - sonar-project.properties
+      - apps/**
+      - libs/**
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - .github/workflows/analyse-quality.yml
+      - sonar-project.properties
+      - apps/**
+      - libs/**
+
 jobs:
   analyse:
     name: Analyse

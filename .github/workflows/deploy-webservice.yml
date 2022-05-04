@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - master
+    paths:
+      - .github/workflows/deploy-webservice.yml
+      - apps/app-webservice/**
+      - libs/**
 jobs:
   deploy:
     name: Deploy
