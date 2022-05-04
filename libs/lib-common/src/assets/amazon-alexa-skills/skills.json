@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "présente moi l'utbm test",
+      "invocationName": "presente moi l'utbm test",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
