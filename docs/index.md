@@ -81,8 +81,6 @@ Liens utiles :
 
 #### 2.1.3. Fichier de configuration Amazon Alexa
 
-[Code source](https://github.com/utbm-ta70-p2022/open-days-with-alexa/blob/master/libs/lib-common/src/assets/amazon-alexa-skills/skills.json)
-
 ##### 2.1.3.1. Déploiement
 
 1. Installer ASK cli : `npm install --global ask-cli@2.27.0`
