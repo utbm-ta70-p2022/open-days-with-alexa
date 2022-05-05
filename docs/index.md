@@ -76,7 +76,7 @@ Code source :
 
 ##### 2.1.2.1 Installation
 
-1. Exécuter l'installateur situé dans le dossier `dist/executables/app.exe
+1. Exécuter l'installateur situé dans le dossier `dist/executables/app.exe`
 
 #### 2.1.3. Fichier de configuration Amazon Alexa
 
