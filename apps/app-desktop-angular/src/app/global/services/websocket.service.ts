@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { io, Socket } from 'socket.io-client';
 import { ToastMessageService } from './toast-message.service';
-import { apiGateways, BaseWebsocketEvent, TestWebsocketEvent, WebsocketEventType } from '@libraries/lib-common';
+import {
+  apiGateways,
+  BaseWebsocketEvent,
+  SendMessageWebsocketEvent,
+  TestWebsocketEvent,
+  WebsocketEventType,
+} from '@libraries/lib-common';
 import { ApiError } from '@libraries/lib-nestjs';
 
 @Injectable({
@@ -44,6 +50,9 @@ export class WebsocketService {
     switch (event.type) {
       case WebsocketEventType.Test:
         this._toastMessageService.showSuccess((event as TestWebsocketEvent).message);
+        break;
+      case WebsocketEventType.SendMessage:
+        this._toastMessageService.showInfo((event as SendMessageWebsocketEvent).message);
     }
   }
 

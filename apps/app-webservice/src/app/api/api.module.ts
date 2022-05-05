@@ -3,7 +3,6 @@ import { AcceptLanguageResolver, I18nJsonLoader, I18nModule } from 'nestjs-i18n'
 import { environment } from '../../environments/environment';
 import { join } from 'path';
 import { ExamplesController } from './controllers/examples.controller';
-import { MainGateway } from './gateways/main.gateway';
 
 @Global()
 @Module({
@@ -24,6 +23,5 @@ import { MainGateway } from './gateways/main.gateway';
     }),
   ],
   controllers: [ExamplesController],
-  providers: [MainGateway],
 })
 export class ApiModule {}

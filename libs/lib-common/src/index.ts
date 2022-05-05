@@ -20,4 +20,5 @@ export * from './lib/models/proxy-settings.model';
 export * from './lib/models/settings.model';
 
 export * from '../../lib-common/src/lib/websocket-events/base.websocket-event';
+export * from '../../lib-common/src/lib/websocket-events/send-message.websocket-event';
 export * from '../../lib-common/src/lib/websocket-events/test.websocket-event';

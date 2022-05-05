@@ -1,9 +1,12 @@
-import { ExampleModel } from '@libraries/lib-common';
+import { ExampleModel, SendMessageWebsocketEvent, WebsocketEventType } from '@libraries/lib-common';
 import { EntityNotFoundError } from '@libraries/lib-nestjs';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { MainGateway } from '../gateways/main.gateway';
 
 @Injectable()
 export class ExamplesService {
+  constructor(private readonly _mainGateway: MainGateway) {}
+
   examples: ExampleModel[] = [
     {
       id: 'a',
@@ -32,5 +35,9 @@ export class ExamplesService {
     }
 
     return example;
+  }
+
+  sendMessageToWebsocketClients(message: string) {
+    this._mainGateway.emitEvent<SendMessageWebsocketEvent>({ type: WebsocketEventType.SendMessage, message: message });
   }
 }

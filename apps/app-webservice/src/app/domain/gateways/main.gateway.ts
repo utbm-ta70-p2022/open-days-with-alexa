@@ -10,7 +10,7 @@ export class MainGateway {
   server: Server;
 
   @SubscribeMessage(apiGateways.events)
-  async subscribeToEvents(@MessageBody() event: BaseWebsocketEvent): Promise<WsResponse<BaseWebsocketEvent>> {
+  async receiveEvents(@MessageBody() event: BaseWebsocketEvent): Promise<WsResponse<BaseWebsocketEvent>> {
     return await this.handleEvents(event);
   }
 
@@ -27,5 +27,9 @@ export class MainGateway {
       data: data,
       event: apiGateways.events,
     };
+  }
+
+  async emitEvent<T extends BaseWebsocketEvent>(event: T) {
+    this.server.emit(apiGateways.events, event);
   }
 }

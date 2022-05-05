@@ -1,6 +1,7 @@
 export const apiRoutes = {
   exemples: {
     root: 'examples',
-    retrieve: 'retrieve'
+    retrieveOne: 'retrieveOne',
+    sendMessageToWebsocketClients: 'sendMessageToWebsocketClients',
   },
 };
