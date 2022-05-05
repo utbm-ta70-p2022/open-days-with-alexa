@@ -60,11 +60,10 @@ Liens utiles :
     ```
     WEBSERVICE_JWT_SECRET=secret
     WEBSERVICE_JWT_EXPIRATION_TIME=48h
-    WEBSERVICE_SCHEMA=http
     WEBSERVICE_HOST=localhost
     WEBSERVICE_PORT=3333
     WEBSERVICE_NAME=Open days with Alexa Api
-    WEBSERVICE_ALLOWED_ORIGINS=*
+    WEBSERVICE_ALLOWED_ORIGIN=*
     ```
 
 3. Lancer le service web : `node dist/apps/app-webservice/main.js

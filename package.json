@@ -1,6 +1,6 @@
 {
   "name": "open-days-with-alexa",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
@@ -78,6 +78,7 @@
     "primeng": "^12.2.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.5.5",
+    "socket.io-client": "^4.5.0",
     "toad-scheduler": "^1.6.0",
     "tslib": "^2.0.0",
     "typeorm": "^0.2.40",

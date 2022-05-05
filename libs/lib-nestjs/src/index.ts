@@ -1,3 +1,5 @@
+export * from './lib/decorators/websocket-gateway.decorator';
+
 export * from './lib/errors/api-dto-validation.error';
 export * from './lib/errors/api.error';
 export * from './lib/errors/domain.error';

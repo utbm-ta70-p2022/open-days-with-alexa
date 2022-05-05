@@ -19,8 +19,15 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
   app.register(fastifyRawBody);
 
   app.register(fastifyCors, {
-    origin: [process.env.WEBSERVICE_ALLOWED_ORIGINS],
-    allowedHeaders: ['Origin', 'X-Requested-With', 'Accept', 'Content-Type', 'Authorization'],
+    origin: process.env.WEBSERVICE_ALLOWED_ORIGIN,
+    allowedHeaders: [
+      'Origin',
+      'X-Requested-With',
+      'Accept',
+      'Content-Type',
+      'Authorization',
+      'Access-Control-Allow-Origin',
+    ],
     methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
   });
 
@@ -31,7 +38,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
       app,
       new DocumentBuilder()
         .setTitle(process.env.WEBSERVICE_NAME)
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         .setVersion(require('../../../package.json').version)
         .addBearerAuth()
         .build()
