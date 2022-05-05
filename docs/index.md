@@ -30,6 +30,8 @@ La solution utilise un environnement Node.js 16.15.0
 
 #### 2.1.1. Service web
 
+Code source : https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-webservice
+
 ##### 2.1.1.1. Construction
 
 1. Se placer dans la racine du dépôt de code
@@ -57,6 +59,10 @@ La solution utilise un environnement Node.js 16.15.0
 
 #### 2.1.2. Application de bureau
 
+Code source : 
+    - https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-angular
+    - https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-electron
+
 ##### 2.1.2.1. Construction
 
 1. Se placer dans la racine du dépôt de code
@@ -72,7 +78,11 @@ La solution utilise un environnement Node.js 16.15.0
 
 1. Exécuter l'installateur situé dans le dossier `dist/executables/app.exe
 
-#### 2.1.2. Fichier de configuration Amazon Alexa
+#### 2.1.3. Fichier de configuration Amazon Alexa
+
+Code source : https://github.com/utbm-ta70-p2022/open-days-with-alexa/blob/master/libs/lib-common/src/assets/amazon-alexa-skills/skills.json
+
+##### 2.1.3.1 Déploiement
 
 1. Installer ASK cli : `npm install --global ask-cli@2.27.0`
 
