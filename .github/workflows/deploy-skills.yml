@@ -32,15 +32,13 @@ jobs:
       - name: Install ASK cli
         run: |
           npm install --global ask-cli@2.27.0
-          mkdir .ask
-          echo "{}" > .ask/cli_config
 
       - name: Update Skill Model
         run: ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR --interaction-model file:libs/lib-common/src/assets/amazon-alexa-skills/skills.json
 
       - name: Check Skill Status
         run: |
-          ask smapi get-skill-status --skill-id ${{ secrets.SKILL_ID }} --resource interactionModel --profile default > status.json
+          ask smapi get-skill-status --skill-id ${{ secrets.SKILL_ID }} --resource interactionModel > status.json
           cat status.json
 
       # - name: Update
