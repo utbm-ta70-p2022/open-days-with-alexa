@@ -10,7 +10,10 @@ Un visiteur peut ainsi formuler une requête à un appareil Alexa afin de décle
 
 1. Connecter un appareil compatible Amazon Alexa sur internet
 
-2. Télécharger l'application de bureau Open days with Alexa pour [Linux](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.AppImage), pour [Window](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.exe) ou pour [macOS](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.dmg)
+2. Télécharger l'application de bureau Open days with Alexa :
+   - [Télécharger pour Linux](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.AppImage)
+   - [Télécharger pour Window](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.exe)
+   - [Télécharger pour macOS](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.dmg)
 
 3. Installer le fichier téléchargé
 
