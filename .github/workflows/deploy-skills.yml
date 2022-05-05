@@ -8,30 +8,55 @@ on:
       - .github/workflows/deploy-skills.yml
       - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
 
+env:
+  ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
+  ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
+  ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  SKILL_ID: ${{ secrets.SKILL_ID }}
+
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Update
-        uses: xavidop/alexa-ask-aws-cli-docker@v1.0.6
-        id: update_skills_step
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          command: |
-            ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR --interaction-model file:libs/lib-common/src/assets/amazon-alexa-skills/skills.json
-            ask smapi get-skill-status --skill-id ${{ secrets.SKILL_ID }} --resource interactionModel --profile default > status.json
-            cat status.json
+          node-version: '16.15.0'
 
-        env:
-          ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
-          ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
-          ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SKILL_ID: ${{ secrets.SKILL_ID }}
+      - name: Install ASK cli
+        run: npm install --global ask-cli@2.27.0
+
+      - name: Update Skill Model
+        run: ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR --interaction-model file:libs/lib-common/src/assets/amazon-alexa-skills/skills.json
+
+      - name: Check Skill Status
+        run: |
+          ask smapi get-skill-status --skill-id ${{ secrets.SKILL_ID }} --resource interactionModel --profile default > status.json
+          cat status.json
+
+      # - name: Update
+      #   uses: xavidop/alexa-ask-aws-cli-docker@v1.0.6
+      #   id: update_skills_step
+      #   with:
+      #     command: |
+      #       ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR --interaction-model file:libs/lib-common/src/assets/amazon-alexa-skills/skills.json
+      #       ask smapi get-skill-status --skill-id ${{ secrets.SKILL_ID }} --resource interactionModel --profile default > status.json
+      #       cat status.json
+      #       node -e "console.log(require('./status.json').interactionModel['fr-FR'].lastUpdateRequest.status"
+      #   env:
+      #     ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
+      #     ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
+      #     ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     SKILL_ID: ${{ secrets.SKILL_ID }}
 
       - name: Get the output
         run: echo "The result was ${{ steps.update_skills_step.outputs.result }}"
