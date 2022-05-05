@@ -23,6 +23,7 @@ jobs:
           command: |
             ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR --interaction-model file:libs/lib-common/src/assets/amazon-alexa-skills/skills.json
 
+        env:
           ASK_ACCESS_TOKEN: ${{ secrets.ASK_ACCESS_TOKEN }}
           ASK_REFRESH_TOKEN: ${{ secrets.ASK_REFRESH_TOKEN }}
           ASK_VENDOR_ID: ${{ secrets.ASK_VENDOR_ID }}
