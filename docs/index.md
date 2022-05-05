@@ -47,7 +47,7 @@ Liens utiles :
 
 3. Construire le service web : `npm run nx build -- app-webservice --configuration=production`
 
-##### 2.1.1.1 Déploiement
+##### 2.1.1.2. Déploiement
 
 1. Déposer les fichiers sur le serveur de production
 
@@ -81,7 +81,7 @@ Code source :
    - Pour Windows `npm run publish:windows`
    - Pour macOS `npm run publish:macos`
 
-##### 2.1.2.1 Installation
+##### 2.1.2.2. Installation
 
 1. Exécuter l'installateur situé dans le dossier `dist/executables/app.exe`
 
@@ -89,7 +89,7 @@ Code source :
 
 [Code source](https://github.com/utbm-ta70-p2022/open-days-with-alexa/blob/master/libs/lib-common/src/assets/amazon-alexa-skills/skills.json)
 
-##### 2.1.3.1 Déploiement
+##### 2.1.3.1. Déploiement
 
 1. Installer ASK cli : `npm install --global ask-cli@2.27.0`
 
