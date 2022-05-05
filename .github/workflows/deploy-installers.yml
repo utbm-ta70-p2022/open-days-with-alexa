@@ -62,7 +62,7 @@ jobs:
           path: dist/executables/app.AppImage
 
   build_window_installer:
-    name: Publish Windows installer
+    name: Build Windows installer
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -86,7 +86,7 @@ jobs:
           path: dist/executables/app.exe
 
   build_macos_installer:
-    name: Publish macOS installer
+    name: Build macOS installer
     runs-on: macos-latest
     steps:
       - name: Checkout
