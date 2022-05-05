@@ -31,11 +31,13 @@ La solution Open days with Alexa comprend plusieurs éléments à installer :
 
 La solution utilise un environnement Node.js 16.15.0
 
-Le code source de la solution est disponible ici : https://github.com/utbm-ta70-p2022/open-days-with-alexa
+Liens utiles :
+- [Code source de la solution](https://github.com/utbm-ta70-p2022/open-days-with-alexa)
+- [Rapport de qualié du code source de la solution](https://sonarcloud.io/summary/new_code?id=utbm-ta70-p2022_open-days-with-alexa)
 
 #### 2.1.1. Service web
 
-Code source : https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-webservice
+[Code source](https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-webservice)
 
 ##### 2.1.1.1. Construction
 
@@ -65,8 +67,8 @@ Code source : https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/maste
 #### 2.1.2. Application de bureau
 
 Code source : 
-    - https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-angular
-    - https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-electron
+    - [Partie Angular](https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-angular)
+    - [Partie Electron](https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-electron)
 
 ##### 2.1.2.1. Construction
 
@@ -85,7 +87,7 @@ Code source :
 
 #### 2.1.3. Fichier de configuration Amazon Alexa
 
-Code source : https://github.com/utbm-ta70-p2022/open-days-with-alexa/blob/master/libs/lib-common/src/assets/amazon-alexa-skills/skills.json
+[Code source](https://github.com/utbm-ta70-p2022/open-days-with-alexa/blob/master/libs/lib-common/src/assets/amazon-alexa-skills/skills.json)
 
 ##### 2.1.3.1 Déploiement
 
