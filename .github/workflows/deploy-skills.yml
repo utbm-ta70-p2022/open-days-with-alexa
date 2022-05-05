@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - issue/12-configurer-déploiement-skill
     paths:
       - .github/workflows/deploy-skills.yml
       - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
