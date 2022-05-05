@@ -1,6 +1,6 @@
 # Open days with Alexa
 
-La solution Open days with Alexa a pour vocation d'autonomiser la présentation des informations relatives à l'UTBM aux visiteurs lors de journées portes ouvertes.
+La solution Open days with Alexa a pour vocation de rendre autonome la présentation des informations relatives à l'UTBM aux visiteurs lors de journées portes ouvertes.
 
 Un visiteur peut ainsi formuler une requête à un appareil Alexa afin de déclencher l'affichage d'informations sur les applications de bureau Open days with Alexa qui sont connectées.
 
