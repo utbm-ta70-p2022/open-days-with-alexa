@@ -28,6 +28,8 @@ La solution Open days with Alexa comprend plusieurs éléments à installer :
 
 La solution utilise un environnement Node.js 16.15.0
 
+Le code source de la solution est disponible ici : https://github.com/utbm-ta70-p2022/open-days-with-alexa
+
 #### 2.1.1. Service web
 
 Code source : https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-webservice
