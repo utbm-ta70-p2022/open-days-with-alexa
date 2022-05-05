@@ -4,9 +4,12 @@ La solution Open days with Alexa a pour vocation de rendre autonome la présenta
 
 Un visiteur peut ainsi formuler une requête à un appareil Alexa afin de déclencher l'affichage d'informations sur les applications de bureau Open days with Alexa qui sont connectées.
 
-## 1. Documentation utilisateur
+> Crédits : BARDET Benjamin, BERTRAND Loïc, DELIGNOU Quentin, DUPORT Anthony, LEDOYEN Baptiste, LEMESTRE Malo, LUNG Axel, PINON Matthis, VIENNET Joris dans le cadre d'un projet dans la formation ingénierie des systèmes d'information sous statut apprenti de l'UTBM en 2022
 
-### 1.1. Mise en place de la solution
+
+## 2. Documentation utilisateur
+
+### 2.1. Mise en place de la solution
 
 1. Connecter un appareil compatible Amazon Alexa sur internet
 
@@ -37,7 +40,7 @@ La solution utilise un environnement Node.js 16.15.0
 
 Liens utiles :
 - [Code source de la solution](https://github.com/utbm-ta70-p2022/open-days-with-alexa)
-- [Rapport de qualié du code source de la solution](https://sonarcloud.io/summary/new_code?id=utbm-ta70-p2022_open-days-with-alexa)
+- [Rapport de qualité du code source de la solution](https://sonarcloud.io/summary/new_code?id=utbm-ta70-p2022_open-days-with-alexa)
 
 #### 2.1.1. Service web
 
