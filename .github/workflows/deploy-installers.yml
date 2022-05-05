@@ -9,6 +9,10 @@ on:
       - apps/app-desktop-electron/**
       - libs/**
 
+concurrency:
+  group: deploy-installers
+  cancel-in-progress: true
+
 jobs:
   retrieve_information:
     name: Retrieve information

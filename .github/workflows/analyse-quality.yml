@@ -16,6 +16,10 @@ on:
       - apps/**
       - libs/**
 
+concurrency:
+  group: analyse-quality-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   analyse:
     name: Analyse

@@ -7,6 +7,10 @@ on:
       - .github/workflows/deploy-skills.yml
       - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
 
+concurrency:
+  group: deploy-skills
+  cancel-in-progress: true
+
 jobs:
   deploy:
     name: Deploy
