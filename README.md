@@ -41,7 +41,7 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
    |--/lib-nestjs
 ```
 
-### 1.6.1. Applications
+### 1.4.1. Applications
 
 Les applications sont contenues dans le dossier `/apps`
 
@@ -57,7 +57,7 @@ Ce projet d'application Electron contient le code source de l'application de bur
 
 Ce projet d'application NestJs contient le code source du service web.
 
-### 1.6.2. Bibliothèques
+### 1.4.2. Bibliothèques
 
 Les bibliothèques sont contenues dans le dossier `/libs`
 
