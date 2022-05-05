@@ -106,7 +106,7 @@ Ce projet de bibliothèque NestJS contient le code source qui peut s'exécuter d
 
 Il existe 5 types d'issues :
 
-* **User story** : Demande de fonctionnalité formulée tel que : « En tant que x, je souhaite x »
+* **User story** : Demande de fonctionnalité formulée tel que : « En tant que x, je souhaite y, afin de z »
 * **Documentation** : Demande de documentation
 * **Conception** : Demande de conception
 * **Bug** : Demande de résolution de bug
@@ -116,7 +116,8 @@ Il existe 5 types d'issues :
 
 ## 2.2. Principaux scripts
 
-* `npm start` : démarrer l'application en mode de développement
+* `npm install` : installer les dépendances de la solution
+* `npm start` : démarrer la solution en mode de développement
 
 ## 2.3. Procédure d'implémentation d'une issue
 
