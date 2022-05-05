@@ -6,6 +6,7 @@ export * from './lib/constants/ipc-channels.constant';
 
 export * from './lib/enumerations/email-template.enumeration';
 export * from './lib/enumerations/proxy-configuration.enumeration';
+export * from './lib/enumerations/websocket-event-type.enumeration';
 
 export * from './lib/interfaces/manage-email.interface';
 export * from './lib/interfaces/manage-filesystem.interface';
@@ -17,3 +18,6 @@ export * from './lib/models/ipc-response.model';
 export * from './lib/models/log.model';
 export * from './lib/models/proxy-settings.model';
 export * from './lib/models/settings.model';
+
+export * from '../../lib-common/src/lib/websocket-events/base.websocket-event';
+export * from '../../lib-common/src/lib/websocket-events/test.websocket-event';

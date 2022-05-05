@@ -1,5 +1,8 @@
 export class InfrastructureError extends Error {
-  constructor(originalErrorMessage: string) {
-    super(originalErrorMessage);
+  originalError?: Error;
+
+  constructor(originalError?: Error) {
+    super('Infrastructure error');
+    this.originalError = originalError;
   }
 }

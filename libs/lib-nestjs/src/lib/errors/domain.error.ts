@@ -1,5 +1,8 @@
 export class DomainError extends Error {
-  constructor(originalErrorMessage: string) {
-    super(originalErrorMessage);
+  originalError?: Error;
+
+  constructor(originalError?: Error) {
+    super('Domain error');
+    this.originalError = originalError;
   }
 }

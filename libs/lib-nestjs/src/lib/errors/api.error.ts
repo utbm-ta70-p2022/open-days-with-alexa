@@ -1,5 +1,8 @@
 export class ApiError extends Error {
-  constructor(originalErrorMessage: string) {
-    super(originalErrorMessage);
+  originalError?: Error;
+
+  constructor(originalError?: Error) {
+    super('Api error');
+    this.originalError = originalError;
   }
 }

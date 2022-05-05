@@ -48,7 +48,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
   app.useGlobalPipes(
     new ValidationPipe({
       exceptionFactory: (error: ValidationError[]) =>
-        new ApiDtoValidationError(error.map((_) => _.constraints).join(',')),
+        new ApiDtoValidationError(new Error(error.map((_) => _.constraints).join(','))),
     })
   );
 

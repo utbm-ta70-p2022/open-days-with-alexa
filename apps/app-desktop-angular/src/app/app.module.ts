@@ -7,7 +7,6 @@ import { appRoutes } from '@libraries/lib-common';
 import { Component, OnInit } from '@angular/core';
 import { BlockUiService } from './global/services/block-ui.service';
 import { IpcLogService } from './global/services/ipc-log.service';
-import { WebsocketService } from './global/services/websocket.service';
 
 @Component({
   selector: 'app-root',
@@ -29,15 +28,10 @@ import { WebsocketService } from './global/services/websocket.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private readonly _blockUiService: BlockUiService,
-    private readonly _logService: IpcLogService,
-    private readonly _websocketService: WebsocketService
-  ) {}
+  constructor(private readonly _blockUiService: BlockUiService, private readonly _logService: IpcLogService) {}
 
   async ngOnInit() {
     this._logService.listen();
-    this._websocketService.initialize();
   }
 
   get $uiBlocked() {
@@ -58,7 +52,7 @@ export class AppComponent implements OnInit {
         },
         {
           path: appRoutes.presentation.root,
-          loadChildren: () => import('./modules/presentation/presentation.module').then((m) => m.PresentationModule),
+          loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
         },
         {
           path: appRoutes.settings.root,

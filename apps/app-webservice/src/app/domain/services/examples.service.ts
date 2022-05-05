@@ -28,7 +28,7 @@ export class ExamplesService {
         throw new EntityNotFoundError({ type: ExampleModel.constructor.name });
       }
     } catch (error) {
-      throw new EntityNotFoundError({ originalErrorMessage: error.message, type: ExampleModel.constructor.name });
+      throw new EntityNotFoundError({ originalError: error, type: ExampleModel.constructor.name });
     }
 
     return example;
