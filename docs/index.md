@@ -7,9 +7,9 @@ Un visiteur peut ainsi formuler une requête à un appareil Alexa afin de décle
 > Crédits : BARDET Benjamin, BERTRAND Loïc, DELIGNOU Quentin, DUPORT Anthony, LEDOYEN Baptiste, LEMESTRE Malo, LUNG Axel, PINON Matthis, VIENNET Joris dans le cadre d'un projet dans la formation ingénierie des systèmes d'information sous statut apprenti de l'UTBM en 2022
 
 
-## 2. Documentation utilisateur
+## 1. Documentation utilisateur
 
-### 2.1. Mise en place de la solution
+### 1.1. Mise en place de la solution
 
 1. Connecter un appareil compatible Amazon Alexa sur internet
 
