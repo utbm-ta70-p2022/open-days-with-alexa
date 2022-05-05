@@ -37,8 +37,6 @@ Liens utiles :
 
 #### 2.1.1. Service web
 
-[Code source](https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-webservice)
-
 ##### 2.1.1.1. Construction
 
 1. Se placer dans la racine du dépôt de code
@@ -65,10 +63,6 @@ Liens utiles :
 3. Lancer le service web : `node dist/apps/app-webservice/main.js
 
 #### 2.1.2. Application de bureau
-
-Code source : 
-    - [Partie Angular](https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-angular)
-    - [Partie Electron](https://github.com/utbm-ta70-p2022/open-days-with-alexa/tree/master/apps/app-desktop-electron)
 
 ##### 2.1.2.1. Construction
 
