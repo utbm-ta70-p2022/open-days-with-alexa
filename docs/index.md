@@ -19,7 +19,7 @@ Un visiteur peut ainsi formuler une requête à un appareil Alexa afin de décle
 
 4. Lancer l'application Open days with Alexa
 
-5. Tester la configuration en effectuant les requêtes suivantes à Alexa : 
+5. Tester la configuration en effectuant les requêtes vocales suivantes à Alexa : 
   - `Alexa informe-moi` 
   - `Test configuration`
 
