@@ -44,10 +44,8 @@ jobs:
             ask smapi get-skill-status --skill-id ${{ secrets.SKILL_ID }} --resource interactionModel > status.json
             status=$(node -e "console.log(require('./status.json').interactionModel['fr-FR'].lastUpdateRequest.status)")
             sleep 60
-            echo status
-            echo $i
             ((i=i+1))
-            if [ $i -lt 300 ]; then
+            if [ $i -gt 300 ]; then
               echo "❌ UNABLE TO CHECK THE SUCCESS OF THE DEPLOYMENT ❌"
               exit 1
             fi
