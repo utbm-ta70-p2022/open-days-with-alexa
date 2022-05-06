@@ -1,0 +1,33 @@
+{
+  "title": "Information Schema",
+  "typeOf": "object",
+  "required": ["information"],
+  "properties": {
+    "information": {
+      "type": "array",
+      "minLength": 0,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type"],
+        "properties": {
+          "id": { "type": "string" },
+
+          "type": {
+            "type": "string",
+            "enum": ["video", "audio", "text"]
+          },
+
+          "url": {
+            "type": "string"
+          },
+
+          "html": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

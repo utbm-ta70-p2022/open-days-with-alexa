@@ -1,0 +1,14 @@
+{
+  "$schema": "./information.schema.json",
+  "information": [
+    {
+      "id": "planning",
+      "type": "video",
+      "url": ""
+    },
+    {
+      "id": "",
+      "type": "video"
+    }
+  ]
+}

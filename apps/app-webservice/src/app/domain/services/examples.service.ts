@@ -1,6 +1,6 @@
 import { ExampleModel, SendMessageWebsocketEvent, WebsocketEventType } from '@libraries/lib-common';
 import { EntityNotFoundError } from '@libraries/lib-nestjs';
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { MainGateway } from '../gateways/main.gateway';
 
 @Injectable()

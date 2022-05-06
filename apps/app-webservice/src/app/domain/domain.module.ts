@@ -6,8 +6,10 @@ import { PassportModule } from '@nestjs/passport';
 import { ExamplesService } from './services/examples.service';
 import { JwtStrategy } from '@libraries/lib-nestjs';
 import { MainGateway } from './gateways/main.gateway';
+import { InformationsService } from './services/informations.service';
+import { AlexaSkillsService } from './services/alexa-skills.service';
 
-const SERVICES = [ExamplesService];
+const SERVICES = [ExamplesService, InformationsService, AlexaSkillsService];
 
 const STRATEGIES = [JwtStrategy];
 

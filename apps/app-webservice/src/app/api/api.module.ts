@@ -3,6 +3,7 @@ import { AcceptLanguageResolver, I18nJsonLoader, I18nModule } from 'nestjs-i18n'
 import { environment } from '../../environments/environment';
 import { join } from 'path';
 import { ExamplesController } from './controllers/examples.controller';
+import { AlexaSkillsController } from './controllers/alexa-skills.controller';
 
 @Global()
 @Module({
@@ -22,6 +23,6 @@ import { ExamplesController } from './controllers/examples.controller';
       resolvers: [new AcceptLanguageResolver()],
     }),
   ],
-  controllers: [ExamplesController],
+  controllers: [AlexaSkillsController, ExamplesController],
 })
 export class ApiModule {}
