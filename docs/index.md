@@ -66,7 +66,7 @@ Liens utiles :
     WEBSERVICE_ALLOWED_ORIGIN=*
     ```
 
-3. Lancer le service web : `node dist/apps/app-webservice/main.js
+3. Lancer le service web : `node dist/apps/app-webservice/main.js`
 
 #### 2.1.2. Application de bureau
 
