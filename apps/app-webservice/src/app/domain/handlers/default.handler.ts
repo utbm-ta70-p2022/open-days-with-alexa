@@ -5,8 +5,9 @@ export const LaunchRequestHandler = {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
   },
   handle(handlerInput: Alexa.HandlerInput) {
-    const speakOutput = 'Welcome in our skill !!';
-    return handlerInput.responseBuilder.speak(speakOutput).reprompt(speakOutput).getResponse();
+    const speechText = 'Bienvenue ! ';
+
+    return handlerInput.responseBuilder.speak(speechText).reprompt(speechText).getResponse();
   },
 };
 
@@ -15,12 +16,8 @@ export const ErrorHandler = {
     return true;
   },
   handle: (handlerInput: Alexa.HandlerInput, error: Error) => {
-    console.log(`Error handled: ${error.message}`);
-
-    return handlerInput.responseBuilder
-      .speak("Sorry, I can't understand the command. Please say again.")
-      .reprompt("Sorry, I can't understand the command. Please say again.")
-      .getResponse();
+    //console.log(`Error handled: ${error.message}`);
+    return handlerInput.responseBuilder.speak('Deso').reprompt('Deso').getResponse();
   },
 };
 
@@ -29,7 +26,7 @@ export const SessionEndedRequestHandler = {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'SessionEndedRequest';
   },
   handle(handlerInput: Alexa.HandlerInput) {
-    console.log(`~~~~ Session ended: ${JSON.stringify(handlerInput.requestEnvelope)}`);
+    //console.log(`~~~~ Session ended: ${JSON.stringify(handlerInput.requestEnvelope)}`);
     // Any cleanup logic goes here.
     return handlerInput.responseBuilder.getResponse(); // notice we send an empty response
   },
@@ -93,8 +90,33 @@ export const HelpIntentHandler = {
     );
   },
   handle(handlerInput: Alexa.HandlerInput) {
-    const speakOutput = 'You can say hello to me! How can I help?';
+    const speakOutput = "Bonjour, comment puis-je t'aider ?";
 
     return handlerInput.responseBuilder.speak(speakOutput).reprompt(speakOutput).getResponse();
+  },
+};
+
+export const InformeMoiDuMondeIntent = {
+  canHandle(handlerInput: Alexa.HandlerInput) {
+    return (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'InformeMoiDuMonde'
+    );
+  },
+  handle(handlerInput: Alexa.HandlerInput) {
+    const speakOutput = "Je t'informe du monde ! ";
+    return handlerInput.responseBuilder.speak(speakOutput).reprompt(speakOutput).getResponse();
+  },
+};
+
+export const RegisterBirthdayIntentHandler = {
+  canHandle(handlerInput: Alexa.HandlerInput) {
+    return (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'RegisterBirthdayIntent'
+    );
+  },
+  handle(handlerInput: Alexa.HandlerInput) {
+    return handlerInput.responseBuilder.speak('enregistrement').reprompt('enregistrement').getResponse();
   },
 };
