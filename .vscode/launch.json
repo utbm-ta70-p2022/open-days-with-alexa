@@ -2,7 +2,14 @@
   "configurations": [
     {
       "command": "npm start",
-      "name": "Debug",
+      "name": "development",
+      "request": "launch",
+      "type": "node-terminal",
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
+    },
+    {
+      "command": "npm run nx -- serve app-webservice --configuration=development",
+      "name": "development-webservice",
       "request": "launch",
       "type": "node-terminal",
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
