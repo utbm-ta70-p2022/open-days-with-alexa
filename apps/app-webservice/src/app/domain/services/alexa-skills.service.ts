@@ -1,44 +1,47 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InformationsService } from './informations.service';
-import { RequestEnvelope } from 'ask-sdk-model';
-import {
-  CancelAndStopIntentHandler,
-  ErrorHandler,
-  FallbackIntentHandler,
-  InformeMoiDuMondeIntent,
-  IntentReflectorHandler,
-  LaunchRequestHandler,
-  RegisterBirthdayIntentHandler,
-  SessionEndedRequestHandler,
-} from '../handlers/default.handler';
-import * as Alexa from 'ask-sdk-core';
+import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
+import { SkillBuilders } from 'ask-sdk-core';
 import { IncomingHttpHeaders } from 'http';
-import { SkillRequestSignatureVerifier, TimestampVerifier } from 'ask-sdk-express-adapter';
+import { LaunchRequestAlexaHandler } from '../alexa-handlers/launch-request.alexa-handler';
+import { AskWeatherIntentAlexaHandler } from '../alexa-handlers/ask-weather-intent.alexa-handler';
+import { HelpIntentAlexaHandler } from '../alexa-handlers/help-intent.alexa-handler';
+import { CancelAndStopIntentAlexaHandler } from '../alexa-handlers/cancel-and-stop-intent.alexa-handler';
+import { SessionEndedRequestAlexaHandler } from '../alexa-handlers/sessions-ended-request.alexa-handler';
+import { ErrorsAlexaHandler } from '../alexa-handlers/errors.alexa-handler';
+
 @Injectable()
 export class AlexaSkillsService {
   constructor(private readonly _informationsService: InformationsService) {}
 
-  async handleAlexaRequest(headers: IncomingHttpHeaders, command: RequestEnvelope): Promise<any> {
-    const skill = Alexa.SkillBuilders.custom()
-      .withSkillId('amzn1.ask.skill.e5cd395b-dec3-436c-95c9-86de8aca63e8')
-      .addRequestHandlers(
-        LaunchRequestHandler,
-        InformeMoiDuMondeIntent,
-        RegisterBirthdayIntentHandler,
-        CancelAndStopIntentHandler,
-        FallbackIntentHandler,
-        SessionEndedRequestHandler,
-        IntentReflectorHandler
-      )
-      .addErrorHandlers(ErrorHandler)
-      .create();
+  async handleRequest(
+    requestHeaders: IncomingHttpHeaders,
+    requestEnvelope: RequestEnvelope
+  ): Promise<ResponseEnvelope> {
+    let responseEnvelope: ResponseEnvelope;
+
     try {
-      await new SkillRequestSignatureVerifier().verify(JSON.stringify(command), headers);
-      await new TimestampVerifier().verify(JSON.stringify(command));
-      const response = await skill.invoke(command);
-      return response;
-    } catch (err) {
-      throw err;
+      responseEnvelope = await new Promise<ResponseEnvelope>((resolve, reject) => {
+        SkillBuilders.custom()
+          .addRequestHandlers(
+            new LaunchRequestAlexaHandler(),
+            new AskWeatherIntentAlexaHandler(),
+            new HelpIntentAlexaHandler(),
+            new CancelAndStopIntentAlexaHandler(),
+            new SessionEndedRequestAlexaHandler()
+          )
+          .addErrorHandlers(new ErrorsAlexaHandler(reject))
+          .lambda()(requestEnvelope, requestEnvelope.context, (error: Error, result: ResponseEnvelope) => {
+          if (error) {
+            reject(error.message);
+          }
+          resolve(result);
+        });
+      });
+    } catch (error) {
+      Logger.error(error);
     }
+
+    return responseEnvelope;
   }
 }

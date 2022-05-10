@@ -1,13 +1,14 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
-import { SkillRequestSignatureVerifier, TimestampVerifier } from 'ask-sdk-express-adapter';
+import { Injectable, CanActivate, ExecutionContext, Logger, Scope } from '@nestjs/common';
 
-@Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class AlexaGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const req = context.switchToHttp().getRequest();
+    const request = context;
+
     try {
-      await new SkillRequestSignatureVerifier().verify('' + req.body, req.headers);
-      await new TimestampVerifier().verify('' + req.body);
+      Logger.log(request);
+      // await new SkillRequestSignatureVerifier().verify('' + req.body, req.headers);
+      // await new TimestampVerifier().verify('' + req.body);
       return true;
     } catch (err) {
       console.log('ERROR');
