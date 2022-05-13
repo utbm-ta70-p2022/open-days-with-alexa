@@ -20,8 +20,8 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
   app.register(fastifyRawBody);
 
   app.register(fastifyHelmet, { crossOriginResourcePolicy: false });
-
-  app.register(fastifyRequestContextPlugin);
+  
+  // app.register(fastifyRequestContextPlugin);
 
   app.register(fastifyCors, {
     origin: process.env.WEBSERVICE_ALLOWED_ORIGIN,
