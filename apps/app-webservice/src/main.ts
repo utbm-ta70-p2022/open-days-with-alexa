@@ -17,10 +17,10 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
     }),
   });
 
-  app.register(fastifyRawBody);
+  // app.register(fastifyRawBody);
 
-  app.register(fastifyHelmet, { crossOriginResourcePolicy: false });
-  
+  // app.register(fastifyHelmet, { contentSecurityPolicy: false });
+
   // app.register(fastifyRequestContextPlugin);
 
   app.register(fastifyCors, {
