@@ -14,7 +14,7 @@ export class AlexaSkillsController {
   @Post()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'listens Alexa requests' })
-  @UseGuards(new AlexaGuard())
+  // @UseGuards(AlexaGuard) TODO
   async listenAlexaRequests(
     @Headers() requestHeaders: IncomingHttpHeaders,
     @Body() requestEnvelope: RequestEnvelope

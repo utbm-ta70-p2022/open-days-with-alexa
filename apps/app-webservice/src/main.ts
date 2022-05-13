@@ -8,15 +8,20 @@ import { fastifyHelmet } from '@fastify/helmet';
 import fastifyCors from '@fastify/cors';
 import fastifyRawBody from 'fastify-raw-body';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { fastifyRequestContextPlugin } from '@fastify/request-context';
 
 (async () => {
-  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter({}), {
     logger: WinstonModule.createLogger({
       transports: [new ConsoleTransport()],
     }),
   });
 
   app.register(fastifyRawBody);
+
+  app.register(fastifyHelmet, { crossOriginResourcePolicy: false });
+
+  app.register(fastifyRequestContextPlugin);
 
   app.register(fastifyCors, {
     origin: process.env.WEBSERVICE_ALLOWED_ORIGIN,
@@ -51,8 +56,6 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
         new ApiDtoValidationError(new Error(error.map((_) => _.constraints).join(','))),
     })
   );
-
-  app.register(fastifyHelmet, { contentSecurityPolicy: false });
 
   await app.listen(Number(process.env.WEBSERVICE_PORT), process.env.WEBSERVICE_HOST);
 
