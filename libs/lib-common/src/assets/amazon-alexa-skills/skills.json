@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "presente moi l'utbm test",
+      "invocationName": "skill test phrase",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -16,67 +16,305 @@
           "samples": []
         },
         {
-          "name": "AMAZON.FallbackIntent",
-          "samples": []
-        },
-        {
-          "name": "GetNewFactIntent",
-          "slots": [
-            {
-              "name": "factType",
-              "type": "FactType"
-            }
-          ],
-          "samples": [
-            "un fait",
-            "un fait {factType}",
-            "dis moi un fait",
-            "dites-moi un fait {factType}",
-            "donne moi un fait",
-            "dis-moi des anecdotes",
-            "dites-moi une anecdote {factType}",
-            "donne moi des anecdotes",
-            "donnez-moi une anecdote {factType}",
-            "donne moi des infos",
-            "donnez-moi des informations {factType}",
-            "dis moi quelque chose",
-            "donne moi quelque chose"
-          ]
-        },
-        {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         },
         {
-          "name": "AddNewFact",
+          "name": "definitionFISA",
           "slots": [
             {
-              "name": "factType",
-              "type": "FactType"
+              "name": "fisaSlot",
+              "type": "FisaSlot"
+            },
+            {
+              "name": "questionsSlot",
+              "type": "QuestionsSlot"
             }
           ],
           "samples": [
-            "ajouter {factType} comme nouveau sujet",
-            "enregistrer {factType} en tant que nouveau sujet",
-            "ajouter {factType} comme sujet favori",
-            "enregistrer {factType} comme sujet favori",
-            "ajouter {factType} comme sujet de fait favori",
-            "enregistrer {factType} en tant que sujet de fait préféré"
+            "Combien de temps devons-nous travailler par semaine",
+            "peut-on avoir des cours le samedi",
+            "Quel est la charge de travail {fisaSlot}",
+            "{fisaSlot} c'est quoi",
+            "quelle est la définition {fisaSlot}",
+            "qu'est ce que l'acronyme {fisaSlot}",
+            "Que veut dire {fisaSlot}",
+            "{fisaSlot}"
+          ]
+        },
+        {
+          "name": "UV",
+          "slots": [
+            {
+              "name": "questionsSlot",
+              "type": "QuestionsSlot"
+            },
+            {
+              "name": "uvSlot",
+              "type": "UvSlot"
+            }
+          ],
+          "samples": [
+            "Que veut dire {uvSlot}",
+            "{questionsSlot} l'acronyme {uvSlot}",
+            "{questionsSlot} {uvSlot}",
+            "{uvSlot}"
           ]
         }
       ],
       "types": [
         {
-          "name": "FactType",
+          "name": "planningSlot",
           "values": [
             {
               "name": {
-                "value": "Espace"
+                "value": "emploi du temps",
+                "synonyms": ["l'emploi du temps", "un emploi du temps"]
               }
             },
             {
               "name": {
-                "value": "Football"
+                "value": "planning",
+                "synonyms": ["un planning", "le planning"]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TimeSlot",
+          "values": [
+            {
+              "name": {
+                "value": "année prochaine",
+                "synonyms": ["de l'année prochaine", "pour l'année prochaine"]
+              }
+            },
+            {
+              "name": {
+                "value": "année",
+                "synonyms": ["pour l'année", "de cette année"]
+              }
+            }
+          ]
+        },
+        {
+          "name": "FisaSlot",
+          "values": [
+            {
+              "name": {
+                "value": "formation apprentie ingénieur informatique"
+              }
+            },
+            {
+              "name": {
+                "value": "formation informatique par apprentissage"
+              }
+            },
+            {
+              "name": {
+                "value": "formation par apprentissage"
+              }
+            },
+            {
+              "name": {
+                "value": "formation apprentie ingénieur"
+              }
+            },
+            {
+              "name": {
+                "value": "apprentissage",
+                "synonyms": ["en apprentissage", "un apprentissage", "l'apprentissage", "de l'apprentissage"]
+              }
+            },
+            {
+              "name": {
+                "value": "formation d'ingénieur sous statut apprentie",
+                "synonyms": [
+                  "formation d'ingénieur sous le statut d'apprentie",
+                  "formation d'ingénieur sous statut d'apprentie",
+                  "formation d'ingénieur sous le statut apprentie",
+                  "FISA",
+                  "de FISA",
+                  "une FISA",
+                  "la FISA",
+                  "pour la FISA",
+                  "de la FISA"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "QuestionsSlot",
+          "values": [
+            {
+              "name": {
+                "value": "a quoi donne accès"
+              }
+            },
+            {
+              "name": {
+                "value": "qu'est ce que donne"
+              }
+            },
+            {
+              "name": {
+                "value": "combien de"
+              }
+            },
+            {
+              "name": {
+                "value": "comment obtenir"
+              }
+            },
+            {
+              "name": {
+                "value": "quel type"
+              }
+            },
+            {
+              "name": {
+                "value": "est-ce que"
+              }
+            },
+            {
+              "name": {
+                "value": "sous quels formes se font"
+              }
+            },
+            {
+              "name": {
+                "value": "quelles sont"
+              }
+            },
+            {
+              "name": {
+                "value": "est-il possible"
+              }
+            },
+            {
+              "name": {
+                "value": "combien de temps"
+              }
+            },
+            {
+              "name": {
+                "value": "peut-on avoir"
+              }
+            },
+            {
+              "name": {
+                "value": "Sous quelle forme se font"
+              }
+            },
+            {
+              "name": {
+                "value": "Comment se passe"
+              }
+            },
+            {
+              "name": {
+                "value": "quelle est",
+                "synonyms": ["quel est"]
+              }
+            },
+            {
+              "name": {
+                "value": "qu'est ce qu'"
+              }
+            },
+            {
+              "name": {
+                "value": "ça consiste en quoi "
+              }
+            },
+            {
+              "name": {
+                "value": "c'est quoi"
+              }
+            },
+            {
+              "name": {
+                "value": "en quoi consiste"
+              }
+            },
+            {
+              "name": {
+                "value": "quelle est la définition de",
+                "synonyms": ["quelle est la définition"]
+              }
+            },
+            {
+              "name": {
+                "value": "quelle est la signification de",
+                "synonyms": ["quelle est la signification"]
+              }
+            },
+            {
+              "name": {
+                "value": "que veut dire",
+                "synonyms": ["ça veut dire quoi", "qu'est ce que veut dire"]
+              }
+            },
+            {
+              "name": {
+                "value": "où ce trouve"
+              }
+            },
+            {
+              "name": {
+                "value": "qu'est ce que"
+              }
+            },
+            {
+              "name": {
+                "value": "quel est le rôle"
+              }
+            },
+            {
+              "name": {
+                "value": "Comment s'organise"
+              }
+            },
+            {
+              "name": {
+                "value": "Pourrais je avoir"
+              }
+            },
+            {
+              "name": {
+                "value": "Je voudrais"
+              }
+            },
+            {
+              "name": {
+                "value": "Donne moi"
+              }
+            },
+            {
+              "name": {
+                "value": "Il y a-t-il"
+              }
+            },
+            {
+              "name": {
+                "value": "est-ce qu'il y a"
+              }
+            },
+            {
+              "name": {
+                "value": "Quel est"
+              }
+            }
+          ]
+        },
+        {
+          "name": "UvSlot",
+          "values": [
+            {
+              "name": {
+                "value": "unité de valeur",
+                "synonyms": ["l'uv", "une uv", "uv", "UV"]
               }
             }
           ]
