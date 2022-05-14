@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - issue/36-write-document-to-update-alexa-skill
     paths:
       - .github/workflows/deploy-skills.yml
       - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
