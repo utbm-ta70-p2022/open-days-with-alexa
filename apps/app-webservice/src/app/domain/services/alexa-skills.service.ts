@@ -20,6 +20,8 @@ export class AlexaSkillsService {
   ): Promise<ResponseEnvelope> {
     let responseEnvelope: ResponseEnvelope;
 
+    Logger.log(`handling Alexa request of type: ${requestEnvelope.request.type}`, requestEnvelope);
+
     try {
       responseEnvelope = await new Promise<ResponseEnvelope>((resolve, reject) => {
         SkillBuilders.custom()
@@ -39,7 +41,7 @@ export class AlexaSkillsService {
         });
       });
     } catch (error) {
-      Logger.error(error);
+      Logger.error(`unable to handle Alexa request`, error);
     }
 
     return responseEnvelope;

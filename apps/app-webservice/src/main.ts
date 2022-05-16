@@ -59,5 +59,5 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
 
   await app.listen(Number(process.env.WEBSERVICE_PORT), process.env.WEBSERVICE_HOST);
 
-  app.get(Logger).log(`Listening ${await app.getUrl()}`);
+  app.get(Logger).log(`listening ${await app.getUrl()}`);
 })();
