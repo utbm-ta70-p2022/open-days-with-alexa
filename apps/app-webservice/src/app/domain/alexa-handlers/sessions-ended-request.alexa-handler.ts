@@ -11,10 +11,10 @@ export class SessionEndedRequestAlexaHandler implements RequestHandler {
   handle(handlerInput: HandlerInput): Response {
     const sessionEndedRequest = handlerInput.requestEnvelope.request as SessionEndedRequest;
     if (sessionEndedRequest.error) {
-      Logger.error(sessionEndedRequest.error.message);
+      Logger.error(`session ended with error: ${sessionEndedRequest.error.message}`, sessionEndedRequest);
+    } else {
+      Logger.log(`session ended with reason: ${sessionEndedRequest.reason}`, sessionEndedRequest);
     }
-
-    Logger.log(`Session ended with reason: ${sessionEndedRequest.reason}`);
 
     return handlerInput.responseBuilder.getResponse();
   }

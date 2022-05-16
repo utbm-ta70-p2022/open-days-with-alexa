@@ -8,12 +8,6 @@ export class HelpIntentAlexaHandler implements RequestHandler {
   }
 
   handle(handlerInput: HandlerInput): Response {
-    const speechText = 'You can ask me the weather!';
-
-    return handlerInput.responseBuilder
-      .speak(speechText)
-      .reprompt(speechText)
-      .withSimpleCard('You can ask me the weather!', speechText)
-      .getResponse();
+    return handlerInput.responseBuilder.speak('TODO').getResponse();
   }
 }
