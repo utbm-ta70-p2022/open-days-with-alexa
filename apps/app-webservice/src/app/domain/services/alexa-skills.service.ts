@@ -9,8 +9,8 @@ import { HelpIntentAlexaHandler } from '../alexa-handlers/help-intent.alexa-hand
 import { CancelAndStopIntentAlexaHandler } from '../alexa-handlers/cancel-and-stop-intent.alexa-handler';
 import { SessionEndedRequestAlexaHandler } from '../alexa-handlers/sessions-ended-request.alexa-handler';
 import { ErrorsAlexaHandler } from '../alexa-handlers/errors.alexa-handler';
-import {FisaInfoAlexaHandler} from '../alexa-handlers/fisa-info.alexa-handler';
-import {ApprentissageInfoAlexaHandler} from '../alexa-handlers/apprentissage-info.alexa-handler';
+import {FisaInfoAlexaHandler} from '../alexa-handlers/fisa.alexa-handler';
+import {ApprentissageInfoAlexaHandler} from '../alexa-handlers/apprentissage.alexa-handler';
 
 @Injectable()
 export class AlexaSkillsService {

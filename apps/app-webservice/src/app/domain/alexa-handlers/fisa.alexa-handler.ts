@@ -2,14 +2,14 @@ import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
 const text = {
-  intentName: "ApprentissageIntent", // french ?
-  speechText: "Voici les informations à propos de l'apprentissage",
+  intentName: "definitionFISA", // check the real intent value
+  speechText: 'Voici les informations à propos de la fisa.',
 }
 
-export class ApprentissageInfoAlexaHandler implements RequestHandler {
+export class FisaInfoAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
     const request = handlerInput.requestEnvelope.request;
-    return request.type === 'IntentRequest' && request.intent.name === text.intentName;
+    return request.type === 'IntentRequest' && request.intent.name === text.intentName ;
   }
 
   handle(handlerInput: HandlerInput): Response {
@@ -18,6 +18,8 @@ export class ApprentissageInfoAlexaHandler implements RequestHandler {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
+      .withSimpleCard("", speechText)
+      .withShouldEndSession(false)
       .getResponse();
   }
 }
