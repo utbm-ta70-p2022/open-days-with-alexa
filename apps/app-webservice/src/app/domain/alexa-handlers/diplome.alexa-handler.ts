@@ -2,11 +2,11 @@ import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
 const text = {
-  intentName: "Apprentissage", // /!\ Malo: check the real intent value to match /!\
-  speechText: "Voici les informations à propos de l'apprentissage.",
+  intentName: "Diplome", // /!\ Malo: check the real intent value to match /!\
+  speechText: "Voici les informations à propos du diplome.",
 }
 
-export class ApprentissageAlexaHandler implements RequestHandler {
+export class DiplomeAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
     const request = handlerInput.requestEnvelope.request;
     return request.type === 'IntentRequest' && request.intent.name === text.intentName;
