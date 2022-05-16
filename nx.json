@@ -36,6 +36,9 @@
     "app-webservice": {
       "tags": []
     },
+    "lib-alexa": {
+      "tags": []
+    },
     "lib-angular": {
       "tags": []
     },

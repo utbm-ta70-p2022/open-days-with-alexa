@@ -8,12 +8,10 @@ export class LaunchRequestAlexaHandler implements RequestHandler {
   }
 
   handle(handlerInput: HandlerInput): Response {
-    const speechText = 'Welcome to your SDK weather skill. Ask me the weather!';
-
     return handlerInput.responseBuilder
-      .speak(speechText)
-      .reprompt(speechText)
-      .withSimpleCard('Welcome to your SDK weather skill. Ask me the weather!', speechText)
+      .speak("Bienvenue à l'UTBM, je suis Alexa, comment puis-je vous aider ?")
+      .reprompt('Comment puis-je vous aider ?')
+      .withSimpleCard('', "L'UTBM vous souhaite la bienvenue !")
       .getResponse();
   }
 }

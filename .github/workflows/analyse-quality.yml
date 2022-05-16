@@ -1,20 +1,11 @@
 name: Analyse quality
+
 on:
   push:
     branches:
       - master
-    paths:
-      - .github/workflows/analyse-quality.yml
-      - sonar-project.properties
-      - apps/**
-      - libs/**
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - .github/workflows/analyse-quality.yml
-      - sonar-project.properties
-      - apps/**
-      - libs/**
 
 concurrency:
   group: analyse-quality-${{ github.ref }}
@@ -28,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
       - name: Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

@@ -35,6 +35,7 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
    |--/app-desktop-electron
    |--/app-webservice
 |--/libs
+   |--/lib-alexa
    |--/lib-angular
    |--/lib-common
    |--/lib-electron
@@ -60,6 +61,11 @@ Ce projet d'application NestJs contient le code source du service web.
 ### 1.4.2. Bibliothèques
 
 Les bibliothèques sont contenues dans le dossier `/libs`
+
+
+**lib-alexa**
+
+Ce projet de bibliothèque contient les ressources liées à Amazon Alexa.
 
 **lib-angular**
 

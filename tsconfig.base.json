@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@libraries/lib-alexa": ["libs/lib-alexa/src/index.ts"],
       "@libraries/lib-angular": ["libs/lib-angular/src/index.ts"],
       "@libraries/lib-common": ["libs/lib-common/src/index.ts"],
       "@libraries/lib-electron": ["libs/lib-electron/src/index.ts"],

@@ -1,11 +1,12 @@
 name: Deploy Alexa skills
+
 on:
   push:
     branches:
       - master
     paths:
       - .github/workflows/deploy-skills.yml
-      - libs/lib-common/src/assets/amazon-alexa-skills/skills.json
+      - libs/lib-alexa/**
 
 concurrency:
   group: deploy-skills
@@ -37,7 +38,7 @@ jobs:
           npm install --global ask-cli@2.27.0
 
       - name: Update Skill Model
-        run: ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR --interaction-model file:libs/lib-common/src/assets/amazon-alexa-skills/skills.json
+        run: ask smapi set-interaction-model -s ${{ secrets.SKILL_ID }} -l fr-FR --interaction-model file:libs/lib-alexa/src/assets/skills.json
 
       - name: Check Skill Status
         run: |

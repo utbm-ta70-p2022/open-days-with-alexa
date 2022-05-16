@@ -1,4 +1,5 @@
 name: Deploy desktop app installers
+
 on:
   push:
     branches:
@@ -8,6 +9,7 @@ on:
       - apps/app-desktop-angular/**
       - apps/app-desktop-electron/**
       - libs/**
+      - '!libs/lib-alexa/**'
 
 concurrency:
   group: deploy-installers
