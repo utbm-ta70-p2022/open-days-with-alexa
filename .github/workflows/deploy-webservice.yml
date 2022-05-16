@@ -1,4 +1,5 @@
 name: Deploy web service
+
 on:
   push:
     branches:
@@ -7,6 +8,7 @@ on:
       - .github/workflows/deploy-webservice.yml
       - apps/app-webservice/**
       - libs/**
+      - '!libs/lib-alexa/**'
 
 concurrency:
   group: deploy-webservice
