@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "informe-moi",
+      "invocationName": "informe moi",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
