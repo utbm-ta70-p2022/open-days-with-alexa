@@ -6,7 +6,7 @@ const text = {
   intentName: "PlanningIntent",
   speechText: "Patientez, le planning que vous avez demandé va s'afficher à l'écran.",
   slotName: "year"
-}
+};
 
 export class PlanningIntentAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
@@ -19,7 +19,7 @@ export class PlanningIntentAlexaHandler implements RequestHandler {
 
   handle(handlerInput: HandlerInput): Response {
     // call heavy client with year parameter
-    const year = handlerInput.requestEnvelope.getSlotValue(handlerInput.requestEvenlope, text.slotName);
+    const year = handlerInput.requestEnvelope.getSlotValue(handlerInput.requestEnvelope, text.slotName);
     // or const year = Alexa.getSlotValue(handlerInput.requestEvenlope, text.slotName);
     const speechText = text.speechText;
 
