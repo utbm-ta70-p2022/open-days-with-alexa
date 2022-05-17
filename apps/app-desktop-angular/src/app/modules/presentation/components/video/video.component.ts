@@ -7,7 +7,7 @@ import { randomInt } from 'crypto';
 })
 export class VideoComponent {
   safeSrc: SafeResourceUrl;
-  repeat?: string;
+  repeat: string = "1"; //1: loop , 0: no loop
   url!: string;
   videoId!: string;
   videoList!: string[];
@@ -19,7 +19,8 @@ export class VideoComponent {
     this.id = Math.floor(Math.random() * (this.videoList.length));
     this.videoId = this.videoList[this.id];
     this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(
-      this.url + this.videoId + "?playlist=" + this.videoId +"&rel=0&enablejsapi=1&loop=1&autoplay=1&controls=0"
+      this.url + this.videoId + "?playlist=" + this.videoId + "&loop=" + this.repeat
+      + "&rel=0&enablejsapi=1&loop=1&autoplay=1&controls=0"
     );
 
 

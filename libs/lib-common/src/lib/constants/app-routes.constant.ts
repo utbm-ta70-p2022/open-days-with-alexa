@@ -9,5 +9,6 @@ export const appRoutes = {
     root: 'presentation',
     textGeneralPresentation: 'text-general-presentation',
     video: 'video',
+    text: 'text'
   },
 };
