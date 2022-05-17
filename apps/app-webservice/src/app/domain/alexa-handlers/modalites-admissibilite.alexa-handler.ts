@@ -2,7 +2,7 @@ import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
 const text = {
-  intentName: "Modalites", // /!\ Malo: check the real intent value to match /!\
+  intentName: "ModaliteAdmissibilite", // /!\ Malo: check the real intent value to match /!\
   speechText: "Voici les informations à propos des modalités d'apprentissage.",
 }
 
