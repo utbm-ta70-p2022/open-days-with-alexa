@@ -11,7 +11,7 @@ import { SessionEndedRequestAlexaHandler } from '../alexa-handlers/sessions-ende
 import { ErrorsAlexaHandler } from '../alexa-handlers/errors.alexa-handler';
 import {FisaAlexaHandler} from '../alexa-handlers/fisa.alexa-handler';
 import {ApprentissageAlexaHandler} from '../alexa-handlers/apprentissage.alexa-handler';
-import { ModalitesAlexaHandler } from '../alexa-handlers/modalites.alexa-handler';
+import { ModalitesAlexaHandler } from '../alexa-handlers/modalites-admissibilite.alexa-handler';
 import { DiplomeAlexaHandler } from '../alexa-handlers/diplome.alexa-handler';
 
 @Injectable()
