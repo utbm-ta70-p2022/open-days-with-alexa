@@ -1,325 +1,844 @@
 {
   "interactionModel": {
-    "languageModel": {
-      "invocationName": "informe moi",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
-        },
-        {
-          "name": "definitionFISA",
-          "slots": [
-            {
-              "name": "fisaSlot",
-              "type": "FisaSlot"
-            },
-            {
-              "name": "questionsSlot",
-              "type": "QuestionsSlot"
-            }
+      "languageModel": {
+          "invocationName": "informe moi",
+          "intents": [
+              {
+                  "name": "AMAZON.CancelIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.HelpIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.StopIntent",
+                  "samples": []
+              },
+              {
+                  "name": "AMAZON.NavigateHomeIntent",
+                  "samples": []
+              },
+              {
+                  "name": "DefinitionFISA",
+                  "slots": [
+                      {
+                          "name": "fisaSlot",
+                          "type": "FisaSlot"
+                      },
+                      {
+                          "name": "questionsFisaSlot",
+                          "type": "QuestionsSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{questionsFisaSlot} sigle {fisaSlot}",
+                      "{questionsFisaSlot} acronyme {fisaSlot}",
+                      "{questionsFisaSlot} {fisaSlot}",
+                      "{fisaSlot} c'est quoi",
+                      "Que veut dire l'acronyme {fisaSlot}",
+                      "Combien de temps devons-nous travailler par semaine",
+                      "peut-on avoir des cours le samedi",
+                      "{fisaSlot}"
+                  ]
+              },
+              {
+                  "name": "UV",
+                  "slots": [
+                      {
+                          "name": "questionsUvSlot",
+                          "type": "QuestionsSlot"
+                      },
+                      {
+                          "name": "uvSlot",
+                          "type": "UvSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{questionsUvSlot} les matières",
+                      "{questionsUvSlot} compétences sont vues",
+                      "{questionsUvSlot} compétences seront acquises",
+                      "{questionsUvSlot} les thème étudiés",
+                      "{questionsUvSlot} les thèmes étudiés en cour",
+                      "{uvSlot} c'est quoi",
+                      "{questionsUvSlot} sigle {uvSlot}",
+                      "Que veut dire {uvSlot}",
+                      "{questionsUvSlot} l'acronyme {uvSlot}",
+                      "{questionsUvSlot} {uvSlot}",
+                      "{uvSlot}"
+                  ]
+              },
+              {
+                  "name": "Apprentissage",
+                  "slots": [
+                      {
+                          "name": "questionsAppSlot",
+                          "type": "QuestionsSlot"
+                      },
+                      {
+                          "name": "apprentissageSlot",
+                          "type": "ApprentissageSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{questionsAppSlot} des partenarias avec des entreprises",
+                      "{questionsAppSlot} des entreprise partenaires",
+                      "Comment puis-je obtenir une entreprise ",
+                      "{apprentissageSlot} c'est quoi",
+                      "{apprentissageSlot}",
+                      "{questionsAppSlot} {apprentissageSlot}"
+                  ]
+              },
+              {
+                  "name": "Examen",
+                  "slots": [
+                      {
+                          "name": "questionsExamSlot",
+                          "type": "QuestionsSlot"
+                      },
+                      {
+                          "name": "examenSlot",
+                          "type": "ExamenSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{questionsExamSlot} il me faut pour avoir {examenSlot}",
+                      "{questionsExamSlot} {examenSlot} sont faits",
+                      "{questionsExamSlot} {examenSlot} sont difficiles",
+                      "{questionsExamSlot} {examenSlot} sont durs",
+                      "{examenSlot}",
+                      "{questionsExamSlot} {examenSlot}"
+                  ]
+              },
+              {
+                  "name": "Diplome",
+                  "slots": [
+                      {
+                          "name": "questionsDiplomeSlot",
+                          "type": "QuestionsSlot"
+                      },
+                      {
+                          "name": "diplomeSlot",
+                          "type": "DiplomeSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{questionsDiplomeSlot} des exemples de métiers",
+                      "{questionsDiplomeSlot} des exemples de métiers avec {diplomeSlot}",
+                      "Quelles métiers sont accessibles avec {diplomeSlot}",
+                      "{questionsDiplomeSlot} les modalités d'optention {diplomeSlot}",
+                      "{questionsDiplomeSlot} {diplomeSlot}",
+                      "{diplomeSlot}"
+                  ]
+              },
+              {
+                  "name": "Planning",
+                  "slots": [
+                      {
+                          "name": "questionsPlanningSlot",
+                          "type": "QuestionsSlot"
+                      },
+                      {
+                          "name": "planningSlot",
+                          "type": "PlanningSlot"
+                      },
+                      {
+                          "name": "timeSlot",
+                          "type": "AMAZON.DATE"
+                      }
+                  ],
+                  "samples": [
+                      "{questionsPlanningSlot} {planningSlot} de {timeSlot}",
+                      "{questionsPlanningSlot} {planningSlot} dans {timeSlot}",
+                      "{questionsPlanningSlot} {planningSlot} pour {timeSlot}",
+                      "{questionsPlanningSlot} {planningSlot} {timeSlot}",
+                      "{questionsPlanningSlot} {planningSlot}",
+                      "{planningSlot}"
+                  ]
+              },
+              {
+                  "name": "CFAI",
+                  "slots": [
+                      {
+                          "name": "questionCFAISlot",
+                          "type": "QuestionsSlot"
+                      },
+                      {
+                          "name": "CfaiSlot",
+                          "type": "CFAISlot"
+                      }
+                  ],
+                  "samples": [
+                      "{questionCFAISlot} du sigle {CfaiSlot}",
+                      "{questionCFAISlot} {CfaiSlot}",
+                      "{CfaiSlot}"
+                  ]
+              },
+              {
+                  "name": "PoursuiteEtude",
+                  "slots": [
+                      {
+                          "name": "formation",
+                          "type": "FormationSlot"
+                      },
+                      {
+                          "name": "questionsFormationSlot",
+                          "type": "QuestionsSlot"
+                      }
+                  ],
+                  "samples": [
+                      "qu'elles doctorats sont possibles avec cette {formation}",
+                      "est ce que ce diplôme donne accès à {formation}",
+                      "puis-je faire un doctorat avec {formation}",
+                      "puis-je faire un doctorat suite à {formation}",
+                      "la FISA donne-t-elle accè à {formation}",
+                      "est-il possible de faire un doctorat avec {formation}",
+                      "puis-je poursuivre mes étude avec {formation}"
+                  ]
+              },
+              {
+                  "name": "ModaliteInternational",
+                  "slots": [
+                      {
+                          "name": "stageEtranger",
+                          "type": "StageEtrangerSlot"
+                      },
+                      {
+                          "name": "questionsStageEtrangerSlot",
+                          "type": "QuestionsSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{questionsStageEtrangerSlot} {stageEtranger}",
+                      "{stageEtranger}",
+                      "quelles sont les aides proposées pour {stageEtranger}",
+                      "comment est ce que je peux trouver {stageEtranger}",
+                      "l'UTBM a-t-elle {stageEtranger}",
+                      "est ce que je peux étudier {stageEtranger}",
+                      "quelles sont les écoles partenaire de l'UTBM",
+                      "puis-je étudier {stageEtranger}",
+                      "quelles sont les modalités pour {stageEtranger}",
+                      "pourquoi {stageEtranger} est nécessaire",
+                      "est-ce que il y a {stageEtranger}",
+                      "Il y a-t-il {stageEtranger}"
+                  ]
+              },
+              {
+                  "name": "CreditECTS",
+                  "slots": [
+                      {
+                          "name": "credits",
+                          "type": "CreditsSlot"
+                      },
+                      {
+                          "name": "questionsCreditsSlot",
+                          "type": "QuestionsSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{credits}",
+                      "{questionsCreditsSlot} {credits}",
+                      "que veut dire l'acronyme {credits}",
+                      "de combien de {credits} ais-je besoin pour valider mon diplôme",
+                      "quelle est la définition {credits}",
+                      "qu'est ce qu' {credits}"
+                  ]
+              },
+              {
+                  "name": "AvisDesEleves",
+                  "slots": [
+                      {
+                          "name": "eleve",
+                          "type": "EleveSlot"
+                      },
+                      {
+                          "name": "questionsEleveSlot",
+                          "type": "QuestionsSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{eleve}",
+                      "{questionsEleveSlot} {eleve}",
+                      "qu'est ce qu'un alumni",
+                      "puis-je contacter {eleve}",
+                      "est ce que je peux avoir des retour sur cette formation",
+                      "quelles sont les retour {eleve}",
+                      "que pense {eleve}"
+                  ]
+              },
+              {
+                  "name": "ModaliteAdmissibilite",
+                  "slots": [
+                      {
+                          "name": "modalite",
+                          "type": "ModaliteSlot"
+                      },
+                      {
+                          "name": "formation",
+                          "type": "FormationSlot"
+                      },
+                      {
+                          "name": "questionsModaliteAdmissibiliteSlot",
+                          "type": "QuestionsSlot"
+                      }
+                  ],
+                  "samples": [
+                      "{modalite}",
+                      "{questionsModaliteAdmissibiliteSlot} {modalite}",
+                      "de quelle formation ais-je besoin pour intégrer {formation}",
+                      "de quelle diplôme ais-je besoin pour intégrer {formation}",
+                      "quelles sont les compétences requises pour {formation}",
+                      "j'ai besoin de quoi pour {formation}",
+                      "de quoi ais-je besoin pour {formation}",
+                      "quelles prérequis sont nécessaires pour {formation}",
+                      "quelles sont {modalite} ",
+                      "quelles sont {modalite} pour {formation}"
+                  ]
+              },
+              {
+                  "name": "AMAZON.NoIntent",
+                  "samples": []
+              }
           ],
-          "samples": [
-            "Combien de temps devons-nous travailler par semaine",
-            "peut-on avoir des cours le samedi",
-            "Quel est la charge de travail {fisaSlot}",
-            "{fisaSlot} c'est quoi",
-            "quelle est la définition {fisaSlot}",
-            "qu'est ce que l'acronyme {fisaSlot}",
-            "Que veut dire {fisaSlot}",
-            "{fisaSlot}"
+          "types": [
+              {
+                  "name": "PlanningSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "emploi du temps",
+                              "synonyms": [
+                                  "l'emploi du temps",
+                                  "un emploi du temps"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "planning",
+                              "synonyms": [
+                                  "un planning",
+                                  "le planning"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "FisaSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "formation apprentie ingénieur informatique"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "formation informatique par apprentissage"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "formation par apprentissage"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "formation apprentie ingénieur"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "formation d'ingénieur sous statut apprentie",
+                              "synonyms": [
+                                  "formation d'ingénieur sous le statut d'apprentie",
+                                  "formation d'ingénieur sous statut d'apprentie",
+                                  "formation d'ingénieur sous le statut apprentie",
+                                  "FISA",
+                                  "de FISA",
+                                  "une FISA",
+                                  "la FISA",
+                                  "pour la FISA",
+                                  "de la FISA"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "QuestionsSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "quelle"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "quelles"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "pourquoi faire"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "l'école possède-t-elle"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "a quoi donne accès"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "qu'est ce que donne"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "combien de"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "comment obtenir"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "quel type"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "est-ce que"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "sous quels formes se font"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "quelles sont"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "est-il possible"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "combien de temps"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "peut-on avoir"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Sous quelle forme se font"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Comment se passe",
+                              "synonyms": [
+                                  "comment se déroule"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "quelle est",
+                              "synonyms": [
+                                  "quel est"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "qu'est ce qu'"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "ça consiste en quoi "
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "c'est quoi"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "en quoi consiste"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "quelle est la définition de",
+                              "synonyms": [
+                                  "quelle est la définition"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "quelle est la signification de",
+                              "synonyms": [
+                                  "quelle est la signification"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "que veut dire",
+                              "synonyms": [
+                                  "ça veut dire quoi",
+                                  "qu'est ce que veut dire"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "où ce trouve"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "qu'est ce que"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "quel est le rôle"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Comment s'organise"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Pourrais je avoir"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Je voudrais"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Donne moi"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Il y a-t-il"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "est-ce qu'il y a"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "Quel est"
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "UvSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "unité de valeur",
+                              "synonyms": [
+                                  "l'uv",
+                                  "une uv",
+                                  "uv",
+                                  "UV"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "ApprentissageSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "apprentissage",
+                              "synonyms": [
+                                  "de l'apprentissage",
+                                  "de l'apprentissage",
+                                  "un apprentissage",
+                                  "l'apprentissage"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "ExamenSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "partiel",
+                              "synonyms": [
+                                  "final",
+                                  "médian"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "note éliminatoire",
+                              "synonyms": [
+                                  "une note éliminatoire",
+                                  "des notes éliminatoires"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "examen",
+                              "synonyms": [
+                                  "les examens",
+                                  "des examens",
+                                  "un examen"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "DiplomeSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "diplôme d'ingénieur en informatique",
+                              "synonyms": [
+                                  "ce diplôme d'ingénieur en informatique",
+                                  "mon diplôme d'ingénieur en informatique",
+                                  "un diplôme d'ingénieur en informatique",
+                                  "le diplôme d'ingénieur en informatique"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "diplôme d'ingénieur",
+                              "synonyms": [
+                                  "ce diplôme d'ingénieur",
+                                  "mon diplôme d'ingénieur",
+                                  "du diplôme d'ingénieur",
+                                  "des diplômes d'ingénieur",
+                                  "les diplômes d'ingénieur",
+                                  "le diplôme d'ingénieur",
+                                  "un diplôme d'ingénieur"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "diplôme",
+                              "synonyms": [
+                                  "ce diplôme",
+                                  "mon diplôme",
+                                  "du diplôme",
+                                  "le diplôme",
+                                  "les diplômes",
+                                  "des diplômes",
+                                  "un  diplôme"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "CFAISlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "Centre de formation des apprentis ingénieurs",
+                              "synonyms": [
+                                  "le CFAI",
+                                  "un CFAI",
+                                  "un Centre de formation des apprentis ingénieurs",
+                                  "le Centre de formation des apprentis ingénieurs",
+                                  "CFAI"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "FormationSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "la recherche"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "des études de recherche"
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "diplôme",
+                              "synonyms": [
+                                  "un diplôme",
+                                  "ce diplôme"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "doctorat",
+                              "synonyms": [
+                                  "un doctorat",
+                                  "aux doctorats"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "formation",
+                              "synonyms": [
+                                  "une formation",
+                                  "cette formation"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "StageEtrangerSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "entreprise à l'international",
+                              "synonyms": [
+                                  "une entreprise à l'international"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "partenaires professionnels international",
+                              "synonyms": [
+                                  "des partenaire professionnel international"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "semestre international",
+                              "synonyms": [
+                                  "un semestre international"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "semestre à l’étranger",
+                              "synonyms": [
+                                  "un semestre à l’étranger"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "mobilité international",
+                              "synonyms": [
+                                  "une mobilité international"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "international",
+                              "synonyms": [
+                                  "à l'international"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "CreditsSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "crédit ECTS",
+                              "synonyms": [
+                                  "ECTS",
+                                  "un ECTS",
+                                  "de crédit ECTS",
+                                  "l’acronyme ECTS",
+                                  "d’un crédit ECTS",
+                                  "des crédits ECTS",
+                                  "un crédit ECTS"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "EleveSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "élèves ingénieurs sur cette formation",
+                              "synonyms": [
+                                  "les élèves ingénieurs sur cette formation",
+                                  "des élèves ingénieurs sur cette formation"
+                              ]
+                          }
+                      },
+                      {
+                          "name": {
+                              "value": "élèves de la formation",
+                              "synonyms": [
+                                  "des élèves de la formation",
+                                  "les élèves de la formation"
+                              ]
+                          }
+                      }
+                  ]
+              },
+              {
+                  "name": "ModaliteSlot",
+                  "values": [
+                      {
+                          "name": {
+                              "value": "modalités d’admissibilités",
+                              "synonyms": [
+                                  "les modalité d'admission",
+                                  "les modalités d’admissibilités"
+                              ]
+                          }
+                      }
+                  ]
+              }
           ]
-        },
-        {
-          "name": "UV",
-          "slots": [
-            {
-              "name": "questionsSlot",
-              "type": "QuestionsSlot"
-            },
-            {
-              "name": "uvSlot",
-              "type": "UvSlot"
-            }
-          ],
-          "samples": [
-            "Que veut dire {uvSlot}",
-            "{questionsSlot} l'acronyme {uvSlot}",
-            "{questionsSlot} {uvSlot}",
-            "{uvSlot}"
-          ]
-        }
-      ],
-      "types": [
-        {
-          "name": "planningSlot",
-          "values": [
-            {
-              "name": {
-                "value": "emploi du temps",
-                "synonyms": ["l'emploi du temps", "un emploi du temps"]
-              }
-            },
-            {
-              "name": {
-                "value": "planning",
-                "synonyms": ["un planning", "le planning"]
-              }
-            }
-          ]
-        },
-        {
-          "name": "TimeSlot",
-          "values": [
-            {
-              "name": {
-                "value": "année prochaine",
-                "synonyms": ["de l'année prochaine", "pour l'année prochaine"]
-              }
-            },
-            {
-              "name": {
-                "value": "année",
-                "synonyms": ["pour l'année", "de cette année"]
-              }
-            }
-          ]
-        },
-        {
-          "name": "FisaSlot",
-          "values": [
-            {
-              "name": {
-                "value": "formation apprentie ingénieur informatique"
-              }
-            },
-            {
-              "name": {
-                "value": "formation informatique par apprentissage"
-              }
-            },
-            {
-              "name": {
-                "value": "formation par apprentissage"
-              }
-            },
-            {
-              "name": {
-                "value": "formation apprentie ingénieur"
-              }
-            },
-            {
-              "name": {
-                "value": "apprentissage",
-                "synonyms": ["en apprentissage", "un apprentissage", "l'apprentissage", "de l'apprentissage"]
-              }
-            },
-            {
-              "name": {
-                "value": "formation d'ingénieur sous statut apprentie",
-                "synonyms": [
-                  "formation d'ingénieur sous le statut d'apprentie",
-                  "formation d'ingénieur sous statut d'apprentie",
-                  "formation d'ingénieur sous le statut apprentie",
-                  "FISA",
-                  "de FISA",
-                  "une FISA",
-                  "la FISA",
-                  "pour la FISA",
-                  "de la FISA"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "QuestionsSlot",
-          "values": [
-            {
-              "name": {
-                "value": "a quoi donne accès"
-              }
-            },
-            {
-              "name": {
-                "value": "qu'est ce que donne"
-              }
-            },
-            {
-              "name": {
-                "value": "combien de"
-              }
-            },
-            {
-              "name": {
-                "value": "comment obtenir"
-              }
-            },
-            {
-              "name": {
-                "value": "quel type"
-              }
-            },
-            {
-              "name": {
-                "value": "est-ce que"
-              }
-            },
-            {
-              "name": {
-                "value": "sous quels formes se font"
-              }
-            },
-            {
-              "name": {
-                "value": "quelles sont"
-              }
-            },
-            {
-              "name": {
-                "value": "est-il possible"
-              }
-            },
-            {
-              "name": {
-                "value": "combien de temps"
-              }
-            },
-            {
-              "name": {
-                "value": "peut-on avoir"
-              }
-            },
-            {
-              "name": {
-                "value": "Sous quelle forme se font"
-              }
-            },
-            {
-              "name": {
-                "value": "Comment se passe"
-              }
-            },
-            {
-              "name": {
-                "value": "quelle est",
-                "synonyms": ["quel est"]
-              }
-            },
-            {
-              "name": {
-                "value": "qu'est ce qu'"
-              }
-            },
-            {
-              "name": {
-                "value": "ça consiste en quoi "
-              }
-            },
-            {
-              "name": {
-                "value": "c'est quoi"
-              }
-            },
-            {
-              "name": {
-                "value": "en quoi consiste"
-              }
-            },
-            {
-              "name": {
-                "value": "quelle est la définition de",
-                "synonyms": ["quelle est la définition"]
-              }
-            },
-            {
-              "name": {
-                "value": "quelle est la signification de",
-                "synonyms": ["quelle est la signification"]
-              }
-            },
-            {
-              "name": {
-                "value": "que veut dire",
-                "synonyms": ["ça veut dire quoi", "qu'est ce que veut dire"]
-              }
-            },
-            {
-              "name": {
-                "value": "où ce trouve"
-              }
-            },
-            {
-              "name": {
-                "value": "qu'est ce que"
-              }
-            },
-            {
-              "name": {
-                "value": "quel est le rôle"
-              }
-            },
-            {
-              "name": {
-                "value": "Comment s'organise"
-              }
-            },
-            {
-              "name": {
-                "value": "Pourrais je avoir"
-              }
-            },
-            {
-              "name": {
-                "value": "Je voudrais"
-              }
-            },
-            {
-              "name": {
-                "value": "Donne moi"
-              }
-            },
-            {
-              "name": {
-                "value": "Il y a-t-il"
-              }
-            },
-            {
-              "name": {
-                "value": "est-ce qu'il y a"
-              }
-            },
-            {
-              "name": {
-                "value": "Quel est"
-              }
-            }
-          ]
-        },
-        {
-          "name": "UvSlot",
-          "values": [
-            {
-              "name": {
-                "value": "unité de valeur",
-                "synonyms": ["l'uv", "une uv", "uv", "UV"]
-              }
-            }
-          ]
-        }
-      ]
-    }
+      }
   }
 }
