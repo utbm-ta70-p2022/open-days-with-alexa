@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared.module';
 import { appRoutes } from '@libraries/lib-common';
-import { Component, OnInit } from '@angular/core';
 import { BlockUiService } from './global/services/block-ui.service';
 import { IpcLogService } from './global/services/ipc-log.service';
 
