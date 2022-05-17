@@ -1,4 +1,4 @@
-import { HandlerInput, RequestHandler } from 'ask-sdk-core';
+import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
 const text = {
@@ -8,8 +8,9 @@ const text = {
 
 export class FisaAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'IntentRequest' && request.intent.name === text.intentName ;
+    const requestEnvelope = handlerInput.requestEnvelope;
+    return getRequestType(requestEnvelope) === 'IntentRequest'
+        && getIntentName(requestEnvelope) === text.intentName;
   }
 
   handle(handlerInput: HandlerInput): Response {
