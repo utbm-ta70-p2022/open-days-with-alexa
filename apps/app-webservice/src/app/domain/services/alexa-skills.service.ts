@@ -31,15 +31,11 @@ export class AlexaSkillsService {
         SkillBuilders.custom()
           .addRequestHandlers(
             new LaunchRequestAlexaHandler(),
-<<<<<<< HEAD
-            new AskWeatherIntentAlexaHandler(),
             new FisaAlexaHandler(),
             new ModalitesAlexaHandler(),
             new DiplomeAlexaHandler(),
             new ApprentissageAlexaHandler(),
-=======
             new UvAlexaHandler(),
->>>>>>> 3e4a27373f1c81a461a7ce300648b59be8cca6dd
             new HelpIntentAlexaHandler(),
             new CancelAndStopIntentAlexaHandler(),
             new SessionEndedRequestAlexaHandler()
