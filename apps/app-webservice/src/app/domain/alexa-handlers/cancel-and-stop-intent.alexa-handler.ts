@@ -11,11 +11,9 @@ export class CancelAndStopIntentAlexaHandler implements RequestHandler {
   }
 
   handle(handlerInput: HandlerInput): Response {
-    const speechText = 'Goodbye!';
-
     return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('Goodbye!', speechText)
+      .speak("L'UTBM vous remercie pour votre visite ! Bonne journée !")
+      .withSimpleCard('', "L'UTBM vous remercie pour votre visite ! Bonne journée !")
       .withShouldEndSession(true)
       .getResponse();
   }

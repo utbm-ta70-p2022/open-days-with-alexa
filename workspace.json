@@ -206,6 +206,30 @@
         }
       }
     },
+    "lib-alexa": {
+      "root": "libs/lib-alexa",
+      "sourceRoot": "libs/lib-alexa/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/lib-alexa",
+            "main": "libs/lib-alexa/src/index.ts",
+            "tsConfig": "libs/lib-alexa/tsconfig.lib.json",
+            "assets": ["libs/lib-alexa/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/lib-alexa/**/*.ts"]
+          }
+        }
+      }
+    },
     "lib-angular": {
       "projectType": "library",
       "root": "libs/lib-angular",

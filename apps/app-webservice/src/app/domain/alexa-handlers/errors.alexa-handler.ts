@@ -15,11 +15,11 @@ export class ErrorsAlexaHandler implements ErrorHandler {
   }
 
   handle(handlerInput: HandlerInput, error: Error): Response {
-    Logger.error(`Error handled: ${error.message}`);
+    Logger.log(`handling Alexa error: ${error.message}`, error);
 
     return handlerInput.responseBuilder
-      .speak("Sorry, I don't understand your command. Please say it again.")
-      .reprompt("Sorry, I don't understand your command. Please say it again.")
+      .speak("Je n'ai pas compris votre commande. Je vous invite à la répéter.")
+      .reprompt("Je n'ai pas compris votre commande. Je vous invite à la répéter.")
       .getResponse();
   }
 }
