@@ -10,7 +10,7 @@ export class CfaiOrganizationAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
     return getRequestType(requestEnvelope) === 'IntentRequest' &&
-     getIntentName(requestEnvelope) === intents.CFAI.name;
+     getIntentName(requestEnvelope) === intents.cfai.name;
   }
 
   handle(handlerInput: HandlerInput): Response {

@@ -1,4 +1,4 @@
-import { HandlerInput, RequestHandler, getSlotValue, getIntentName, getRequestType} from 'ask-sdk-core';
+import { HandlerInput, RequestHandler, getSlotValue, getIntentName, getRequestType } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 
@@ -9,13 +9,14 @@ const text = {
 export class PlanningIntentAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
-    return getRequestType(requestEnvelope) === 'IntentRequest' &&
-     getIntentName(requestEnvelope) === intents.Planning.name;
+    return (
+      getRequestType(requestEnvelope) === 'IntentRequest' && getIntentName(requestEnvelope) === intents.planning.name
+    );
   }
 
   handle(handlerInput: HandlerInput): Response {
     // call heavy client with year parameter
-    const year = getSlotValue(handlerInput.requestEnvelope, intents.Planning.slot.name);
+    const year = getSlotValue(handlerInput.requestEnvelope, intents.planning.slot.name);
 
     const speechText = text.speechText;
 
