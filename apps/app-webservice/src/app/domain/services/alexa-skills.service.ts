@@ -2,7 +2,6 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InformationsService } from './informations.service';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { SkillBuilders } from 'ask-sdk-core';
-import { IncomingHttpHeaders } from 'http';
 import { LaunchRequestAlexaHandler } from '../alexa-handlers/launch-request.alexa-handler';
 import { UvAlexaHandler } from '../alexa-handlers/uv.alexa-handler';
 import { HelpIntentAlexaHandler } from '../alexa-handlers/help-intent.alexa-handler';

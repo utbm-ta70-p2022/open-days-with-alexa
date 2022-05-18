@@ -169,7 +169,14 @@
             "outputPath": "dist/apps/app-webservice",
             "main": "apps/app-webservice/src/main.ts",
             "tsConfig": "apps/app-webservice/tsconfig.app.json",
-            "assets": ["apps/app-webservice/src/assets"]
+            "assets": [
+              "apps/app-webservice/src/assets",
+              {
+                "glob": "**",
+                "input": "libs/lib-common/src/assets/",
+                "output": "assets/"
+              }
+            ]
           },
           "configurations": {
             "development": {},
