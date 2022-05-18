@@ -31,7 +31,7 @@ export class WebsocketService {
     });
 
     this._socket.on(apiGateways.disconnect, () => {
-      this._toastMessageService.showError('Disconnected from the server');
+      this._toastMessageService.showError('Serveur Open days with Alexa déconnecté', 'Déconnecté');
     });
 
     this._socket.on(apiGateways.events, (event: BaseWebsocketEvent) => {
@@ -40,7 +40,7 @@ export class WebsocketService {
 
     await new Promise<void>((resolve) => {
       this._socket.on(apiGateways.connect, () => {
-        this._toastMessageService.showSuccess('Connected to the server');
+        this._toastMessageService.showSuccess('Serveur Open days with Alexa connecté', 'Connecté');
         resolve;
       });
     });
