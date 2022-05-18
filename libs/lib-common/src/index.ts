@@ -2,6 +2,7 @@ export * from './lib/constants/api-gateways.constant';
 export * from './lib/constants/api-routes.constant';
 export * from './lib/constants/app-routes.constant';
 export * from './lib/constants/default-settings.constant';
+export * from './lib/constants/information-ids.constant';
 export * from './lib/constants/information.constant';
 export * from './lib/constants/ipc-channels.constant';
 
