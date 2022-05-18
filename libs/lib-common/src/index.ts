@@ -21,6 +21,7 @@ export * from './lib/models/ipc-response.model';
 export * from './lib/models/log.model';
 export * from './lib/models/proxy-settings.model';
 export * from './lib/models/settings.model';
+export * from './lib/models/text-information.model';
 
 export * from '../../lib-common/src/lib/websocket-events/base.websocket-event';
 export * from '../../lib-common/src/lib/websocket-events/present-information.websocket-event';

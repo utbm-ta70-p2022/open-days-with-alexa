@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ImageInformationModel, information } from '@libraries/lib-common';
-import { InformationNotFoundError } from '../errors/information-not-found.error';
+import { ImageInformationModel, information, TextInformationModel } from '@libraries/lib-common';
+import { InformationNotFoundError } from '../errors/information-not-handled.error';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,10 @@ export class PresentationService {
 
     if (item instanceof ImageInformationModel) {
       console.log(`display image from url: ${item.url}`);
+    } else if (item instanceof TextInformationModel) {
+      console.log(`display text: ${item.text}`);
+    } else {
+      throw new InformationNotHandledError();
     }
   }
 }
