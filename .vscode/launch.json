@@ -2,7 +2,21 @@
   "configurations": [
     {
       "command": "npm start",
-      "name": "Debug",
+      "name": "development-all",
+      "request": "launch",
+      "type": "node-terminal",
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
+    },
+    {
+      "command": "npm run start:app-desktop",
+      "name": "development-app-desktop",
+      "request": "launch",
+      "type": "node-terminal",
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
+    },
+    {
+      "command": "npm run start:app-webservice",
+      "name": "development-app-webservice",
       "request": "launch",
       "type": "node-terminal",
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]

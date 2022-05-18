@@ -1,8 +1,19 @@
 name: Deploy web service
+
 on:
   push:
     branches:
       - master
+    paths:
+      - .github/workflows/deploy-webservice.yml
+      - apps/app-webservice/**
+      - libs/**
+      - '!libs/lib-alexa/**'
+
+concurrency:
+  group: deploy-webservice
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: Deploy

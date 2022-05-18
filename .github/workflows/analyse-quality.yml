@@ -1,10 +1,16 @@
 name: Analyse quality
+
 on:
   push:
     branches:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
+
+concurrency:
+  group: analyse-quality-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   analyse:
     name: Analyse
@@ -13,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
       - name: Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

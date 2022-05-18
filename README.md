@@ -1,41 +1,18 @@
 **Open days with Alexa**
 
-# 1. Généralités
+[Voir la documentation](https://utbm-ta70-p2022.github.io/open-days-with-alexa/)
 
-La solution « Open days with Alexa » a pour vocation d'automatiser la présentation des informations relatives à l'UTBM aux visiteurs lors de journées portes ouvertes.
+## 1. Généralités
 
-## 1.1. Documentation
-
-La documentation utilisateur ici : https://utbm-ta70-p2022.github.io/open-days-with-alexa/
-
-## 1.2. Versions
+## 1.1. Versions
 
 Les informations sur les différentes versions sont regroupées dans le fichier `CHANGELOG.md`
 
-## 1.3. Qualité
-
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=utbm-ta70-p2022_open-days-with-alexa)](https://sonarcloud.io/summary/new_code?id=utbm-ta70-p2022_open-days-with-alexa)
+## 1.2. Qualité
 
 Le rapport de qualité du code de la solution est disponible ici : https://sonarcloud.io/project/overview?id=utbm-ta70-p2022_open-days-with-alexa
 
-## 1.4. Équipe de développement
-
-**Projet Présentation**
-
-* BERTRAND Loïc
-* DELIGNOU Quentin
-* LUNG Axel
-* VIENNET Joris
-
-**Projet Alexa**
-
-* BARDET Benjamin
-* DUPORT Anthony
-* LEDOYEN Baptiste
-* LEMESTRE Malo
-* PINON Matthis
-
-## 1.5. Stack technologique
+## 1.3. Stack technologique
 
 - Environnement de développement multi-plateformes : [Electron](https://www.electronjs.org/)
 - Langage de programmation : [TypeScript](https://www.typescriptlang.org/)
@@ -47,7 +24,7 @@ Le rapport de qualité du code de la solution est disponible ici : https://sonar
 - Framework  CSS : [PrimeFlex](https://www.primefaces.org/primeflex/display)
 - Pack d'icônes : [Font Awesome](https://fontawesome.com/)
 
-## 1.6. Présentation de l'architecture
+## 1.4. Présentation de l'architecture
 
 La solution est organisée par un espace de travail Nx tel que l'arborescence présentée ci-dessous :
 
@@ -58,13 +35,14 @@ La solution est organisée par un espace de travail Nx tel que l'arborescence pr
    |--/app-desktop-electron
    |--/app-webservice
 |--/libs
+   |--/lib-alexa
    |--/lib-angular
    |--/lib-common
    |--/lib-electron
    |--/lib-nestjs
 ```
 
-### 1.6.1. Applications
+### 1.4.1. Applications
 
 Les applications sont contenues dans le dossier `/apps`
 
@@ -80,9 +58,14 @@ Ce projet d'application Electron contient le code source de l'application de bur
 
 Ce projet d'application NestJs contient le code source du service web.
 
-### 1.6.2. Bibliothèques
+### 1.4.2. Bibliothèques
 
 Les bibliothèques sont contenues dans le dossier `/libs`
+
+
+**lib-alexa**
+
+Ce projet de bibliothèque contient les ressources liées à Amazon Alexa.
 
 **lib-angular**
 
@@ -106,7 +89,7 @@ Ce projet de bibliothèque NestJS contient le code source qui peut s'exécuter d
 
 Il existe 5 types d'issues :
 
-* **User story** : Demande de fonctionnalité formulée tel que : « En tant que x, je souhaite x »
+* **User story** : Demande de fonctionnalité formulée tel que : « En tant que x, je souhaite y, afin de z »
 * **Documentation** : Demande de documentation
 * **Conception** : Demande de conception
 * **Bug** : Demande de résolution de bug
@@ -116,26 +99,20 @@ Il existe 5 types d'issues :
 
 ## 2.2. Principaux scripts
 
-* `npm start` : démarrer l'application en mode de développement
+* `npm install` : installer les dépendances de la solution
+* `npm start` : démarrer la solution en mode de développement
 
 ## 2.3. Procédure d'implémentation d'une issue
 
 0. Créer un fichier .env en racine de l'espace de travail et le compléter avec les valeurs de développement local :
 
    ```env
-   WEBSERVICE_JWT_SECRET="secret"
-   WEBSERVICE_JWT_EXPIRATION_TIME="48h"
-   WEBSERVICE_SCHEMA="http"
-   WEBSERVICE_HOST="localhost"
+   WEBSERVICE_JWT_SECRET=secret
+   WEBSERVICE_JWT_EXPIRATION_TIME=48h
+   WEBSERVICE_HOST=localhost
    WEBSERVICE_PORT=3333
-   WEBSERVICE_NAME="Open days with Alexa Api"
-   WEBSERVICE_ALLOWED_ORIGINS=""
-   WEBSERVICE_DATABASE_TYPE="mariadb"
-   WEBSERVICE_DATABASE_HOST=""
-   WEBSERVICE_DATABASE_PORT=""
-   WEBSERVICE_DATABASE_LOGIN=""
-   WEBSERVICE_DATABASE_PASSWORD=""
-   WEBSERVICE_DATABASE_NAME=""
+   WEBSERVICE_NAME=Open days with Alexa Api
+   WEBSERVICE_ALLOWED_ORIGIN=*
    ```
 
 1. Se rendre sur la liste des issues du projet :

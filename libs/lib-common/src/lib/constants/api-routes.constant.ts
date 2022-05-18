@@ -1,6 +1,10 @@
 export const apiRoutes = {
+  alexaSkills: {
+    root: 'alexaSkills',
+  },
   exemples: {
     root: 'examples',
-    retrieve: 'retrieve'
+    retrieveOne: 'retrieveOne',
+    sendMessageToWebsocketClients: 'sendMessageToWebsocketClients',
   },
 };

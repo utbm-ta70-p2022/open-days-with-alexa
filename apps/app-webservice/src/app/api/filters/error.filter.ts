@@ -1,6 +1,4 @@
-import { InfrastructureError } from '../../../../../../libs/lib-nestjs/src/lib/errors/infrastructure.error';
-import { ApiError } from '../../../../../../libs/lib-nestjs/src/lib/errors/api.error';
-import { DomainError } from '../../../../../../libs/lib-nestjs/src/lib/errors/domain.error';
+import { ApiError, DomainError, InfrastructureError } from '@libraries/lib-nestjs';
 import { Logger, Catch, ExceptionFilter, ArgumentsHost, HttpStatus, UnauthorizedException } from '@nestjs/common';
 import { I18nRequestScopeService } from 'nestjs-i18n';
 import { HttpAdapterHost } from '@nestjs/core';

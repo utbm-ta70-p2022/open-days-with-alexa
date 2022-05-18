@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
   }
 }
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -52,7 +51,7 @@ export class AppComponent implements OnInit {
         },
         {
           path: appRoutes.presentation.root,
-          loadChildren: () => import('./modules/presentation/presentation.module').then((m) => m.PresentationModule),
+          loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
         },
         {
           path: appRoutes.settings.root,

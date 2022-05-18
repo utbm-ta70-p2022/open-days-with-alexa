@@ -2,7 +2,7 @@ import { Menu, nativeImage, Tray } from 'electron';
 import { join } from 'path';
 import { environment } from '../../environments/environment';
 import App from '../app';
-import { SettingsWindow } from '../windows/settings.window';
+import { MainWindow } from '../windows/main.window';
 
 export class MainTray extends Tray {
   constructor() {
@@ -11,8 +11,8 @@ export class MainTray extends Tray {
     this.setContextMenu(
       Menu.buildFromTemplate([
         {
-          label: 'Settings',
-          click: () => App.loadWindow(SettingsWindow),
+          label: 'Show application',
+          click: () => App.loadWindow(MainWindow),
         },
         {
           label: 'Exit application',

@@ -8,8 +8,7 @@ import { BaseWindow } from './windows/base.window';
 import { Connection } from 'typeorm';
 import { AppDatabaseConnectionConfiguration } from './configurations/app-database-connection.configuration';
 import { AppBackgroundtask } from './backgroundtasks/app.backgroundtask';
-import { SettingsWindow } from './windows/settings.window';
-import { PresentationWindow } from './windows/presentation.window';
+import { MainWindow } from './windows/main.window';
 
 export default class App {
   static windowContainers: WindowContainerModel[] = [];
@@ -44,7 +43,7 @@ export default class App {
     App.loadWindow(StartupWindow);
     await TimeoutHelper.wait(3000);
     App.unloadAllWindows(StartupWindow);
-    App.loadWindow(PresentationWindow);
+    App.loadWindow(MainWindow);
   }
 
   public static loadWindow(windowType: new () => BaseWindow, loadNewWindow = false) {
