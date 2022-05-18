@@ -14,10 +14,7 @@ import { ErrorsAlexaHandler } from '../alexa-handlers/errors.alexa-handler';
 export class AlexaSkillsService {
   constructor(private readonly _informationsService: InformationsService) {}
 
-  async handleRequest(
-    requestHeaders: IncomingHttpHeaders,
-    requestEnvelope: RequestEnvelope
-  ): Promise<ResponseEnvelope> {
+  async handleRequest(requestEnvelope: RequestEnvelope): Promise<ResponseEnvelope> {
     let responseEnvelope: ResponseEnvelope;
 
     Logger.log(`handling Alexa request of type: ${requestEnvelope.request.type}`, requestEnvelope);

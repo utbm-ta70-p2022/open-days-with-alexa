@@ -1,11 +1,19 @@
-import { requestContext } from '@fastify/request-context';
-import { Injectable, CanActivate, Logger, ExecutionContext } from '@nestjs/common';
-import { Observable } from 'rxjs';
+import { ExecutionContext, CanActivate, Injectable, Logger } from '@nestjs/common';
+import { SkillRequestSignatureVerifier, TimestampVerifier } from 'ask-sdk-express-adapter';
 
 @Injectable()
 export class AlexaGuard implements CanActivate {
-  canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
-    Logger.warn(context);
+  async canActivate(context: ExecutionContext): Promise<boolean> {
+    const headers = context.switchToHttp().getRequest().headers;
+    const rawBody = context.switchToHttp().getRequest().rawBody;
+
+    try {
+      await new SkillRequestSignatureVerifier().verify(rawBody, headers);
+      await new TimestampVerifier().verify(rawBody);
+    } catch (error) {
+      Logger.error(error.message);
+    }
+
     return true;
   }
 }

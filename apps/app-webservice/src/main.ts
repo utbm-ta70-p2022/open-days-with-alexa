@@ -11,17 +11,27 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { fastifyRequestContextPlugin } from '@fastify/request-context';
 
 (async () => {
-  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter({}), {
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
     logger: WinstonModule.createLogger({
       transports: [new ConsoleTransport()],
     }),
   });
 
-  // app.register(fastifyRawBody);
+  app.register(fastifyRawBody);
 
-  // app.register(fastifyHelmet, { contentSecurityPolicy: false });
+  app.register(fastifyHelmet, {
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: [`'self'`],
+        styleSrc: [`'self'`, `'unsafe-inline'`],
+        imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
+        scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+  });
 
-  // app.register(fastifyRequestContextPlugin);
+  app.register(fastifyRequestContextPlugin);
 
   app.register(fastifyCors, {
     origin: process.env.WEBSERVICE_ALLOWED_ORIGIN,
@@ -32,6 +42,7 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
       'Content-Type',
       'Authorization',
       'Access-Control-Allow-Origin',
+      'Cross-Origin-Resource-Policy',
     ],
     methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
   });
@@ -45,7 +56,6 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
         .setTitle(process.env.WEBSERVICE_NAME)
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         .setVersion(require('../../../package.json').version)
-        .addBearerAuth()
         .build()
     )
   );
