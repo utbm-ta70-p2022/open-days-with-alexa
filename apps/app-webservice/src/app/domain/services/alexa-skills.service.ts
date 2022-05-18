@@ -8,6 +8,8 @@ import { HelpIntentAlexaHandler } from '../alexa-handlers/help-intent.alexa-hand
 import { CancelAndStopIntentAlexaHandler } from '../alexa-handlers/cancel-and-stop-intent.alexa-handler';
 import { SessionEndedRequestAlexaHandler } from '../alexa-handlers/sessions-ended-request.alexa-handler';
 import { ErrorsAlexaHandler } from '../alexa-handlers/errors.alexa-handler';
+import { PlanningIntentAlexaHandler } from '../alexa-handlers/planning-intent.alexa-handler';
+import { CfaiOrganizationAlexaHandler } from '../alexa-handlers/cfai-organization-intent.alexa-handler';
 
 @Injectable()
 export class AlexaSkillsService {
@@ -23,6 +25,9 @@ export class AlexaSkillsService {
         SkillBuilders.custom()
           .addRequestHandlers(
             new LaunchRequestAlexaHandler(),
+            new PlanningIntentAlexaHandler(),
+            new CfaiOrganizationAlexaHandler(),
+            // above add your instance
             new UvAlexaHandler(),
             new HelpIntentAlexaHandler(),
             new CancelAndStopIntentAlexaHandler(),
