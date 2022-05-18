@@ -25,8 +25,8 @@ export class AlexaSkillsService {
         SkillBuilders.custom()
           .addRequestHandlers(
             new LaunchRequestAlexaHandler(),
-            new PlanningIntentAlexaHandler(),
-            new CfaiOrganizationAlexaHandler(),
+            new PlanningIntentAlexaHandler(this._informationsService),
+            new CfaiOrganizationAlexaHandler(this._informationsService),
             // above add your instance
             new UvAlexaHandler(),
             new HelpIntentAlexaHandler(),
