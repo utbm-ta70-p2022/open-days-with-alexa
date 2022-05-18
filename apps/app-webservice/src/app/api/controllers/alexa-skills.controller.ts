@@ -3,7 +3,7 @@ import { Body, Controller, Post, Headers, HttpCode, HttpStatus, UseGuards } from
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { AlexaSkillsService } from '../../domain/services/alexa-skills.service';
-import { AlexaGuard } from '../guards/alexa.guard';
+import { AlexaRequestVerifierGuard } from '../guards/alexa-request-verifier.guard';
 
 @ApiTags(apiRoutes.alexaSkills.root)
 @Controller(apiRoutes.alexaSkills.root)
@@ -13,7 +13,7 @@ export class AlexaSkillsController {
   @Post()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'listens Alexa requests' })
-  @UseGuards(AlexaGuard)
+  @UseGuards(AlexaRequestVerifierGuard)
   async listenAlexaRequests(@Body() requestEnvelope: RequestEnvelope): Promise<ResponseEnvelope> {
     return await this._alexaSkillsService.handleRequest(requestEnvelope);
   }

@@ -8,7 +8,8 @@ import { fastifyHelmet } from '@fastify/helmet';
 import fastifyCors from '@fastify/cors';
 import fastifyRawBody from 'fastify-raw-body';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { fastifyRequestContextPlugin } from '@fastify/request-context';
+import { fastifyStatic } from '@fastify/static';
+import { join } from 'path';
 
 (async () => {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
@@ -31,8 +32,6 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
     crossOriginEmbedderPolicy: false,
   });
 
-  app.register(fastifyRequestContextPlugin);
-
   app.register(fastifyCors, {
     origin: process.env.WEBSERVICE_ALLOWED_ORIGIN,
     allowedHeaders: [
@@ -45,6 +44,12 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
       'Cross-Origin-Resource-Policy',
     ],
     methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
+  });
+
+  app.register(fastifyStatic, {
+    root: join(__dirname, 'assets'),
+    prefix: '/assets',
+    list: true,
   });
 
   SwaggerModule.setup(
