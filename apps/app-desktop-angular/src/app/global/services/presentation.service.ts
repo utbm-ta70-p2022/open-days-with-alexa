@@ -2,17 +2,13 @@ import { Injectable } from '@angular/core';
 import { ImageInformationModel, information, TextInformationModel } from '@libraries/lib-common';
 import { InformationNotFoundError } from '../errors/information-not-found.error copy';
 import { InformationNotHandledError } from '../errors/information-not-handled.error';
-import { ToastMessageService } from './toast-message.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PresentationService {
-  constructor(private readonly _toast: ToastMessageService) {}
-
   present(id: string) {
     const item = information.find((_) => (_.id = id));
-    this._toast.showSuccess('LOIC T BO');
     if (!item) {
       throw new InformationNotFoundError();
     }
