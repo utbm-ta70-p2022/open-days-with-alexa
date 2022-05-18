@@ -1,14 +1,41 @@
 export const intents = {
-  "definitionFISA": {
-    name: 'definitionFISA',
+  definitionFISA: {
+    name: 'DefinitionFISA',
   },
-  "Planning": {
-    name: "Planning",
+  uv: {
+    name: 'UV',
+  },
+  apprentissage: {
+    name: 'Apprentissage',
+  },
+  examen: {
+    name: 'Examen',
+  },
+  diplome: {
+    name: 'Diplome',
+  },
+  planning: {
+    name: 'Planning',
     slot: {
-      name:"timeSlot"
+      name: 'timeSlot',
     },
   },
-  "CFAI": {
-    name: "CFAI",
+  cfai: {
+    name: 'CFAI',
+  },
+  poursuiteEtude: {
+    name: 'PoursuiteEtude',
+  },
+  modaliteInternational: {
+    name: 'ModaliteInternational',
+  },
+  creditEcts: {
+    name: 'CreditECTS',
+  },
+  avisEleves: {
+    name: 'AvisDesEleves',
+  },
+  modaliteAdmissibilite: {
+    name: 'ModaliteAdmissibilite',
   },
 };
