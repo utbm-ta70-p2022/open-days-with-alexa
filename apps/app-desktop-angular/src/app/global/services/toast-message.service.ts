@@ -7,19 +7,19 @@ import { MessageService } from 'primeng/api';
 export class ToastMessageService {
   constructor(private readonly _messageService: MessageService) {}
 
-  showSuccess(message: string) {
-    this._messageService.add({ key: 'global-toast', severity: 'success', summary: 'Success', detail: message });
+  showSuccess(message: string, title = 'Success') {
+    this._messageService.add({ key: 'global-toast', severity: 'success', summary: title, detail: message });
   }
 
-  showInfo(message: string) {
-    this._messageService.add({ key: 'global-toast', severity: 'info', summary: 'Information', detail: message });
+  showInfo(message: string, title = 'Information') {
+    this._messageService.add({ key: 'global-toast', severity: 'info', summary: title, detail: message });
   }
 
-  showWarning(message: string) {
-    this._messageService.add({ key: 'global-toast', severity: 'warn', summary: 'Warning', detail: message });
+  showWarning(message: string, title = 'Warning') {
+    this._messageService.add({ key: 'global-toast', severity: 'warn', summary: title, detail: message });
   }
 
-  showError(message: string) {
-    this._messageService.add({ key: 'global-toast', severity: 'error', summary: 'Error', detail: message });
+  showError(message: string, title = 'Error') {
+    this._messageService.add({ key: 'global-toast', severity: 'error', summary: title, detail: message });
   }
 }

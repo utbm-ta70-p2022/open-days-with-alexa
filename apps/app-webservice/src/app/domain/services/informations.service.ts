@@ -1,6 +1,6 @@
 import {
   InformationModel,
-  informations,
+  information,
   PresentInformationWebsocketEvent,
   WebsocketEventType,
 } from '@libraries/lib-common';
@@ -13,21 +13,19 @@ export class InformationsService {
   constructor(private readonly _mainGateway: MainGateway) {}
 
   async retrieve(id: string): Promise<InformationModel> {
-    const information = informations.find((_) => _.id == id);
+    const informationItem = information.find((_) => _.id == id);
 
     if (!information) {
       throw new EntityNotFoundError({ type: InformationModel.constructor.name });
     }
 
-    return information;
+    return informationItem;
   }
 
   async present(id: string): Promise<void> {
-    const information = await this.retrieve(id);
-
     this._mainGateway.emitEvent<PresentInformationWebsocketEvent>({
       type: WebsocketEventType.PresentInformation,
-      information: information,
+      informationId: id,
     });
   }
 }

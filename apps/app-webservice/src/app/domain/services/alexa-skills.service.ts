@@ -2,7 +2,6 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InformationsService } from './informations.service';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { SkillBuilders } from 'ask-sdk-core';
-import { IncomingHttpHeaders } from 'http';
 import { LaunchRequestAlexaHandler } from '../alexa-handlers/launch-request.alexa-handler';
 import { UvAlexaHandler } from '../alexa-handlers/uv.alexa-handler';
 import { HelpIntentAlexaHandler } from '../alexa-handlers/help-intent.alexa-handler';
@@ -13,15 +12,14 @@ import {FisaAlexaHandler} from '../alexa-handlers/fisa.alexa-handler';
 import {ApprentissageAlexaHandler} from '../alexa-handlers/apprentissage.alexa-handler';
 import { ModalitesAlexaHandler } from '../alexa-handlers/modalites-admissibilite.alexa-handler';
 import { DiplomeAlexaHandler } from '../alexa-handlers/diplome.alexa-handler';
+import { PlanningIntentAlexaHandler } from '../alexa-handlers/planning-intent.alexa-handler';
+import { CfaiOrganizationAlexaHandler } from '../alexa-handlers/cfai-organization-intent.alexa-handler';
 
 @Injectable()
 export class AlexaSkillsService {
   constructor(private readonly _informationsService: InformationsService) {}
 
-  async handleRequest(
-    requestHeaders: IncomingHttpHeaders,
-    requestEnvelope: RequestEnvelope
-  ): Promise<ResponseEnvelope> {
+  async handleRequest(requestEnvelope: RequestEnvelope): Promise<ResponseEnvelope> {
     let responseEnvelope: ResponseEnvelope;
 
     Logger.log(`handling Alexa request of type: ${requestEnvelope.request.type}`, requestEnvelope);
@@ -35,6 +33,9 @@ export class AlexaSkillsService {
             new ModalitesAlexaHandler(),
             new DiplomeAlexaHandler(),
             new ApprentissageAlexaHandler(),
+            new PlanningIntentAlexaHandler(this._informationsService),
+            new CfaiOrganizationAlexaHandler(this._informationsService),
+            // above add your instance
             new UvAlexaHandler(),
             new HelpIntentAlexaHandler(),
             new CancelAndStopIntentAlexaHandler(),

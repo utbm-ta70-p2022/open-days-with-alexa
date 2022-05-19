@@ -8,20 +8,29 @@ import { fastifyHelmet } from '@fastify/helmet';
 import fastifyCors from '@fastify/cors';
 import fastifyRawBody from 'fastify-raw-body';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { fastifyRequestContextPlugin } from '@fastify/request-context';
+import { fastifyStatic } from '@fastify/static';
+import { join } from 'path';
 
 (async () => {
-  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter({}), {
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(), {
     logger: WinstonModule.createLogger({
       transports: [new ConsoleTransport()],
     }),
   });
 
-  // app.register(fastifyRawBody);
+  app.register(fastifyRawBody);
 
-  // app.register(fastifyHelmet, { contentSecurityPolicy: false });
-
-  // app.register(fastifyRequestContextPlugin);
+  app.register(fastifyHelmet, {
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: [`'self'`],
+        styleSrc: [`'self'`, `'unsafe-inline'`],
+        imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
+        scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+  });
 
   app.register(fastifyCors, {
     origin: process.env.WEBSERVICE_ALLOWED_ORIGIN,
@@ -32,8 +41,15 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
       'Content-Type',
       'Authorization',
       'Access-Control-Allow-Origin',
+      'Cross-Origin-Resource-Policy',
     ],
     methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
+  });
+
+  app.register(fastifyStatic, {
+    root: join(__dirname, 'assets'),
+    prefix: '/assets',
+    list: true,
   });
 
   SwaggerModule.setup(
@@ -45,7 +61,6 @@ import { fastifyRequestContextPlugin } from '@fastify/request-context';
         .setTitle(process.env.WEBSERVICE_NAME)
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         .setVersion(require('../../../package.json').version)
-        .addBearerAuth()
         .build()
     )
   );

@@ -5,11 +5,13 @@ import { ToastMessageService } from './toast-message.service';
 import {
   apiGateways,
   BaseWebsocketEvent,
+  PresentInformationWebsocketEvent,
   SendMessageWebsocketEvent,
   TestWebsocketEvent,
   WebsocketEventType,
 } from '@libraries/lib-common';
 import { ApiError } from '@libraries/lib-nestjs';
+import { PresentationService } from './presentation.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,10 @@ import { ApiError } from '@libraries/lib-nestjs';
 export class WebsocketService {
   private _socket: Socket;
 
-  constructor(private readonly _toastMessageService: ToastMessageService) {}
+  constructor(
+    private readonly _toastMessageService: ToastMessageService,
+    private readonly _presentationService: PresentationService
+  ) {}
 
   async connect(): Promise<void> {
     if (this._socket) {
@@ -31,7 +36,7 @@ export class WebsocketService {
     });
 
     this._socket.on(apiGateways.disconnect, () => {
-      this._toastMessageService.showError('Disconnected from the server');
+      this._toastMessageService.showError('Serveur Open days with Alexa déconnecté', 'Déconnecté');
     });
 
     this._socket.on(apiGateways.events, (event: BaseWebsocketEvent) => {
@@ -40,7 +45,7 @@ export class WebsocketService {
 
     await new Promise<void>((resolve) => {
       this._socket.on(apiGateways.connect, () => {
-        this._toastMessageService.showSuccess('Connected to the server');
+        this._toastMessageService.showSuccess('Serveur Open days with Alexa connecté', 'Connecté');
         resolve;
       });
     });
@@ -53,6 +58,10 @@ export class WebsocketService {
         break;
       case WebsocketEventType.SendMessage:
         this._toastMessageService.showInfo((event as SendMessageWebsocketEvent).message);
+        break;
+      case WebsocketEventType.PresentInformation:
+        this._presentationService.present((event as PresentInformationWebsocketEvent).informationId);
+        break;
     }
   }
 
