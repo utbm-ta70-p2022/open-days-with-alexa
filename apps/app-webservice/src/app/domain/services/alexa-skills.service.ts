@@ -8,6 +8,10 @@ import { HelpIntentAlexaHandler } from '../alexa-handlers/help-intent.alexa-hand
 import { CancelAndStopIntentAlexaHandler } from '../alexa-handlers/cancel-and-stop-intent.alexa-handler';
 import { SessionEndedRequestAlexaHandler } from '../alexa-handlers/sessions-ended-request.alexa-handler';
 import { ErrorsAlexaHandler } from '../alexa-handlers/errors.alexa-handler';
+import {FisaAlexaHandler} from '../alexa-handlers/fisa.alexa-handler';
+import {ApprentissageAlexaHandler} from '../alexa-handlers/apprentissage.alexa-handler';
+import { ModalitesAlexaHandler } from '../alexa-handlers/modalites-admissibilite.alexa-handler';
+import { DiplomeAlexaHandler } from '../alexa-handlers/diplome.alexa-handler';
 import { PlanningIntentAlexaHandler } from '../alexa-handlers/planning-intent.alexa-handler';
 import { CfaiOrganizationAlexaHandler } from '../alexa-handlers/cfai-organization-intent.alexa-handler';
 
@@ -25,6 +29,10 @@ export class AlexaSkillsService {
         SkillBuilders.custom()
           .addRequestHandlers(
             new LaunchRequestAlexaHandler(),
+            new FisaAlexaHandler(this._informationsService),
+            new ModalitesAlexaHandler(), // Malo _informationsService TODO SOON
+            new DiplomeAlexaHandler(), // Malo _informationsService TODO SOON
+            new ApprentissageAlexaHandler(this._informationsService),
             new PlanningIntentAlexaHandler(this._informationsService),
             new CfaiOrganizationAlexaHandler(this._informationsService),
             // above add your instance
