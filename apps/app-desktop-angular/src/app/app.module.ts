@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared.module';
 import { appRoutes } from '@libraries/lib-common';
 import { BlockUiService } from './global/services/block-ui.service';
+import { app } from 'electron';
 
 @Component({
   selector: 'app-root',
@@ -42,15 +43,15 @@ export class AppComponent {
       [
         {
           path: appRoutes.startup.root,
-          loadChildren: () => import('./modules/startup/startup.module').then((m) => m.StartupModule),
+          loadChildren: () => import('./modules/startup/startup.module').then((_) => _.StartupModule),
         },
         {
           path: appRoutes.presentation.root,
-          loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
+          loadChildren: () => import('./modules/presentation/presentation.module').then((_) => _.PresentationModule),
         },
         {
-          path: appRoutes.settings.root,
-          loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule),
+          path: '**',
+          redirectTo: appRoutes.presentation.root,
         },
       ],
       { initialNavigation: 'enabledBlocking', useHash: true }

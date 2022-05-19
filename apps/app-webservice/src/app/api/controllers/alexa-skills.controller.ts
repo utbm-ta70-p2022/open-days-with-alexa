@@ -14,9 +14,9 @@ export class AlexaSkillsController {
   @HttpCode(HttpStatus.OK)
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Success in processing the Alexa request',
+    description: 'success in processing the Alexa request',
   })
-  @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Failed to process Alexa request' })
+  @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'failed to process Alexa request' })
   @ApiOperation({ summary: 'listens Alexa requests' })
   @UseGuards(AlexaRequestVerifierGuard)
   async listenAlexaRequests(@Body() requestEnvelope: RequestEnvelope): Promise<ResponseEnvelope> {
