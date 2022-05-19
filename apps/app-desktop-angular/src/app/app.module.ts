@@ -11,8 +11,9 @@ import { environment } from '../environments/environment';
 import { ToastMessageService } from './global/services/toast-message.service';
 import { ErrorsHandler } from './global/handlers/errors.handler';
 import { PresentationTimerState } from './global/store/states/presentation-timer.state';
+import { ServerStatusState } from './global/store/states/server-status.state';
 
-const states = [CurrentPresentationState, PresentationTimerState];
+const states = [CurrentPresentationState, PresentationTimerState, ServerStatusState];
 
 export function createErrorsHandler(toastMessageService: ToastMessageService) {
   return new ErrorsHandler(toastMessageService);

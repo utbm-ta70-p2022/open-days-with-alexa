@@ -15,6 +15,7 @@ import { PresentationService } from './presentation.service';
 import { lastValueFrom } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { Refresh } from '../store/actions/current-presentation.actions';
+import { Update } from '../store/actions/server-status.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -39,8 +40,9 @@ export class WebsocketService {
       this._toastMessageService.showError(error.message);
     });
 
-    this._socket.on(apiGateways.disconnect, () => {
+    this._socket.on(apiGateways.disconnect, async () => {
       this._toastMessageService.showError('Serveur Open days with Alexa déconnecté', 'Serveur déconnecté');
+      await lastValueFrom(this._store.dispatch(new Update(false)));
     });
 
     this._socket.on(apiGateways.events, (event: BaseWebsocketEvent) => {
@@ -48,8 +50,9 @@ export class WebsocketService {
     });
 
     await new Promise<void>((resolve) => {
-      this._socket.on(apiGateways.connect, () => {
+      this._socket.on(apiGateways.connect, async () => {
         this._toastMessageService.showSuccess('Serveur Open days with Alexa connecté', 'Serveur connecté');
+        await lastValueFrom(this._store.dispatch(new Update(true)));
         resolve;
       });
     });
