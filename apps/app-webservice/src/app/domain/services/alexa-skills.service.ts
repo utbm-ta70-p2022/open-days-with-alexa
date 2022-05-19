@@ -29,10 +29,10 @@ export class AlexaSkillsService {
         SkillBuilders.custom()
           .addRequestHandlers(
             new LaunchRequestAlexaHandler(),
-            new FisaAlexaHandler(),
-            new ModalitesAlexaHandler(),
-            new DiplomeAlexaHandler(),
-            new ApprentissageAlexaHandler(),
+            new FisaAlexaHandler(this._informationsService),
+            new ModalitesAlexaHandler(), // Malo _informationsService TODO SOON
+            new DiplomeAlexaHandler(), // Malo _informationsService TODO SOON
+            new ApprentissageAlexaHandler(this._informationsService),
             new PlanningIntentAlexaHandler(this._informationsService),
             new CfaiOrganizationAlexaHandler(this._informationsService),
             // above add your instance
