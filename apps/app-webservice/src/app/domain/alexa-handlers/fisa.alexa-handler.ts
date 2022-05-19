@@ -6,7 +6,7 @@ export class FisaAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
     return getRequestType(requestEnvelope) === 'IntentRequest'
-        && getIntentName(requestEnvelope) === intents.DefinitionFISA.name;
+        && getIntentName(requestEnvelope) === intents.definitionFISA.name;
   }
 
   handle(handlerInput: HandlerInput): Response {
