@@ -1,20 +1,16 @@
 import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
-
-const text = {
-  intentName: "Diplome", // /!\ Malo: check the real intent value to match /!\
-  speechText: "Voici les informations à propos du diplome.",
-}
+import { intents } from '@libraries/lib-alexa';
 
 export class DiplomeAlexaHandler implements RequestHandler {
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
     return getRequestType(requestEnvelope) === 'IntentRequest'
-        && getIntentName(requestEnvelope) === text.intentName;
+        && getIntentName(requestEnvelope) === intents.diplome.name;
   }
 
   handle(handlerInput: HandlerInput): Response {
-    const speechText = text.speechText;
+    const speechText = "Voici les informations à propos du diplome.";
 
     return handlerInput.responseBuilder
       .speak(speechText)
