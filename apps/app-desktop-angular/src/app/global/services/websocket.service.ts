@@ -53,7 +53,7 @@ export class WebsocketService {
       this._socket.on(apiGateways.connect, async () => {
         this._toastMessageService.showSuccess('Serveur Open days with Alexa connecté', 'Serveur connecté');
         await lastValueFrom(this._store.dispatch(new Update(true)));
-        resolve;
+        resolve();
       });
     });
   }
