@@ -5,10 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from '@libraries/lib-nestjs';
 import { MainGateway } from './gateways/main.gateway';
-import { InformationsService } from './services/informations.service';
+import { InformationService } from './services/information.service';
 import { AlexaSkillsService } from './services/alexa-skills.service';
 
-const SERVICES = [InformationsService, AlexaSkillsService];
+const SERVICES = [InformationService, AlexaSkillsService];
 
 const STRATEGIES = [JwtStrategy];
 

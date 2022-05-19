@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { InformationsService } from './informations.service';
+import { InformationService } from './information.service';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { SkillBuilders } from 'ask-sdk-core';
 import { LaunchRequestAlexaHandler } from '../alexa-handlers/launch-request.alexa-handler';
@@ -17,7 +17,7 @@ import { CfaiOrganizationAlexaHandler } from '../alexa-handlers/cfai-organizatio
 
 @Injectable()
 export class AlexaSkillsService {
-  constructor(private readonly _informationsService: InformationsService) {}
+  constructor(private readonly _informationService: InformationService) {}
 
   async handleRequest(requestEnvelope: RequestEnvelope): Promise<ResponseEnvelope> {
     let responseEnvelope: ResponseEnvelope;
@@ -29,12 +29,12 @@ export class AlexaSkillsService {
         SkillBuilders.custom()
           .addRequestHandlers(
             new LaunchRequestAlexaHandler(),
-            new FisaAlexaHandler(this._informationsService),
+            new FisaAlexaHandler(this._informationService),
             new ModalitesAlexaHandler(), // Malo _informationsService TODO SOON
             new DiplomeAlexaHandler(), // Malo _informationsService TODO SOON
-            new ApprentissageAlexaHandler(this._informationsService),
-            new PlanningIntentAlexaHandler(this._informationsService),
-            new CfaiOrganizationAlexaHandler(this._informationsService),
+            new ApprentissageAlexaHandler(this._informationService),
+            new PlanningIntentAlexaHandler(this._informationService),
+            new CfaiOrganizationAlexaHandler(this._informationService),
             // above add your instance
             new UvAlexaHandler(),
             new HelpIntentAlexaHandler(),

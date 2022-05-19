@@ -2,10 +2,10 @@ import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { informationIds } from '@libraries/lib-common';
-import { InformationsService } from '../services/informations.service';
+import { InformationService } from '../services/information.service';
 
 export class FisaAlexaHandler implements RequestHandler {
-  constructor(private readonly _informationsService: InformationsService) {}
+  constructor(private readonly _informationService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
@@ -16,7 +16,7 @@ export class FisaAlexaHandler implements RequestHandler {
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = 'Voici les informations à propos de la fisa.';
 
-    await this._informationsService.present(informationIds.apprenticeshipDefinition);
+    await this._informationService.present(informationIds.apprenticeshipDefinition);
 
     return handlerInput.responseBuilder
       .speak(speechText)

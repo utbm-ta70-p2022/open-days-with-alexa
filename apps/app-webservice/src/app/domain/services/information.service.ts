@@ -9,7 +9,7 @@ import { Injectable } from '@nestjs/common';
 import { MainGateway } from '../gateways/main.gateway';
 
 @Injectable()
-export class InformationsService {
+export class InformationService {
   constructor(private readonly _mainGateway: MainGateway) {}
 
   async retrieve(id: string): Promise<InformationModel> {

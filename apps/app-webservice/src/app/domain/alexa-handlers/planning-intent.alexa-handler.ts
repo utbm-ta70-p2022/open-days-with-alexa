@@ -1,7 +1,7 @@
 import { HandlerInput, RequestHandler, getSlotValue, getIntentName, getRequestType } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
-import { InformationsService } from '../services/informations.service';
+import { InformationService } from '../services/information.service';
 import { informationIds } from '@libraries/lib-common';
 
 const text = {
@@ -9,7 +9,7 @@ const text = {
 };
 
 export class PlanningIntentAlexaHandler implements RequestHandler {
-  constructor(private readonly _informationsService: InformationsService) {}
+  constructor(private readonly _informationService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
@@ -24,7 +24,7 @@ export class PlanningIntentAlexaHandler implements RequestHandler {
 
     const speechText = text.speechText;
 
-    await this._informationsService.present(informationIds.planning);
+    await this._informationService.present(informationIds.planning);
 
     return handlerInput.responseBuilder
       .speak(speechText)

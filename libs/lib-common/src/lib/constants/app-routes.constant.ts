@@ -7,8 +7,10 @@ export const appRoutes = {
   },
   presentation: {
     root: 'presentation',
-    textGeneralPresentation: 'text-general-presentation',
+    audio: 'audio',
+    image: 'image',
+    text: 'text',
     video: 'video',
-    text: 'text'
+    waiting: 'waiting',
   },
 };

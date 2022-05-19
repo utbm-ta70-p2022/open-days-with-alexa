@@ -1,11 +1,11 @@
 import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
-import { InformationsService } from '../services/informations.service';
+import { InformationService } from '../services/information.service';
 import { informationIds } from '@libraries/lib-common';
 
 export class ApprentissageAlexaHandler implements RequestHandler {
-  constructor(private readonly _informationsService: InformationsService) {}
+  constructor(private readonly _informationsService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;

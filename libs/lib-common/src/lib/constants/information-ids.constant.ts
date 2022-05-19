@@ -3,4 +3,6 @@ export const informationIds = {
   cfaiPresentation: 'cfaiPresentation',
   fisaDefinition: 'fisaDefinition',
   apprenticeshipDefinition: 'apprenticeshipDefinition',
+  modalite: 'modalite',
+  diplome: 'diplome',
 };

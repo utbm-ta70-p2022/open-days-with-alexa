@@ -1,11 +1,25 @@
-import { NgModule, Component, OnInit } from '@angular/core';
+import { NgModule, Component, OnInit, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared.module';
 import { appRoutes } from '@libraries/lib-common';
 import { BlockUiService } from './global/services/block-ui.service';
-import { app } from 'electron';
+import { WebsocketService } from './global/services/websocket.service';
+import { CurrentPresentationState } from './global/store/states/current-presentation.state';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from '../environments/environment';
+import { PresentationService } from './global/services/presentation.service';
+import { ToastMessageService } from './global/services/toast-message.service';
+import { ErrorsHandler } from './global/handlers/errors.handler';
+
+const states = [CurrentPresentationState];
+
+export function createErrorsHandler(
+  toastMessageService: ToastMessageService,
+) {
+  return new ErrorsHandler(toastMessageService);
+}
 
 @Component({
   selector: 'app-root',
@@ -57,6 +71,17 @@ export class AppComponent {
       { initialNavigation: 'enabledBlocking', useHash: true }
     ),
     SharedModule,
+    NgxsModule.forRoot(states, {
+      developmentMode: !environment.production,
+    }),
+   
+  ],
+  providers: [
+     {
+      provide: ErrorHandler,
+      useFactory: createErrorsHandler,
+      deps: [ToastMessageService],
+    },
   ],
   bootstrap: [AppComponent],
 })

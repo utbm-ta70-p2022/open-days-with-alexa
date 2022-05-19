@@ -1,28 +1,31 @@
-import { NgModule, Component, OnInit } from '@angular/core';
+import { NgModule, Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared.module';
 import { TextComponent } from './components/text/text.component';
 import { VideoComponent } from './components/video/video.component';
 import { appRoutes } from '@libraries/lib-common';
-import { WebsocketService } from '../../global/services/websocket.service';
 import { AudioComponent } from './components/audio/audio.component';
 import { WaitingComponent } from './components/waiting/waiting.component';
+import { WebsocketService } from '../../global/services/websocket.service';
+import { PresentationService } from '../../global/services/presentation.service';
+import { ImageComponent } from './components/image/image.component';
 
 @Component({
   template: `<router-outlet></router-outlet>`,
 })
-export class PresentationComponent implements OnInit {
-  videoRoute = appRoutes.presentation.video;
-  textGeneralPresentationRoute = appRoutes.presentation.textGeneralPresentation;
+export class PresentationComponent implements OnInit, OnDestroy {
+  constructor(
+    private readonly _websocketService: WebsocketService,
+    private readonly _presentationService: PresentationService
+  ) {}
 
-  constructor(private readonly _websocketService: WebsocketService) {}
-
-  ngOnInit(): void {
-    this._websocketService.connect();
+  async ngOnInit() {
+    this._presentationService.startTolistenCurrentPresentationChanges();
+    await this._websocketService.connect();
   }
 
-  testWebsocket() {
-    this._websocketService.test();
+  ngOnDestroy() {
+    this._presentationService.stopTolistenCurrentPresentationChanges();
   }
 }
 
@@ -33,12 +36,34 @@ export class PresentationComponent implements OnInit {
     SharedModule,
     RouterModule.forChild([
       {
-        path: ':id',
+        path: '',
         component: PresentationComponent,
-      },
-      {
-        path: '**',
-        component: WaitingComponent,
+        children: [
+          {
+            path: `${appRoutes.presentation.audio}/:id`,
+            component: AudioComponent,
+          },
+          {
+            path: `${appRoutes.presentation.image}/:id`,
+            component: ImageComponent,
+          },
+          {
+            path: `${appRoutes.presentation.text}/:id`,
+            component: TextComponent,
+          },
+          {
+            path: `${appRoutes.presentation.video}/:id`,
+            component: VideoComponent,
+          },
+          {
+            path: appRoutes.presentation.waiting,
+            component: WaitingComponent,
+          },
+          {
+            path: '**',
+            redirectTo: appRoutes.presentation.waiting,
+          },
+        ],
       },
     ]),
   ],

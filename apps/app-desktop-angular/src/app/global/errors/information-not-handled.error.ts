@@ -1,5 +1,7 @@
-export class InformationNotHandledError extends Error {
+import { ApplicationError } from './application.error';
+
+export class InformationNotHandledError extends ApplicationError {
   constructor() {
-    super('Information not handled');
+    super('Information non prise en charge');
   }
 }

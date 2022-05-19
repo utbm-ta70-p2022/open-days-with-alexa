@@ -20,17 +20,17 @@ import { join } from 'path';
 
   app.register(fastifyRawBody);
 
-  app.register(fastifyHelmet, {
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: [`'self'`],
-        styleSrc: [`'self'`, `'unsafe-inline'`],
-        imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
-        scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
-      },
-    },
-    crossOriginEmbedderPolicy: false,
-  });
+  // app.register(fastifyHelmet, {
+  //   contentSecurityPolicy: {
+  //     directives: {
+  //       defaultSrc: [`'self'`],
+  //       styleSrc: [`'self'`, `'unsafe-inline'`],
+  //       imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
+  //       scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
+  //     },
+  //   },
+  //   crossOriginEmbedderPolicy: false,
+  // });
 
   app.register(fastifyCors, {
     origin: process.env.WEBSERVICE_ALLOWED_ORIGIN,
