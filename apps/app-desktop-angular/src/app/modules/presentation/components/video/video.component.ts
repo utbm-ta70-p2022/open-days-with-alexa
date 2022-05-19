@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { VideoInformationModel } from '@libraries/lib-common';
 
 @Component({
+  selector: 'app-video',
   template: `<iframe [src]="safeSrc" width="100%" height="100%" frameborder="0" title="youtube-video"></iframe>`,
 })
 export class VideoComponent {
+  @Input() information: VideoInformationModel;
+
   safeSrc: SafeResourceUrl;
 
   repeat = '1'; // 1: loop , 0: no loop

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { appRoutes, ImageInformationModel, information, TextInformationModel } from '@libraries/lib-common';
-import { Actions, ofActionDispatched } from '@ngxs/store';
-import { Subscription } from 'rxjs';
-import { InformationNotFoundError } from '../errors/information-not-found.error';
-import { InformationNotHandledError } from '../errors/information-not-handled.error';
+import {
+  appRoutes,
+} from '@libraries/lib-common';
+import { Actions, ofActionDispatched, Store } from '@ngxs/store';
+import { lastValueFrom, Subscription } from 'rxjs';
 import { Refresh } from '../store/actions/current-presentation.actions';
+import { Update } from '../store/actions/presentation-timer.actions';
+import { InformationService } from './information.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,12 +15,17 @@ import { Refresh } from '../store/actions/current-presentation.actions';
 export class PresentationService {
   subscription: Subscription;
 
-  constructor(private readonly _router: Router, private readonly _actions$: Actions) {}
+  constructor(
+    private readonly _router: Router,
+    private readonly _actions$: Actions,
+    private readonly _store: Store,
+    private readonly _informationService: InformationService
+  ) {}
 
   startTolistenCurrentPresentationChanges(): void {
     this.subscription = this._actions$.pipe(ofActionDispatched(Refresh)).subscribe({
-      next: (refresh: Refresh) => {
-        this.present(refresh.id);
+      next: async (refresh: Refresh) => {
+        await this.present(refresh.id);
       },
     });
   }
@@ -27,19 +34,16 @@ export class PresentationService {
     this.subscription.unsubscribe();
   }
 
-  present(id: string) {
-    const item = information.find((_) => _.id == id);
+  async present(id: string) {
+    const informationItem = this._informationService.retrieveOrFail(id);
 
-    if (!item) {
-      throw new InformationNotFoundError();
+    this._router.navigate([appRoutes.presentation.root, appRoutes.presentation.information, id]);
+
+    for (let counter = informationItem.displayDurationInSeconds; counter >= 0; counter--) {
+      await lastValueFrom(this._store.dispatch(new Update(counter)));
+      await new Promise<void>((resolve) => setTimeout(() => resolve(), 1000));
     }
 
-    if (item instanceof ImageInformationModel) {
-      this._router.navigate([appRoutes.presentation.root, appRoutes.presentation.image, id]);
-    } else if (item instanceof TextInformationModel) {
-      this._router.navigate([appRoutes.presentation.root, appRoutes.presentation.text, id]);
-    } else {
-      throw new InformationNotHandledError();
-    }
+    this._router.navigate([appRoutes.presentation.root, appRoutes.presentation.waiting]);
   }
 }

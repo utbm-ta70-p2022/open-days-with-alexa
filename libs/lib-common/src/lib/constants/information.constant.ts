@@ -5,7 +5,7 @@ import { informationIds } from './information-ids.constant';
 export const information: InformationModel[] = [
   new ImageInformationModel({
     id: informationIds.planning,
-    url: 'https://www.utbm.fr/wp-content/uploads/2015/04/site-belfort.jpg',
+    src: 'planning-1.png',
   }),
   new ImageInformationModel({ id: informationIds.cfaiPresentation }),
   new ImageInformationModel({ id: informationIds.fisaDefinition }),

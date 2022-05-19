@@ -8,6 +8,7 @@ import { AudioComponent } from './components/audio/audio.component';
 import { WaitingComponent } from './components/waiting/waiting.component';
 import { WebsocketService } from '../../global/services/websocket.service';
 import { PresentationService } from '../../global/services/presentation.service';
+import { InformationComponent } from './components/information/information.component';
 import { ImageComponent } from './components/image/image.component';
 
 @Component({
@@ -30,7 +31,15 @@ export class PresentationComponent implements OnInit, OnDestroy {
 }
 
 @NgModule({
-  declarations: [PresentationComponent, AudioComponent, TextComponent, VideoComponent, WaitingComponent],
+  declarations: [
+    PresentationComponent,
+    InformationComponent,
+    AudioComponent,
+    ImageComponent,
+    TextComponent,
+    VideoComponent,
+    WaitingComponent,
+  ],
   providers: [PresentationModule],
   imports: [
     SharedModule,
@@ -40,20 +49,8 @@ export class PresentationComponent implements OnInit, OnDestroy {
         component: PresentationComponent,
         children: [
           {
-            path: `${appRoutes.presentation.audio}/:id`,
-            component: AudioComponent,
-          },
-          {
-            path: `${appRoutes.presentation.image}/:id`,
-            component: ImageComponent,
-          },
-          {
-            path: `${appRoutes.presentation.text}/:id`,
-            component: TextComponent,
-          },
-          {
-            path: `${appRoutes.presentation.video}/:id`,
-            component: VideoComponent,
+            path: `${appRoutes.presentation.information}/:id`,
+            component: InformationComponent,
           },
           {
             path: appRoutes.presentation.waiting,
