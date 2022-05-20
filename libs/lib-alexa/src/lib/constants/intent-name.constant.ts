@@ -5,13 +5,13 @@ export const intents = {
   uv: {
     name: 'UV',
   },
-  apprentissage: {
+  apprenticeship: {
     name: 'Apprentissage',
   },
   examen: {
     name: 'Examen',
   },
-  diplome: {
+  diploma: {
     name: 'Diplome',
   },
   planning: {
@@ -26,16 +26,16 @@ export const intents = {
   poursuiteEtude: {
     name: 'PoursuiteEtude',
   },
-  modaliteInternational: {
+  internationalModes: {
     name: 'ModaliteInternational',
   },
-  creditEcts: {
+  etcsCredits: {
     name: 'CreditECTS',
   },
-  avisEleves: {
+  studentsOpinion: {
     name: 'AvisDesEleves',
   },
-  modaliteAdmissibilite: {
+  eligibilityModes: {
     name: 'ModaliteAdmissibilite',
   },
 };

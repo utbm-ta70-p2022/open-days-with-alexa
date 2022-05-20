@@ -3,10 +3,10 @@ export const informationIds = {
   cfaiPresentation: 'cfaiPresentation',
   fisaDefinition: 'fisaDefinition',
   apprenticeshipDefinition: 'apprenticeshipDefinition',
-  modalite: 'modalite',
-  diplome: 'diplome',
-  modaliteadmissibilite: 'modaliteadmissibilite',
-  modaliteinternational: 'modaliteinternational',
-  aviseleves: "aviseleves",
-  creditsects: "creditsects"
+  diploma: 'diploma',
+  // modalite: 'modalite', // Malo : to remove ? see below
+  eligibilityModes: 'eligibilityModes',
+  internationalModes: 'internationalModes',
+  studentsOpinion: 'studentsOpinion',
+  ectsCredits: 'ectsCredits',
 };

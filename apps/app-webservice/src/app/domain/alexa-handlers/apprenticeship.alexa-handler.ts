@@ -4,24 +4,26 @@ import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
 import { informationIds } from '@libraries/lib-common';
 
-export class ModalitesInternationalesAlexaHandler implements RequestHandler {
+export class ApprenticeshipAlexaHandler implements RequestHandler {
   constructor(private readonly _informationsService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
-    return getRequestType(requestEnvelope) === 'IntentRequest'
-        && getIntentName(requestEnvelope) === intents.modaliteInternational.name;
+    return (
+      getRequestType(requestEnvelope) === 'IntentRequest' &&
+      getIntentName(requestEnvelope) === intents.apprenticeship.name
+    );
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
-    const speechText = "Voici les informations à propos des modalités à l'internationale.";
+    const speechText = "Voici les informations à propos de l'apprentissage.";
 
-    await this._informationsService.present(informationIds.modaliteinternational);
+    await this._informationsService.present(informationIds.apprenticeshipDefinition);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard("", speechText)
+      .withSimpleCard('', speechText)
       .withShouldEndSession(false)
       .getResponse();
   }

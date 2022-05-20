@@ -9,14 +9,14 @@ import { CancelAndStopIntentAlexaHandler } from '../alexa-handlers/cancel-and-st
 import { SessionEndedRequestAlexaHandler } from '../alexa-handlers/sessions-ended-request.alexa-handler';
 import { ErrorsAlexaHandler } from '../alexa-handlers/errors.alexa-handler';
 import {FisaAlexaHandler} from '../alexa-handlers/fisa.alexa-handler';
-import {ApprentissageAlexaHandler} from '../alexa-handlers/apprentissage.alexa-handler';
-import { ModalitesAdmissibiliteAlexaHandler } from '../alexa-handlers/modalites-admissibilite.alexa-handler';
-import { DiplomeAlexaHandler } from '../alexa-handlers/diplome.alexa-handler';
+import {ApprenticeshipAlexaHandler} from '../alexa-handlers/apprenticeship.alexa-handler';
+import { EligibilityModesAlexaHandler } from '../alexa-handlers/eligibility-modes.alexa-handler';
+import { DiplomaAlexaHandler } from '../alexa-handlers/diploma.alexa-handler';
 import { PlanningIntentAlexaHandler } from '../alexa-handlers/planning-intent.alexa-handler';
 import { CfaiOrganizationAlexaHandler } from '../alexa-handlers/cfai-organization-intent.alexa-handler';
-import { ModalitesInternationalesAlexaHandler } from '../alexa-handlers/modalites-internationales.alexa-handler';
-import { AvisElevesAlexaHandler } from '../alexa-handlers/avis-eleves.alexa-handler';
-import { CreditsEctsAlexaHandler } from '../alexa-handlers/credits-ects.alexa-handler';
+import { InternationalModesAlexaHandler } from '../alexa-handlers/international-modes.alexa-handler';
+import { StudentsOpinionAlexaHandler } from '../alexa-handlers/student-opinion.alexa-handler';
+import { EctsCreditsAlexaHandler } from '../alexa-handlers/ects-credits.alexa-handler';
 
 @Injectable()
 export class AlexaSkillsService {
@@ -33,14 +33,14 @@ export class AlexaSkillsService {
           .addRequestHandlers(
             new LaunchRequestAlexaHandler(),
             new FisaAlexaHandler(this._informationService),
-            new ModalitesAdmissibiliteAlexaHandler(this._informationService),
-            new DiplomeAlexaHandler(this._informationService),
-            new ApprentissageAlexaHandler(this._informationService),
+            new EligibilityModesAlexaHandler(this._informationService),
+            new DiplomaAlexaHandler(this._informationService),
+            new ApprenticeshipAlexaHandler(this._informationService),
             new PlanningIntentAlexaHandler(this._informationService),
             new CfaiOrganizationAlexaHandler(this._informationService),
-            new ModalitesInternationalesAlexaHandler(this._informationService),
-            new AvisElevesAlexaHandler(this._informationService),
-            new CreditsEctsAlexaHandler(this._informationService),
+            new InternationalModesAlexaHandler(this._informationService),
+            new StudentsOpinionAlexaHandler(this._informationService),
+            new EctsCreditsAlexaHandler(this._informationService),
             new UvAlexaHandler(),
             // above add your instance
             new HelpIntentAlexaHandler(),

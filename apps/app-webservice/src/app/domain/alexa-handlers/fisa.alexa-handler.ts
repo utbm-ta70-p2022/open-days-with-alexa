@@ -16,7 +16,7 @@ export class FisaAlexaHandler implements RequestHandler {
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = 'Voici les informations à propos de la fisa.';
 
-    await this._informationService.present(informationIds.apprenticeshipDefinition);
+    await this._informationService.present(informationIds.fisaDefinition);
 
     return handlerInput.responseBuilder
       .speak(speechText)
