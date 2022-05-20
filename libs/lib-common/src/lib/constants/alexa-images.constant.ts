@@ -1,10 +1,13 @@
+const webserviceUrl = process.env.WEBSERVICE_PUBLIC_ORIGIN;
+const folderPath = webserviceUrl + '/assets/images/';
+
 export const alexaImages = {
-  apprentice: 'https://open-days-with-alexa.loicbertrand.net/assets/images/apprentice.png',
-  goodbye: 'https://open-days-with-alexa.loicbertrand.net/assets/images/goodbye.png',
-  cfai: 'https://open-days-with-alexa.loicbertrand.net/assets/images/cfai-exincourt.jpg',
-  diploma: 'https://open-days-with-alexa.loicbertrand.net/assets/images/diploma.png',
-  fisa: 'https://open-days-with-alexa.loicbertrand.net/assets/images/apprentice.png',
-  help: 'https://open-days-with-alexa.loicbertrand.net/assets/images/help.png',
-  launch: 'https://open-days-with-alexa.loicbertrand.net/assets/images/icon.png',
-  planning: 'https://open-days-with-alexa.loicbertrand.net/assets/images/planning-icon.png',
+  apprentice: folderPath + 'apprentice.png',
+  goodbye: folderPath + 'goodbye.png',
+  cfai: folderPath + 'cfai-exincourt.jpg',
+  diploma: folderPath + 'diploma.png',
+  fisa: folderPath + 'apprentice.png',
+  help: folderPath + 'help.png',
+  launch: folderPath + 'icon.png',
+  planning: folderPath + 'planning-icon.png',
 };
