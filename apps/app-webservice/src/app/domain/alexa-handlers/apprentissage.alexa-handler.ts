@@ -2,7 +2,7 @@ import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
-import { informationIds } from '@libraries/lib-common';
+import { alexaImages, informationIds } from '@libraries/lib-common';
 
 export class ApprentissageAlexaHandler implements RequestHandler {
   constructor(private readonly _informationsService: InformationService) {}
@@ -24,11 +24,7 @@ export class ApprentissageAlexaHandler implements RequestHandler {
       .speak(speechText)
       .reprompt(speechText)
       .withSimpleCard('', speechText)
-      .withStandardCard(
-        'Apprentissage',
-        speechText,
-        'https://open-days-with-alexa.loicbertrand.net/assets/images/apprentice.png'
-      )
+      .withStandardCard('Apprentissage', speechText, alexaImages.apprentice)
       .withShouldEndSession(false)
       .getResponse();
   }

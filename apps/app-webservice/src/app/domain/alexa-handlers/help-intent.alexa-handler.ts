@@ -1,3 +1,4 @@
+import { alexaImages } from '@libraries/lib-common';
 import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
@@ -14,7 +15,7 @@ export class HelpIntentAlexaHandler implements RequestHandler {
       .withStandardCard(
         'Aide',
         'Je vais vous afficher une liste de question que vous pouvez me poser',
-        'https://open-days-with-alexa.loicbertrand.net/assets/images/help.png'
+        alexaImages.help
       )
       .withShouldEndSession(false)
       .getResponse();

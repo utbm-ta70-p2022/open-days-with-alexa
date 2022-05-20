@@ -1,7 +1,7 @@
 import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
-import { informationIds } from '@libraries/lib-common';
+import { alexaImages, informationIds } from '@libraries/lib-common';
 import { InformationService } from '../services/information.service';
 
 export class FisaAlexaHandler implements RequestHandler {
@@ -23,11 +23,7 @@ export class FisaAlexaHandler implements RequestHandler {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard(
-        'FISA',
-        speechText,
-        'https://open-days-with-alexa.loicbertrand.net/assets/images/apprentice.png'
-      )
+      .withStandardCard('FISA', speechText, alexaImages.apprentice)
       .withShouldEndSession(false)
       .getResponse();
   }
