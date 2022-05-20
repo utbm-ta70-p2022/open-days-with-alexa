@@ -11,7 +11,12 @@ export class LaunchRequestAlexaHandler implements RequestHandler {
     return handlerInput.responseBuilder
       .speak("Bienvenue à l'UTBM, je suis Alexa, comment puis-je vous aider ?")
       .reprompt('Comment puis-je vous aider ?')
-      .withSimpleCard('', "L'UTBM vous souhaite la bienvenue !")
+      .withStandardCard(
+        'Bienvenue !',
+        "Bienvenue à l'UTBM, je suis Alexa, comment puis-je vous aider ?",
+        'https://open-days-with-alexa.loicbertrand.net/assets/images/icon.png'
+      )
+      .withShouldEndSession(false)
       .getResponse();
   }
 }

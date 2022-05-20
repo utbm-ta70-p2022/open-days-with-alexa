@@ -9,8 +9,10 @@ export class ApprentissageAlexaHandler implements RequestHandler {
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
-    return getRequestType(requestEnvelope) === 'IntentRequest'
-        && getIntentName(requestEnvelope) === intents.apprentissage.name;
+    return (
+      getRequestType(requestEnvelope) === 'IntentRequest' &&
+      getIntentName(requestEnvelope) === intents.apprentissage.name
+    );
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
@@ -21,7 +23,12 @@ export class ApprentissageAlexaHandler implements RequestHandler {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard("", speechText)
+      .withSimpleCard('', speechText)
+      .withStandardCard(
+        'Apprentissage',
+        speechText,
+        'https://open-days-with-alexa.loicbertrand.net/assets/images/apprentice.png'
+      )
       .withShouldEndSession(false)
       .getResponse();
   }
