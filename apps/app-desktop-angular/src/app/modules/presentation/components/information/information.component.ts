@@ -78,6 +78,6 @@ export class InformationComponent implements OnInit {
   }
 
   get videoInformation(): VideoInformationModel {
-    return this.currentInformation as AudioInformationModel;
+    return this.currentInformation as VideoInformationModel;
   }
 }
