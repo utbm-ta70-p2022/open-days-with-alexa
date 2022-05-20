@@ -10,4 +10,12 @@ export const alexaImages = {
   help: folderPath + 'help.png',
   launch: folderPath + 'icon.png',
   planning: folderPath + 'planning-icon.png',
+  credits: folderPath + '',
+  eligibilityModes: folderPath + '',
+  exam: folderPath + '',
+  internationalModes: folderPath + '',
+  postStudy: folderPath + '',
+  uv: folderPath + '',
+  studentsOpinion: folderPath + '',
+
 };

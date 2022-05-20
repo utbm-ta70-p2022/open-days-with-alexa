@@ -10,6 +10,6 @@ export const information: InformationModel[] = [
   new ImageInformationModel({ id: informationIds.cfaiPresentation }),
   new ImageInformationModel({ id: informationIds.fisaDefinition }),
   new ImageInformationModel({ id: informationIds.apprenticeshipDefinition }),
-  new ImageInformationModel({ id: informationIds.modalite }),
-  new ImageInformationModel({ id: informationIds.diplome }),
+  new ImageInformationModel({ id: informationIds.eligibilityModes }),
+  new ImageInformationModel({ id: informationIds.diploma }),
 ];

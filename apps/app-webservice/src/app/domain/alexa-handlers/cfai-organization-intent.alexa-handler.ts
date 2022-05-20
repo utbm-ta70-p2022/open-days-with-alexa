@@ -4,8 +4,11 @@ import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
 import { alexaImages } from '@libraries/lib-common';
 
-const data = {
-  speechText: "Patientez, nous allons vous afficher une présentation du CFAI à l'écran",
+const alexaResponseData = {
+  speechText: "Patientez, nous allons vous afficher une présentation du CFAI à l'écran.",
+  card: {
+    title: 'Présentation CFAI',
+  },
 };
 
 export class CfaiOrganizationAlexaHandler implements RequestHandler {
@@ -17,12 +20,12 @@ export class CfaiOrganizationAlexaHandler implements RequestHandler {
   }
 
   handle(handlerInput: HandlerInput): Response {
-    const speechText = data.speechText;
+    const speechText = alexaResponseData.speechText;
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard('Présentation CFAI', speechText, alexaImages.cfai)
+      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.cfai)
       .withShouldEndSession(false)
       .getResponse();
   }

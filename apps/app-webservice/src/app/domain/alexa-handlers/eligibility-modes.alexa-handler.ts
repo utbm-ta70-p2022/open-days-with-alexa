@@ -5,32 +5,32 @@ import { InformationService } from '../services/information.service';
 import { alexaImages, informationIds } from '@libraries/lib-common';
 
 const alexaResponseData = {
-  speechText: "Nous allons vous afficher les informations sur les poursuites d'études de la formation FISA.",
+  speechText: "Voici les informations à propos des modalités d'apprentissage.",
   card: {
-    title: "Informations poursuite d'étude",
+    title: "Modalités d'admissibilité",
   },
 };
 
-export class PostStudyIntentAlexaHandler implements RequestHandler {
-  constructor(private readonly _informationService: InformationService) {}
+export class EligibilityModesAlexaHandler implements RequestHandler {
+  constructor(private readonly _informationsService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
     return (
       getRequestType(requestEnvelope) === 'IntentRequest' &&
-      getIntentName(requestEnvelope) === intents.poursuiteEtude.name
+      getIntentName(requestEnvelope) === intents.eligibilityModes.name
     );
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
 
-    await this._informationService.present(informationIds.poursuiteEtude);
+    await this._informationsService.present(informationIds.eligibilityModes);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.postStudy)
+      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.eligibilityModes)
       .withShouldEndSession(false)
       .getResponse();
   }
