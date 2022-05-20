@@ -2,7 +2,7 @@ import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
-import { alexaImages, informationIds } from '@libraries/lib-common';
+import { alexaImages } from '@libraries/lib-common';
 
 const alexaResponseData = {
   speechText: "Patientez, nous allons vous afficher une présentation du CFAI à l'écran.",
