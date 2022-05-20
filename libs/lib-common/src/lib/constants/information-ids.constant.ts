@@ -1,10 +1,12 @@
 export const informationIds = {
   planning: 'planning',
   cfaiPresentation: 'cfaiPresentation',
+  examen: 'examen',
+  poursuiteEtude: 'poursuiteEtude',
+  uv: 'uv',
   fisaDefinition: 'fisaDefinition',
   apprenticeshipDefinition: 'apprenticeshipDefinition',
   diploma: 'diploma',
-  // modalite: 'modalite', // Malo : to remove ? see below
   eligibilityModes: 'eligibilityModes',
   internationalModes: 'internationalModes',
   studentsOpinion: 'studentsOpinion',

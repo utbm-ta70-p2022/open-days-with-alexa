@@ -2,7 +2,11 @@ import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
-import { informationIds } from '@libraries/lib-common';
+import { alexaImages, informationIds } from '@libraries/lib-common';
+
+const alexaResponseData = {
+  speechText: "Voici les informations à propos de l'apprentissage.",
+};
 
 export class ApprenticeshipAlexaHandler implements RequestHandler {
   constructor(private readonly _informationsService: InformationService) {}
@@ -16,14 +20,14 @@ export class ApprenticeshipAlexaHandler implements RequestHandler {
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
-    const speechText = "Voici les informations à propos de l'apprentissage.";
+    const speechText = alexaResponseData.speechText;
 
     await this._informationsService.present(informationIds.apprenticeshipDefinition);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('', speechText)
+      .withStandardCard('Apprentissage', speechText, alexaImages.apprentice)
       .withShouldEndSession(false)
       .getResponse();
   }

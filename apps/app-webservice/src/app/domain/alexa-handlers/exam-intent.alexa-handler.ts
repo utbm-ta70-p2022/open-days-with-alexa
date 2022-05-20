@@ -5,31 +5,31 @@ import { InformationService } from '../services/information.service';
 import { alexaImages, informationIds } from '@libraries/lib-common';
 
 const alexaResponseData = {
-  speechText: 'Voici les informations à propos des crédits ECTS.',
+  speechText: "Nous allons vous afficher les fichiers d'examen.",
   card: {
-    title: 'Credits ECTS',
+    title: "Modalités d'examen",
   },
 };
 
-export class EctsCreditsAlexaHandler implements RequestHandler {
-  constructor(private readonly _informationsService: InformationService) {}
+export class ExamIntentAlexaHandler implements RequestHandler {
+  constructor(private readonly _informationService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
     return (
-      getRequestType(requestEnvelope) === 'IntentRequest' && getIntentName(requestEnvelope) === intents.etcsCredits.name
+      getRequestType(requestEnvelope) === 'IntentRequest' && getIntentName(requestEnvelope) === intents.examen.name
     );
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
 
-    await this._informationsService.present(informationIds.ectsCredits);
+    await this._informationService.present(informationIds.examen);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.credits)
+      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.exam)
       .withShouldEndSession(false)
       .getResponse();
   }

@@ -2,10 +2,13 @@ import { HandlerInput, RequestHandler, getSlotValue, getIntentName, getRequestTy
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
-import { informationIds } from '@libraries/lib-common';
+import { alexaImages, informationIds } from '@libraries/lib-common';
 
-const text = {
+const alexaResponseData = {
   speechText: "Patientez, le planning que vous avez demandé va s'afficher à l'écran.",
+  card: {
+    title: 'Demande de planning',
+  },
 };
 
 export class PlanningIntentAlexaHandler implements RequestHandler {
@@ -19,17 +22,14 @@ export class PlanningIntentAlexaHandler implements RequestHandler {
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
-    // call heavy client with year parameter
-    const year = getSlotValue(handlerInput.requestEnvelope, intents.planning.slot.name);
-
-    const speechText = text.speechText;
+    const speechText = alexaResponseData.speechText;
 
     await this._informationService.present(informationIds.planning);
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText) // After 8 seconds speak again the speech text
-      .withSimpleCard('Demande de planning', speechText) // https://developer.amazon.com/en-US/docs/alexa/custom-skills/include-a-card-in-your-skills-response.html
+      .reprompt(speechText)
+      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.planning)
       .withShouldEndSession(false)
       .getResponse();
   }
