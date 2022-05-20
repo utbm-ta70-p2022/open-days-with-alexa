@@ -1,3 +1,4 @@
+import { alexaImages } from '@libraries/lib-common';
 import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
@@ -14,7 +15,7 @@ export class LaunchRequestAlexaHandler implements RequestHandler {
       .withStandardCard(
         'Bienvenue !',
         "Bienvenue à l'UTBM, je suis Alexa, comment puis-je vous aider ?",
-        'https://open-days-with-alexa.loicbertrand.net/assets/images/icon.png'
+        alexaImages.launch
       )
       .withShouldEndSession(false)
       .getResponse();

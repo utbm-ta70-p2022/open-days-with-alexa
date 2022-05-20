@@ -2,6 +2,7 @@ import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
+import { alexaImages } from '@libraries/lib-common';
 
 export class DiplomeAlexaHandler implements RequestHandler {
   constructor(private readonly _informationService: InformationService) {}
@@ -19,11 +20,7 @@ export class DiplomeAlexaHandler implements RequestHandler {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard(
-        'Diplome',
-        speechText,
-        'https://open-days-with-alexa.loicbertrand.net/assets/images/diploma.png'
-      )
+      .withStandardCard('Diplome', speechText, alexaImages.diploma)
       .withShouldEndSession(false)
       .getResponse();
   }
