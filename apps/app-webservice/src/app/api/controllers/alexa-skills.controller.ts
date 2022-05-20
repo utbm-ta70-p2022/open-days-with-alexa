@@ -1,7 +1,7 @@
 import { apiRoutes } from '@libraries/lib-common';
 import { Body, Controller, Post, HttpCode, HttpStatus, UseGuards, Get, NotFoundException, Param } from '@nestjs/common';
 import { ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { environment } from 'apps/app-webservice/src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { RequestEnvelope, ResponseEnvelope } from 'ask-sdk-model';
 import { AlexaSkillsService } from '../../domain/services/alexa-skills.service';
 import { InformationService } from '../../domain/services/information.service';
