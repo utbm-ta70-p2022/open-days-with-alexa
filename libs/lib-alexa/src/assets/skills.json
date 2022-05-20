@@ -187,7 +187,7 @@
             "est ce que ce diplôme donne accès à {formation}",
             "puis-je faire un doctorat avec {formation}",
             "puis-je faire un doctorat suite à {formation}",
-            "la FISA donne-t-elle accè à {formation}",
+            "la fisa donne-t-elle accè à {formation}",
             "est-il possible de faire un doctorat avec {formation}",
             "puis-je poursuivre mes étude avec {formation}"
           ]
@@ -344,12 +344,12 @@
                   "formation d'ingénieur sous le statut d'apprentie",
                   "formation d'ingénieur sous statut d'apprentie",
                   "formation d'ingénieur sous le statut apprentie",
-                  "FISA",
-                  "de FISA",
-                  "une FISA",
-                  "la FISA",
-                  "pour la FISA",
-                  "de la FISA"
+                  "fisa",
+                  "de fisa",
+                  "une fisa",
+                  "la fisa",
+                  "pour la fisa",
+                  "de la fisa"
                 ]
               }
             }
