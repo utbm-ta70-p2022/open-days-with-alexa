@@ -3,7 +3,7 @@ import { ImageInformationModel } from '@libraries/lib-common';
 
 @Component({
   selector: 'app-image',
-  template: `<img class="image" src="assets/images/planning-1.png" />`,
+  template: `<img class="image" [src]="information.src" />`,
   styles: [
     `
       :host {

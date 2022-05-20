@@ -5,7 +5,7 @@ import { informationIds } from './information-ids.constant';
 export const information: InformationModel[] = [
   new ImageInformationModel({
     id: informationIds.planning,
-    src: 'planning-1.png',
+    src: 'assets/images/planning-1.png',
   }),
   new ImageInformationModel({ id: informationIds.cfaiPresentation }),
   new ImageInformationModel({ id: informationIds.fisaDefinition }),
