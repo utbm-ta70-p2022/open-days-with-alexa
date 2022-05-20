@@ -5,4 +5,8 @@ export const informationIds = {
   apprenticeshipDefinition: 'apprenticeshipDefinition',
   modalite: 'modalite',
   diplome: 'diplome',
+  modaliteadmissibilite: 'modaliteadmissibilite',
+  modaliteinternational: 'modaliteinternational',
+  aviseleves: "aviseleves",
+  creditsects: "creditsects"
 };

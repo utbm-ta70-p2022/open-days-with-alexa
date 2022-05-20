@@ -4,20 +4,19 @@ import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
 import { informationIds } from '@libraries/lib-common';
 
-export class DiplomeAlexaHandler implements RequestHandler {
+export class AvisElevesAlexaHandler implements RequestHandler {
   constructor(private readonly _informationsService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
     return getRequestType(requestEnvelope) === 'IntentRequest'
-        && getIntentName(requestEnvelope) === intents.diplome.name;
+        && getIntentName(requestEnvelope) === intents.avisEleves.name;
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
-    const speechText = "Voici les informations à propos du diplome.";
+    const speechText = "Voici quelques avis d'élèves de la formation.";
 
-    await this._informationsService.present(informationIds.modaliteinternational);
-
+    await this._informationsService.present(informationIds.aviseleves);
 
     return handlerInput.responseBuilder
       .speak(speechText)

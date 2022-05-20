@@ -1,8 +1,8 @@
 import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
-import { informationIds } from '@libraries/lib-common';
 import { InformationService } from '../services/information.service';
+import { informationIds } from '@libraries/lib-common';
 
 export class FisaAlexaHandler implements RequestHandler {
   constructor(private readonly _informationService: InformationService) {}
