@@ -19,8 +19,6 @@ export class PlanningIntentAlexaHandler implements RequestHandler {
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
-    const year = getSlotValue(handlerInput.requestEnvelope, intents.planning.slot.name);
-
     const speechText = text.speechText;
 
     await this._informationService.present(informationIds.planning);
