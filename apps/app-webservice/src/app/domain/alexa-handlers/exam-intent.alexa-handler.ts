@@ -2,14 +2,13 @@ import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
-import { informationIds } from '@libraries/lib-common';
+import { alexaImages, informationIds } from '@libraries/lib-common';
 
-const text = {
+const alexaResponseData = {
   speechText: "Nous allons vous afficher les fichiers d'examen.",
   card: {
-    title: "Modalitées d'Examen",
-    urlImage: ""
-  }
+    title: "Modalités d'examen",
+  },
 };
 
 export class ExamIntentAlexaHandler implements RequestHandler {
@@ -23,18 +22,14 @@ export class ExamIntentAlexaHandler implements RequestHandler {
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
-    const speechText = text.speechText;
+    const speechText = alexaResponseData.speechText;
 
     await this._informationService.present(informationIds.examen);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard(
-        text.card.title,
-        speechText,
-        text.card.urlImage
-      )
+      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.exam)
       .withShouldEndSession(false)
       .getResponse();
   }
