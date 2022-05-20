@@ -20,8 +20,12 @@ export class CfaiOrganizationAlexaHandler implements RequestHandler {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText) // After 8 seconds speak again the speech text
-      .withSimpleCard('Présentation CFAI', speechText) // https://developer.amazon.com/en-US/docs/alexa/custom-skills/include-a-card-in-your-skills-response.html
+      .reprompt(speechText)
+      .withStandardCard(
+        'Présentation CFAI',
+        speechText,
+        'https://open-days-with-alexa.loicbertrand.net/assets/images/cfai-exincourt.jpg'
+      )
       .withShouldEndSession(false)
       .getResponse();
   }

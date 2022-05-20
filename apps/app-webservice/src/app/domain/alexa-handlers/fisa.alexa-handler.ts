@@ -9,8 +9,10 @@ export class FisaAlexaHandler implements RequestHandler {
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
-    return getRequestType(requestEnvelope) === 'IntentRequest'
-        && getIntentName(requestEnvelope) === intents.definitionFISA.name;
+    return (
+      getRequestType(requestEnvelope) === 'IntentRequest' &&
+      getIntentName(requestEnvelope) === intents.definitionFISA.name
+    );
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
@@ -21,7 +23,11 @@ export class FisaAlexaHandler implements RequestHandler {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard("", speechText)
+      .withStandardCard(
+        'FISA',
+        speechText,
+        'https://open-days-with-alexa.loicbertrand.net/assets/images/apprentice.png'
+      )
       .withShouldEndSession(false)
       .getResponse();
   }

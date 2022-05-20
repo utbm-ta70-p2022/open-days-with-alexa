@@ -19,7 +19,6 @@ export class PlanningIntentAlexaHandler implements RequestHandler {
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
-    // call heavy client with year parameter
     const year = getSlotValue(handlerInput.requestEnvelope, intents.planning.slot.name);
 
     const speechText = text.speechText;
@@ -28,8 +27,12 @@ export class PlanningIntentAlexaHandler implements RequestHandler {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText) // After 8 seconds speak again the speech text
-      .withSimpleCard('Demande de planning', speechText) // https://developer.amazon.com/en-US/docs/alexa/custom-skills/include-a-card-in-your-skills-response.html
+      .reprompt(speechText)
+      .withStandardCard(
+        'Demande de planning',
+        speechText,
+        'https://open-days-with-alexa.loicbertrand.net/assets/images/planning-1.png'
+      )
       .withShouldEndSession(false)
       .getResponse();
   }
