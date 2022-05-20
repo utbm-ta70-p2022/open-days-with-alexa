@@ -13,7 +13,11 @@ export class CancelAndStopIntentAlexaHandler implements RequestHandler {
   handle(handlerInput: HandlerInput): Response {
     return handlerInput.responseBuilder
       .speak("L'UTBM vous remercie pour votre visite ! Bonne journée !")
-      .withSimpleCard('', "L'UTBM vous remercie pour votre visite ! Bonne journée !")
+      .withStandardCard(
+        'A bientôt !',
+        "L'UTBM vous remercie pour votre visite ! Bonne journée !",
+        'https://open-days-with-alexa.loicbertrand.net/assets/images/goodbye.png'
+      )
       .withShouldEndSession(true)
       .getResponse();
   }

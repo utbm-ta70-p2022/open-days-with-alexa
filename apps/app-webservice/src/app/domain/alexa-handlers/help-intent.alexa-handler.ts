@@ -8,6 +8,15 @@ export class HelpIntentAlexaHandler implements RequestHandler {
   }
 
   handle(handlerInput: HandlerInput): Response {
-    return handlerInput.responseBuilder.speak('TODO').getResponse();
+    return handlerInput.responseBuilder
+      .speak('Je vais vous afficher une liste de question que vous pouvez me poser')
+      .reprompt('Je vais vous afficher une liste de question que vous pouvez me poser')
+      .withStandardCard(
+        'Aide',
+        'Je vais vous afficher une liste de question que vous pouvez me poser',
+        'https://open-days-with-alexa.loicbertrand.net/assets/images/help.png'
+      )
+      .withShouldEndSession(false)
+      .getResponse();
   }
 }
