@@ -727,13 +727,13 @@
               "name": {
                 "value": "crédit ECTS",
                 "synonyms": [
-                  "ECTS",
-                  "un ECTS",
-                  "de crédit ECTS",
-                  "l’acronyme ECTS",
-                  "d’un crédit ECTS",
-                  "des crédits ECTS",
-                  "un crédit ECTS"
+                  "ects",
+                  "un ects",
+                  "de crédit ects",
+                  "l’acronyme ects",
+                  "d’un crédit ects",
+                  "des crédits ects",
+                  "un crédit ects"
                 ]
               }
             }
