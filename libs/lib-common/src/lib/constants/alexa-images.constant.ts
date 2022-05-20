@@ -1,5 +1,6 @@
 const webserviceUrl = process.env.WEBSERVICE_PUBLIC_ORIGIN;
 const folderPath = webserviceUrl + '/assets/images/';
+const defaultImage = 'icon.png';
 
 export const alexaImages = {
   apprentice: folderPath + 'apprentice.png',
@@ -10,11 +11,11 @@ export const alexaImages = {
   help: folderPath + 'help.png',
   launch: folderPath + 'icon.png',
   planning: folderPath + 'planning-icon.png',
-  credits: folderPath + '',
-  eligibilityModes: folderPath + '',
-  exam: folderPath + '',
-  internationalModes: folderPath + '',
-  postStudy: folderPath + '',
-  uv: folderPath + '',
-  studentsOpinion: folderPath + '',
+  credits: folderPath + 'credits.jpg',
+  eligibilityModes: folderPath + 'eligibility.png',
+  exam: folderPath + 'exam.png',
+  internationalModes: folderPath + 'international.png',
+  postStudy: folderPath + 'postStudies.png',
+  uv: folderPath + defaultImage,
+  studentsOpinion: folderPath + 'studentsOpinion.png',
 };
