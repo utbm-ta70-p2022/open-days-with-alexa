@@ -64,6 +64,7 @@ Liens utiles :
     WEBSERVICE_PORT=3333
     WEBSERVICE_NAME=Open days with Alexa Api
     WEBSERVICE_ALLOWED_ORIGIN=*
+    WEBSERVICE_PUBLIC_ORIGIN=http://localhost:3333
     ```
 
 3. Lancer le service web : `node dist/apps/app-webservice/main.js`
