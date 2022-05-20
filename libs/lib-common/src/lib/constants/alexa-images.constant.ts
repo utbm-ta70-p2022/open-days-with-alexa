@@ -1,4 +1,4 @@
-const webserviceUrl = process.env.WEBSERVICE_PUBLIC_ORIGIN;
+const webserviceUrl = 'https://open-days-with-alexa.loicbertrand.net/';
 const folderPath = webserviceUrl + '/assets/images/';
 
 export const alexaImages = {
