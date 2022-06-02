@@ -1,4 +1,5 @@
 import { InformationModel } from './information.model';
+import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 export class VideoInformationModel extends InformationModel {
   src: string;

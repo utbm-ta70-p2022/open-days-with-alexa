@@ -15,6 +15,6 @@ export const information: InformationModel[] = [
   new ImageInformationModel({ id: informationIds.diplome }),
   new VideoInformationModel({
     id: informationIds.visite,
-    src: 'https://youtube.com/embed/DWTzSdCvPF0'
+    src: 'https://www.youtube.com/embed/tCDvOQI3pco'
   }),
 ];
