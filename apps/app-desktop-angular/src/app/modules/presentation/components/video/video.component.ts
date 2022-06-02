@@ -1,6 +1,6 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { information, InformationModel, VideoInformationModel } from '@libraries/lib-common';
+import { VideoInformationModel } from '@libraries/lib-common';
 
 @Component({
   selector: 'app-video',
@@ -8,19 +8,12 @@ import { information, InformationModel, VideoInformationModel } from '@libraries
 })
 export class VideoComponent implements OnInit {
   @Input() information: VideoInformationModel;
-  //test!: string;
-
-
 
   safeSrc!: SafeResourceUrl;
-  src: string;
-  test: VideoInformationModel;
+
   constructor(private sanitizer: DomSanitizer) {
-    //this.test = this.information.srcc;
-    // this.src = this.information.src;
-    // console.log("test : " + this.src);
-    // this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("");
   }
+
   ngOnInit(): void {
 
     this.information.src += '?rel=0&enablejsapi=1&autoplay=1&controls=0&disablekb=1';
