@@ -5,5 +5,5 @@ export const informationIds = {
   apprenticeshipDefinition: 'apprenticeshipDefinition',
   modalite: 'modalite',
   diplome: 'diplome',
-  visite: 'visite',
+  formation: 'formation',
 };
