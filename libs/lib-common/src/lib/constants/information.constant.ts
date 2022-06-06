@@ -1,5 +1,6 @@
 import { ImageInformationModel } from '../models/image-information.model';
 import { InformationModel } from '../models/information.model';
+import { TextInformationModel } from '../models/text-information.model';
 import { informationIds } from './information-ids.constant';
 
 export const information: InformationModel[] = [
@@ -12,4 +13,8 @@ export const information: InformationModel[] = [
   new ImageInformationModel({ id: informationIds.apprenticeshipDefinition }),
   new ImageInformationModel({ id: informationIds.modalite }),
   new ImageInformationModel({ id: informationIds.diplome }),
+  new TextInformationModel({
+    id: informationIds.testText,
+    text: './testText.html'
+  })
 ];

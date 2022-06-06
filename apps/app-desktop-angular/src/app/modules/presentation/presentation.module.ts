@@ -10,7 +10,6 @@ import { WebsocketService } from '../../global/services/websocket.service';
 import { PresentationService } from '../../global/services/presentation.service';
 import { InformationComponent } from './components/information/information.component';
 import { ImageComponent } from './components/image/image.component';
-
 @Component({
   template: `<router-outlet></router-outlet>`,
 })
