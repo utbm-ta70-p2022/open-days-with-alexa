@@ -14,7 +14,8 @@ import { InformationService } from './information.service';
 })
 export class PresentationService {
   subscription: Subscription;
-  isCancelled: boolean;
+  isCancelled: boolean = true;
+  isAwaitToCancel: boolean = false;
 
   constructor(
     private readonly _router: Router,
@@ -26,9 +27,7 @@ export class PresentationService {
   startTolistenCurrentPresentationChanges(): void {
     this.subscription = this._actions$.pipe(ofActionDispatched(Refresh)).subscribe({
       next: async (refresh: Refresh) => {
-
         await this.present(refresh.id);
-        this.cancel();
       },
     });
   }
@@ -38,25 +37,32 @@ export class PresentationService {
   }
 
   async present(id: string) {
+    if(!this.isCancelled){
+      this.cancel();
+      while (!this.isCancelled) {
+        await new Promise<void>((resolve) => setTimeout(() => resolve(), 10));
+      }
+    }
     this.isCancelled = false;
+
     const informationItem = this._informationService.retrieveOrFail(id);
 
     this._router.navigate([appRoutes.presentation.root, appRoutes.presentation.information, id]);
 
     for (let counter = informationItem.displayDurationInSeconds; counter >= 0; counter--) {
-      if(this.isCancelled == true){
-        console.log("test");
+      if(this.isAwaitToCancel){
+        this.isAwaitToCancel = false;
         break;
       }
       await lastValueFrom(this._store.dispatch(new Update(counter)));
       await new Promise<void>((resolve) => setTimeout(() => resolve(), 1000));
 
     }
-
+    this.isCancelled = true;
     this._router.navigate([appRoutes.presentation.root, appRoutes.presentation.waiting]);
   }
 
   cancel(){
-    this.isCancelled = true;
+    this.isAwaitToCancel = true;
   }
 }

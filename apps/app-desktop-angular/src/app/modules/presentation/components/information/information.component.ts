@@ -17,7 +17,7 @@ import { InformationNotHandledError } from '../../../../global/errors/informatio
   template: `
     <p-progressBar
       *ngIf="counter$ | async as counter"
-      styleClass="progress"
+      styleClass="progress h-1rem"
       [showValue]="false"
       [value]="(counter / this.currentInformation.displayDurationInSeconds) * 100"
     ></p-progressBar>
