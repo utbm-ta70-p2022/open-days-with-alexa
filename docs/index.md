@@ -123,3 +123,18 @@ Liens utiles :
 8. Mettre à jour le modèle d'interaction JSON :
     - Ouvrir un terminal dans le dossier où se trouve le modèle d'interaction
     - Exécuter la commande `ask smapi set-interaction-model -s ${SKILL ID} -l fr-FR --interaction-model file:${FILENAME}`
+
+#### 3. Documentation utilisateur
+#### 3.1. Connection de l'echo show
+1. Télécherger Alexa sur mobile
+2. Se connecter avec le compte Amazon utilisé pour Amazon Alexa Developper
+3. Aller dans "Plus"
+4. Aller dans "Ajouter un appareil"
+
+#### 3.2. Activer la Skill
+1. Sur l'application Alexa, aller dans "Plus"
+2. Aller dans "Skills & Jeux"
+3. Dans l'onglet "Vos Skills" aller sur les skills "Dev"
+4. Selectioner la skill créer précedemement et l'activer
+5. Vous pouvez maintenant déclancher la skill
+
