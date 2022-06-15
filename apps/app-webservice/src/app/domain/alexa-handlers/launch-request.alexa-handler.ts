@@ -11,7 +11,6 @@ export class LaunchRequestAlexaHandler implements RequestHandler {
   handle(handlerInput: HandlerInput): Response {
     return handlerInput.responseBuilder
       .speak("Bienvenue à l'UTBM, je suis Alexa, comment puis-je vous aider ?")
-      .reprompt('Comment puis-je vous aider ?')
       .withStandardCard(
         'Bienvenue !',
         "Bienvenue à l'UTBM, je suis Alexa, comment puis-je vous aider ?",

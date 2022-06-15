@@ -29,7 +29,6 @@ export class InternationalModesAlexaHandler implements RequestHandler {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
       .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.internationalModes)
       .withShouldEndSession(false)
       .getResponse();

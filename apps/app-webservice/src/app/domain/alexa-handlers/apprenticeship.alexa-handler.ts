@@ -26,7 +26,6 @@ export class ApprenticeshipAlexaHandler implements RequestHandler {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
       .withStandardCard('Apprentissage', speechText, alexaImages.apprentice)
       .withShouldEndSession(false)
       .getResponse();

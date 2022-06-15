@@ -28,7 +28,6 @@ export class ExamIntentAlexaHandler implements RequestHandler {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
       .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.exam)
       .withShouldEndSession(false)
       .getResponse();

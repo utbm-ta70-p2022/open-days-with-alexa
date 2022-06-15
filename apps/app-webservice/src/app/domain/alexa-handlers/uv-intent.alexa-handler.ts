@@ -26,7 +26,6 @@ export class UvIntentAlexaHandler implements RequestHandler {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
       .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.uv)
       .withShouldEndSession(false)
       .getResponse();

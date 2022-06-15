@@ -19,7 +19,6 @@ export class ErrorsAlexaHandler implements ErrorHandler {
 
     return handlerInput.responseBuilder
       .speak("Je n'ai pas compris votre commande. Je vous invite à la répéter.")
-      .reprompt("Je n'ai pas compris votre commande. Je vous invite à la répéter.")
       .withShouldEndSession(false)
       .getResponse();
   }

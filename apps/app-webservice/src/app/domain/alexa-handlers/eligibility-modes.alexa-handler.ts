@@ -29,7 +29,6 @@ export class EligibilityModesAlexaHandler implements RequestHandler {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
       .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.eligibilityModes)
       .withShouldEndSession(false)
       .getResponse();
