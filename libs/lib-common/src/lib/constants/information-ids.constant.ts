@@ -11,4 +11,8 @@ export const informationIds = {
   internationalModes: 'internationalModes',
   studentsOpinion: 'studentsOpinion',
   ectsCredits: 'ectsCredits',
+  utbmPresentation: 'utbmPresentation',
+  uvVideo: 'uvVideo',
+  planningVideo: 'planningVideo',
+  diplomaValidation: 'diplomaValidation',
 };
