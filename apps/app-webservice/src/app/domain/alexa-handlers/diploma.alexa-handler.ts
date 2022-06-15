@@ -24,7 +24,7 @@ export class DiplomaAlexaHandler implements RequestHandler {
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
 
-    await this._informationsService.present(informationIds.diploma);
+    await this._informationsService.present(informationIds.diplomaValidation);
 
     return handlerInput.responseBuilder
       .speak(speechText)

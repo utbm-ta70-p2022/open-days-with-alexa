@@ -24,7 +24,7 @@ export class PlanningIntentAlexaHandler implements RequestHandler {
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
 
-    await this._informationService.present(informationIds.planning);
+    await this._informationService.present(informationIds.planningVideo);
 
     return handlerInput.responseBuilder
       .speak(speechText)

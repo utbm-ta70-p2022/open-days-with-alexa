@@ -5,7 +5,7 @@ import { InformationService } from '../services/information.service';
 import { alexaImages, informationIds } from '@libraries/lib-common';
 
 const alexaResponseData = {
-  speechText: "Une UV est une matière à l'UTBM. C'est l'acronoyme pour : unité de valeur.",
+  speechText: "Une UV est une matière à l'UTBM. C'est l'acronyme pour : unité de valeur.",
   card: {
     title: 'Affichage des informations sur les unités de valeurs',
   },
@@ -22,7 +22,7 @@ export class UvIntentAlexaHandler implements RequestHandler {
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
 
-    await this._informationService.present(informationIds.uv);
+    await this._informationService.present(informationIds.uvVideo);
 
     return handlerInput.responseBuilder
       .speak(speechText)
