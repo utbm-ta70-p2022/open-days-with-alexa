@@ -5,6 +5,7 @@ export * from './lib/constants/default-settings.constant';
 export * from './lib/constants/information-ids.constant';
 export * from './lib/constants/information.constant';
 export * from './lib/constants/ipc-channels.constant';
+export * from './lib/constants/alexa-images.constant';
 
 export * from './lib/enumerations/email-template.enumeration';
 export * from './lib/enumerations/proxy-configuration.enumeration';

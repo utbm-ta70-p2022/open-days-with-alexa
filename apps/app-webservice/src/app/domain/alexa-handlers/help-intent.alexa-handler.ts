@@ -1,3 +1,4 @@
+import { alexaImages } from '@libraries/lib-common';
 import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
 
@@ -8,6 +9,15 @@ export class HelpIntentAlexaHandler implements RequestHandler {
   }
 
   handle(handlerInput: HandlerInput): Response {
-    return handlerInput.responseBuilder.speak('TODO').getResponse();
+    return handlerInput.responseBuilder
+      .speak('Je vais vous afficher une liste de question que vous pouvez me poser')
+      .reprompt('Je vais vous afficher une liste de question que vous pouvez me poser')
+      .withStandardCard(
+        'Aide',
+        'Je vais vous afficher une liste de question que vous pouvez me poser',
+        alexaImages.help
+      )
+      .withShouldEndSession(false)
+      .getResponse();
   }
 }

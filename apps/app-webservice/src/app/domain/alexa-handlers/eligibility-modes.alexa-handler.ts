@@ -5,31 +5,32 @@ import { InformationService } from '../services/information.service';
 import { alexaImages, informationIds } from '@libraries/lib-common';
 
 const alexaResponseData = {
-  speechText: "Patientez, le planning que vous avez demandé va s'afficher à l'écran.",
+  speechText: "Voici les informations à propos des modalités d'apprentissage.",
   card: {
-    title: 'Demande de planning',
+    title: "Modalités d'admissibilité",
   },
 };
 
-export class PlanningIntentAlexaHandler implements RequestHandler {
-  constructor(private readonly _informationService: InformationService) {}
+export class EligibilityModesAlexaHandler implements RequestHandler {
+  constructor(private readonly _informationsService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
     return (
-      getRequestType(requestEnvelope) === 'IntentRequest' && getIntentName(requestEnvelope) === intents.planning.name
+      getRequestType(requestEnvelope) === 'IntentRequest' &&
+      getIntentName(requestEnvelope) === intents.eligibilityModes.name
     );
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
 
-    await this._informationService.present(informationIds.planning);
+    await this._informationsService.present(informationIds.eligibilityModes);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.planning)
+      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.eligibilityModes)
       .withShouldEndSession(false)
       .getResponse();
   }

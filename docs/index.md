@@ -15,7 +15,7 @@ Un visiteur peut ainsi formuler une requête à un appareil Alexa afin de décle
 
 2. Télécharger l'application de bureau Open days with Alexa :
    - [Télécharger pour Linux](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.AppImage)
-   - [Télécharger pour Window](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.exe)
+   - [Télécharger pour Windows](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.exe)
    - [Télécharger pour macOS](https://github.com/utbm-ta70-p2022/open-days-with-alexa/releases/download/latest/open-days-with-alexa-latest.dmg)
 
 3. Installer le fichier téléchargé
@@ -64,6 +64,7 @@ Liens utiles :
     WEBSERVICE_PORT=3333
     WEBSERVICE_NAME=Open days with Alexa Api
     WEBSERVICE_ALLOWED_ORIGIN=*
+    WEBSERVICE_PUBLIC_ORIGIN=http://localhost:3333
     ```
 
 3. Lancer le service web : `node dist/apps/app-webservice/main.js`

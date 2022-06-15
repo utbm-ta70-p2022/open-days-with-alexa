@@ -1,9 +1,15 @@
 export const informationIds = {
   planning: 'planning',
   cfaiPresentation: 'cfaiPresentation',
+  examen: 'examen',
+  poursuiteEtude: 'poursuiteEtude',
+  uv: 'uv',
   fisaDefinition: 'fisaDefinition',
   apprenticeshipDefinition: 'apprenticeshipDefinition',
-  modalite: 'modalite',
-  diplome: 'diplome',
+  diploma: 'diploma',
+  eligibilityModes: 'eligibilityModes',
+  internationalModes: 'internationalModes',
+  studentsOpinion: 'studentsOpinion',
+  ectsCredits: 'ectsCredits',
   formation: 'formation',
 };

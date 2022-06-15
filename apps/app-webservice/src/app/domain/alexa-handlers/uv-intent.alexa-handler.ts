@@ -5,31 +5,29 @@ import { InformationService } from '../services/information.service';
 import { alexaImages, informationIds } from '@libraries/lib-common';
 
 const alexaResponseData = {
-  speechText: "Patientez, le planning que vous avez demandé va s'afficher à l'écran.",
+  speechText: "Une UV est une matière à l'UTBM. C'est l'acronoyme pour : unité de valeur.",
   card: {
-    title: 'Demande de planning',
+    title: 'Affichage des informations sur les unités de valeurs',
   },
 };
 
-export class PlanningIntentAlexaHandler implements RequestHandler {
+export class UvIntentAlexaHandler implements RequestHandler {
   constructor(private readonly _informationService: InformationService) {}
 
   canHandle(handlerInput: HandlerInput): boolean {
     const requestEnvelope = handlerInput.requestEnvelope;
-    return (
-      getRequestType(requestEnvelope) === 'IntentRequest' && getIntentName(requestEnvelope) === intents.planning.name
-    );
+    return getRequestType(requestEnvelope) === 'IntentRequest' && getIntentName(requestEnvelope) === intents.uv.name;
   }
 
   async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
 
-    await this._informationService.present(informationIds.planning);
+    await this._informationService.present(informationIds.uv);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.planning)
+      .withStandardCard(alexaResponseData.card.title, speechText, alexaImages.uv)
       .withShouldEndSession(false)
       .getResponse();
   }
