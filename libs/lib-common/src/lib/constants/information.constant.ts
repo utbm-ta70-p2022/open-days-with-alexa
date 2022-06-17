@@ -17,10 +17,6 @@ export const information: InformationModel[] = [
     src: 'assets/images/creditsDisplay.png',
   }),
   new ImageInformationModel({
-    id: informationIds.eligibilityModes,
-    src: 'assets/images/eligibilityModes.png',
-  }),
-  new ImageInformationModel({
     id: informationIds.examen,
     src: 'assets/images/examDisplay.png',
   }),
@@ -42,8 +38,8 @@ export const information: InformationModel[] = [
   }),
   new VideoInformationModel({
     id: informationIds.fisaDefinition,
-    src: 'https://www.youtube.com/embed/bxLsgC-Vqbw?',
-    displayDurationInSeconds: 240,
+    src: 'https://www.youtube.com/embed/5kQciclhiH8?',
+    displayDurationInSeconds: 2880,
   }),
   new VideoInformationModel({
     id: informationIds.uvVideo,
@@ -60,4 +56,9 @@ export const information: InformationModel[] = [
     src: 'https://www.youtube.com/embed/sbbI6x4WT-M?',
     displayDurationInSeconds: 35,
   }),
+  new VideoInformationModel({
+    id: informationIds.eligibilityModes,
+    src: 'https://www.youtube.com/embed/wqSEAXtyGsM?',
+    displayDurationInSeconds: 80
+  })
 ];
