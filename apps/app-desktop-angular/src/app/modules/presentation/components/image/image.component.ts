@@ -10,11 +10,12 @@ import { ImageInformationModel } from '@libraries/lib-common';
         height: calc(100% - 1rem);
         width: 100%;
         display: flex;
+        padding: 1rem;
       }
 
       .image {
-        max-width: 100vw;
-        max-height: 100vh;
+        max-width: 95%;
+        max-height: 95%;
         margin: auto;
         object-fit: contain;
       }
