@@ -48,8 +48,7 @@ export class AlexaSkillsService {
             new UvIntentAlexaHandler(this._informationService),
             new ExamIntentAlexaHandler(this._informationService),
             new PostStudyIntentAlexaHandler(this._informationService),
-            // add your instances above
-            new HelpIntentAlexaHandler(),
+            new HelpIntentAlexaHandler(this._informationService),
             new CancelAndStopIntentAlexaHandler(),
             new SessionEndedRequestAlexaHandler()
           )
