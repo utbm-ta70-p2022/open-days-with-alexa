@@ -7,12 +7,14 @@ import { ImageInformationModel } from '@libraries/lib-common';
   styles: [
     `
       :host {
-        height: 100%;
+        height: calc(100% - 1rem);
         width: 100%;
         display: flex;
       }
 
       .image {
+        max-width: 100vw;
+        max-height: 100vh;
         margin: auto;
         object-fit: contain;
       }
