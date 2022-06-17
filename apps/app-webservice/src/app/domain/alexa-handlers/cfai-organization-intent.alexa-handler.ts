@@ -2,7 +2,7 @@ import { HandlerInput, RequestHandler, getIntentName, getRequestType } from 'ask
 import { Response } from 'ask-sdk-model';
 import { intents } from '@libraries/lib-alexa';
 import { InformationService } from '../services/information.service';
-import { alexaImages } from '@libraries/lib-common';
+import { alexaImages, informationIds } from '@libraries/lib-common';
 
 const alexaResponseData = {
   speechText: "Patientez, nous allons vous afficher une présentation du CFAI à l'écran.",
@@ -19,8 +19,10 @@ export class CfaiOrganizationAlexaHandler implements RequestHandler {
     return getRequestType(requestEnvelope) === 'IntentRequest' && getIntentName(requestEnvelope) === intents.cfai.name;
   }
 
-  handle(handlerInput: HandlerInput): Response {
+  async handle(handlerInput: HandlerInput): Promise<Response> {
     const speechText = alexaResponseData.speechText;
+
+    await this._informationsService.present(informationIds.cfaiPresentation);
 
     return handlerInput.responseBuilder
       .speak(speechText)
